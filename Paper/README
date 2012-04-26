@@ -1,0 +1,13 @@
+This is an example of how to start writing the paper with latex and then compiling it:
+
+
+Write article in paper.tex using vi or similar.
+Insert citations using bibtex format in paper.bib
+
+In order to check the generated pdf run:
+make
+
+I left some examples from our previous article so that you can have some example of how it works and how to insert figures/tables.
+
+Have fun! :)
+
