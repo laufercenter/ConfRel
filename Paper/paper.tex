@@ -229,20 +229,79 @@ following table into the figure.}
 
 \subsection{The confinement method correctly identifies the most native-like predictions from a
 subset of CASP predictions}
+\Alberto{Arijit: we need a global table of success, rather than individual tables. The simplest form
+    would have 3 columns: name of the PDB, number of structures tested, percent of success of
+    picking 1st model}
+\Alberto{Arijit: CASP notation should not be used (T????) instead, pdb code should be used}
 
-Next, we have applied the confinement method to several targets from the CASP9 and CASP10
-experiments. CASP is a world-wide competition aiming at finding the state of the art methodologies
-in protein folding. Groups, both from knowledge based methods and physics based methods participate
-in this blind competition and for each sequence target they can submit five models. The predictors
-were also asked to calculate their best model among the set of five they submitted. However, in many
-cases predictors were unable to predict/rank their models. Using the confinement method, we aim to
-rank protein structures using free energy as a scale. In recent CASP experiments Global distance
-test scose (GDT\_TS) method is used for final analysis of different submitted structures with the
-NMR/crystallographically solved protein native structure. GDT\_TS represent the average percentage
-of residues that are in close proximity in two structures optimally superimposed using four
-different distance cutoff. Although GDT\_TS alone is not a reliable measure for the difficult
-modeling cases, it has been well accepted method in recent years among the community. We have also
-compared our free energy result with the GDT\_TS score for different cases we studied.
+This method is particularly well suited for events such as CASP (critical assessment of structure
+prediction). CASP is a blind test world wide competition in which different groups apply their
+methods to predict the 3D structure of proteins given their sequence. This is done with a strict 3
+week limit on each target (3 day for servers) and each group is allowed to submit 5 possible
+structures (ranked from better to worst). In our role as assessors during the CASP8 and CASP9 [CITE]
+competition we observed no correlation at all between the ordering of structures submited by the
+groups and the real ranking compared to an experimental model. The consequences of this go beyond
+those five structures; the deeper meaning is that groups producing ensembles of structures are
+generating structures that are better than the ones they submit, but they do not know about it. In
+fact, when querrying different groups after the results were known, most groups agree that this is
+the case. Beryond the CASP problem, this reflects on the modelers ability to correctly rank order
+models in many different environments, from structures for drug design leads to designing more
+stable proteins or peptide mimetics such as peptoids. One of the main culprits of this lack of
+accuracy is the fact that ranking is often done via a potential energy function, which in many cases
+lacks an entropy component. Other initiatives including knowledge based potentials do use some sort
+of free energy to rank order, but its accuracy is not enough. Our method provides a physics based
+solution to this problem. We have tried two experiments centered on CASP. First we tried to rank
+order some structures from the previous CASP9 experiment. Our second test was to participate as a
+metapredictor group in CASP10. In both methods, our ranking is determined as a free energy measure,
+and it is compared with the ranking given by a geometrical comparison between native and submitted
+models called GDT\_TS (Global distance test score [CITE, look in CASP9 refinement paper for cite
+21]). GDT\_TS represent the average percentage of residues that are in close proximity in two
+structures optimally superimposed using four different distance cutoffs (1, 2, 4 and 8 Å).
+
+We have chosen the inital models on which to test the methods based on server groups that have
+traditionally done good in past CASP events. There is a high correlation between the structures that
+are chosen for this method and its predictive accuracy. In particular, when GDT\_TS scores are below
+50, it is difficult for us to say anything about the models. Our approach is simple, with every
+subset of structures we choose, we use the confinement method in a pairwise procedure, and then rank
+the structures. Note that we do not need to make comparisons to native in order to rank order.
+
+\Subsubsection{CASP9}
+Can we distinguish between native and models? Identifying the native state from a set of models is a very easy test, that most metapredictors
+already handle correctly, but it is also a first proof of principle. We exemplify this with
+T0660\Alberto{Arijit:PDB code please, here can you complete the text in subsection T0560 or added it here
+    directly?} by selecting the native state and comparing it to two models from the "Splicer"
+server. Here, the main difference between the two models is the orientation of the ... As expected,
+the native state is identified correctly, and the two other models is correctly identified. Our next test was to see if we could rank order within a given server's predictions. We chose
+T0559 \Alberto{Arijit: change to PDB code, say CASP code T0559} and the BAKER-ROSETTASERVER. We
+initlally checked similarity between the models and discarded two of them from the analysis on the
+basis of being too similar to some of the other models. For the remaining structures, we correctly
+ranked order the results as seen from Table~\protect\ref{tab:T0559}. This was a relatively easy test
+as the differences in GDT\_TS score are fairly large. Therefore, our next test was between models
+from the best submissions of different groups (range of GDT\_TS
+from 96.23 to 80.66). Again, our method was able to correctly order the results
+(Table~\protect\ref{tab:T0538}). \Alberto{I don't like so many small tables. Have to find out a way
+    to combine into something bigger, so can check this whole paragraph in one table or figure.}
+There are however some instances where the method can fail, specially when close GDT scores are
+given. This is the case in T605, Table~\protect\ref{tab:T0605}, where the first model from the BAKER
+group is correctly identified, put the 2nd and 3rd are given in inverse order. \Alberto{Airjit:
+    Reasons for this???}
+
+What can we say about low resolution models?
+We mentioned earlier that our predictive abilities are greatly decreased with low model qualities.
+We performed such a test with T0531, in which we compared the crystal structure to five models from
+the MUFOLD server. Looking at table ~\protect\ref{tab:T0531} shows: 1.) native is correctly
+identified as expected and 2.) Surprisingly there is a high level of correlation between the GDT
+ranking and the free energy ranking, only two structures whith GDT\_TS < 30Å are ordered
+incorrectly. It is worth to note that models 2 and 3 have the same GDT and very different free
+energies, meaning that the actual ordering could change a lot [Cite FlexE].
+
+\Subsubsection{CASP10}
+We participated in CASP10 as a metapredictor group. Given the tigh schedule of the CASP competition,
+we only attempted proteins under 100 residues in length. Our main problem during this part of the
+competition was that proteins were trimmed from the actual calculation.
+\Alberto{Justin,Arijit: Probably should not comment on metapredicting since we were not able to do
+    good due to the trimming factor. Instead, we should move forward with Justin's idea of using
+    structures that other meta predictors did badly at. What stage is that in?}
 
 %The GDTTS value of a model is determined as follows. A large sample of possible structure
 %superpositions of the model on the corresponding experimental structure is generated by superposing
@@ -253,7 +312,9 @@ compared our free energy result with the GDT\_TS score for different cases we st
 %and 8 $\AA$, and the final superposition that includes the maximum number of residues is selected
 %for each threshold.
 
-
+\Alberto{This subsections have to go. I'm momentarily leaving them on so you can complete the text
+    with number of residues and maybe experimental origin. I would put the number of residues in the
+    tables}
 \subsubsection{T0559}
 
 The native structure is a  67 residue NMR solved structure. We first reviewed all the five models
@@ -284,6 +345,8 @@ submitted by the group "Shell", "FOLDIT" and "BAKER-ROSETTASERVER". The calculat
 is presented in Table~\protect\ref{tab:T0538}.
 
 \subsubsection{T0540}
+\Alberto{Arijit: between T0560 and T0540, which one is better? I would keep only one of them, and my
+    preference is T0560, we are showing the same test}
 
 Target T0540 was a 90 residue target. We have taken the best models from the group "LTB" which was
 the best performing group for this target and also from the group Mufold and calculated the free
