@@ -71,21 +71,21 @@ be beyond timescale of direct classical molecular dynamics simulation.  Generall
 calculate free energy a pathway or reaction coordinate is created with the intermediate structures.
 Method like umbrella sampling, thermodynamic integration along with classical MD can suffer from
 overlap problem and require large computational effort. The idea of reaction coordinate became more
-complicated in case of protein folding.  As free energy landscape of the protein folding is rough,
+complicated in case of protein folding.  As free energy landscape of the protein folding is rough \cite{Dill1997},
 it can be trapped in a energy well during its visit in the conformational space. Even with the
 advanced method like replica exchange molecular dynamics the three dimensional structure may be
 trapped in a local minima for a considerable time. Due to various reasons it can also be misfolded
 and trapped in a local energy minima. And one can mistakenly identify the misfolded state as the
 native state (give the example of human pin1ww domain from Benout Roux and Klaus Schultan).
 
-Calculation of free energy has been successfully attempted by a number of groups (give examples). In
-recent years methods like Refrence system method, Decativated Morphing, Orthogonal Space Random
+Calculation of free energy has been successfully attempted by a number of groups \cite{Ytreberg2006} - \cite{Zheng2008}. In
+recent years methods like Refrence system method, Decativated Morphing \cite{Park2008}, Orthogonal Space Random
 Work, Confinement Method have came out for calculation of free energy method. Some of the groups
 relies on one of the great strength of free energy calculation, that it is a state function and thus
 it is independent of path.
 
-In this work we have applied the confinement method which was originally devoled by Tyka et. al. and
-Cecchini et. al.  This method relies on a thermodynamic cycle where first, non-harmonic degrees of
+In this work we have applied the confinement method which was originally devoled by Tyka et. al. \cite{Tyka2006} and
+Cecchini et. al. \cite{Cecchini2009}. This method relies on a thermodynamic cycle where first, non-harmonic degrees of
 freedom are removed by applying a series of restraint to the system. Then the free energy of the
 remaining harmonic system is obtained using a normal mode calculation and combined with the
 non-harmonic part to give the total absolute free energy.  Previously, this method was applied to
@@ -113,23 +113,23 @@ confinement method produces results compatible with previous calculations report
 literature.
 
 The method has previously been applied to a 16 amino acid residue $\beta$-hairpin from
-protein G, known as BHP[ref]. We calculated the free energy difference between two different
+protein G, known as BHP \cite{Cecchini2009}. We calculated the free energy difference between two different
 conformations of the peptide: (1) the native conformation, called bhp1, with a two-stranded
 $\beta$-sheet; and (2) a conformation, called bhp3, which has a three-stranded $\beta$-sheet.
-Analysis of long (4 $\mu$s) equilibrium simulations[ref] shows that bhp1 is the more favorable
+Analysis of long (4 $\mu$s) equilibrium simulations \cite{Cecchini2009},\cite{Krivov2004}  shows that bhp1 is the more favorable
 configuration by 1.8 kcal/mol. Using the confinement method, we obtain a value 1.7 kcal/mol, which
 is in good agreement with the equilibrium simulations and with previous calculations using the
-confinement method[ref] (see Supporting Information for further details).
+confinement method \cite{Cecchini2009} (see Supporting Information for further details).
 
 \Justin{Arijit, Al: did we do any other control experiments on small peptides that we should report
 here?}
 
-Previous applications of the confiment method have focused on relatively short peptides, up to X
-residues in length \Justin{Arijit: fill in X}. In this work we apply the confinement method to
+Previous applications of the confiment method have focused on relatively short peptides, up to $17$
+residues in length. In this work we apply the confinement method to
 larger proteins. One of the  applications we explore in the present work is the re-scoring, or
 metaprediction, of structures submitted during the Critical Assessment of Structure Prediction
 (CASP) experiment (described in detail later). We computed the relative free energies of predictions
-submitted during CASP9 and 10, with the expectation that the most native-like prediction will have
+submitted during CASP9 10, with the expectation that the most native-like prediction will have
 the lowest free energy. As a control, for several targets we also calculated the relative free
 energy of the experimental structure (once it was available from the PDB). As
 Table~\ref{table:casp_control} shows, in X of Y cases, the confinement method correctly assigns a
@@ -145,6 +145,11 @@ easily distinguish between the two [ref Rosetta Holes]---the results none the le
 \begin{center}
 \begin{tabular}{l l l}\hline
     CASP Target  & PDB Identifier & $\Delta\Delta G_{native \to best decoy}$ (kcal/mol) \\ \hline
+     T0531       &    2KJX        &          $12.49 \pm 0.70$ \\ \hline
+     T0538       &    2L09        &          $7.70 \pm 0.47$ \\ \hline
+     T0540       &    3MX7        &          $22.00 \pm 0.49$ \\ \hline
+     T0559       &    2L01        &          $2.24 \pm 0.24$ \\ \hline
+     T0560       &    2L02        &          $22.15 \pm 0.49$ \\ \hline 
 \end{tabular}
 \end{center}
 
@@ -172,7 +177,7 @@ only in a single tyrosine to alanine mutation.
 
 The fact such small changes in sequence can lead to such dramatic changes in structure is rather
 remarkable. Accurately predicting the structural preferences of these structures presents a serious
-challenge for computational methods [ref].
+challenge for computational methods \cite{Alexander2007}$-$\cite{Shortle20009}.
 
 We initially approached this problem by making a model of each sequence with the same backbone
 structure as its partner chameleon sequence. For example, we took the sequence of GA88 and built a
@@ -193,18 +198,15 @@ realistic test of the confinement method's ability to accurately calculate relat
 The results of these calculations are presented in Figure~\ref{fig:orban}. The confinement method
 identifies the correct structure for all six sequences. The free energy differences range from
 around 2.9 to 5.7 kcal/mol, which is consistent with small changes in sequences and with estimates
-made by Orban and co-workers [ref].
+made by Orban and co-workers \cite{He2008}, \cite{{Alexander2009}}.
 
 \begin{figure}
+\includegraphics[width=14cm,height=14cm]{orban.pdf}
 \label{fig:orban}
-
 \caption{The confinement method correctly predicts the structural preferences of six chameleon
 sequences. (A) The six sequences used in this study. (B) Each sequence adopts either a Protein
 G-like fold (denoted GB) or a three-helix bundle fold (denoted GA). The relative free energies of
 the two folds are reported for each sequence.}
-
-\Justin{Arijit: we need to make this figure, which we've discussed before and move the data from the
-following table into the figure.}
 \end{figure}
 
 %\begin{table}
@@ -323,9 +325,9 @@ target.  Among them we choose only the three structures, model 1, 3 and 5 to cal
 energy and subsequently identify the most stable structure among them. The rest of the two
 structures are close to either of the selected structure and thus they are ommited from our
 calculation. According to the GDT\_TS score, the model 1 was picked up correctly from the set of
-structure generated . However, the order of model 3 and 5 was not correct as can be seen from the
-Table 1. It will be interesting to know whether confinement method can order the strcutures in terms
-of free energy scale. The result is presented in Table~\protect\ref{tab:T0559}.
+structure generated . However, the order of model 3 and 5 was not correct.
+It will be interesting to know whether confinement method can order the strcutures in terms
+of free energy scale. The result is presented in Figure~\ref{fig:T0559}.
 
 
 \subsubsection{T0560}
@@ -333,7 +335,7 @@ of free energy scale. The result is presented in Table~\protect\ref{tab:T0559}.
 Target T0560 is a 74 amino acid residue target from CASP9. However residues 3-66 were kept for final
 result.  For this target we have compared the free energy of the model 2 and model 4 submitted by
 the group "Splicer" along with the crystal structure.  The main difference between the model 2 and 4
-is the orientation of the ....  The final result is presented in Table~\protect\ref{tab:T0560}.
+is the orientation of the ....  The final result is presented in Figure~\ref{fig:T0560}.
 
 \subsubsection{T0538}
 
@@ -342,7 +344,7 @@ that is closest to the native structure was generated by the group PconsR. Howev
 was better than their model 1. This structure was quite close to the NMR structure and had GDT\_TS
 value of 96.23. We have calculated the free energy between this structure and the best structure
 submitted by the group "Shell", "FOLDIT" and "BAKER-ROSETTASERVER". The calculated free energy value
-is presented in Table~\protect\ref{tab:T0538}.
+is presented in Figure~\ref{fig:T0538}.
 
 \subsubsection{T0540}
 \Alberto{Arijit: between T0560 and T0540, which one is better? I would keep only one of them, and my
@@ -353,7 +355,7 @@ the best performing group for this target and also from the group Mufold and cal
 energy difference between these models with that of the native crystal structure.  As expected, the
 crystal structure has the lowest free energy value, followed by Model 1 with GDT\_TS score of
 $69.72$ and model 2 with GDT\_TS value of $53.789$. The final result is presented in
-Table~\protect\ref{tab:T0540}.
+Figure~\ref{fig:T0540}.
 
 
 \subsubsection{T0531}
@@ -361,7 +363,7 @@ Table~\protect\ref{tab:T0540}.
 This is a 65 amino acid residue target with residues 6-63 were kept for final analysis. We have
 calculated the free energy difference between all the five models submitted by the group
 "MUFOLD-MD", which was one of the best performed group for this target.  The result is presented in
-Table~\protect\ref{tab:T0531}
+Figure~\ref{fig:T0531}.
 
 
 
@@ -371,7 +373,7 @@ This is a 72 amino acid residue protein but for the final calculation only the r
 
 The best performing group was "Baker" for this target. We have carried out our calculation with the model first, second and fifth for the
 final calculation. The rest two model had closer GDT\_TS value compared to the previously mentioned models and thus they were omitted from
-furthe calculation. The result is presented in Table~\protect\ref{tab:T0605}. (This is a case where we can demand the confinement
+furthe calculation. The result is presented in Figure~\ref{fig:T0605}. (This is a case where we can demand the confinement
 method is better than GDT\_TS).
 
 
@@ -402,32 +404,11 @@ method is better than GDT\_TS).
 
 \begin{figure}
 \begin{center}
-\includegraphics[width=12cm,height=10cm]{G88.pdf}
-\end{center}
-\caption{Two protein with 88 \% similar sequence but different folds}
-\label{fig:G88}
-\end{figure}
-
-\begin{figure}
-\begin{center}
 \includegraphics[width=12cm,height=10cm]{T0559.pdf}
 \end{center}
 \caption{Target T0559 from CASP9}
 \label{fig:T0559}
 \end{figure}
-
-\begin{table}
-\caption{The value of free energy and GDT\_TS for the CASP9 target T0559}
-\label{tab:T0559}
-\begin{center}
-\begin{tabular}{l l l}\hline
-Model   &     $\Delta G$ (Kcal/Mol) &  GDT\_TS \\ \hline
-Model 1 &     0.000            &  94.03    \\
-Model 3 &     $14.484 \pm 0.633$ &  48.13    \\
-Model 5 &     $4.526  \pm 0.384$ &  82.46    \\ \hline
-\end{tabular}
-\end{center}
-\end{table}
 
 \begin{figure}
 \begin{center}
@@ -437,20 +418,6 @@ Model 5 &     $4.526  \pm 0.384$ &  82.46    \\ \hline
 \label{fig:T0538}
 \end{figure}
 
-\begin{table}
-\caption{The Free energy and GDT\_TS values of the CASP9 Target T0538}
-\label{tab:T0538}
-\begin{center}
-\begin{tabular}{l l l l}\hline
-Model   &     $\Delta G$ (Kcal/Mol) &  GDT\_TS & Group Submitted \\ \hline
-Model 1 &     0.000              &  96.23    & PconsR  \\
-Model 2 &     $15.891 \pm 0.475$ &  90.09  & Shell  \\
-Model 3 &     $23.243 \pm 0.393$ &  86.32  & FOLDIT  \\
-Model 4 &     $26.002 \pm 0.756$ &  80.66  & BAKER-ROSETTASERVER \\ \hline
-\end{tabular}
-\end{center}
-\end{table}
-
 \begin{figure}
 \begin{center}
 \includegraphics[width=12cm,height=10cm]{T0560.pdf}
@@ -459,40 +426,13 @@ Model 4 &     $26.002 \pm 0.756$ &  80.66  & BAKER-ROSETTASERVER \\ \hline
 \label{fig:T0560}
 \end{figure}
 
-\begin{table}
-\caption{The free energy and the GDT\_TS value of the CASP9 target T0560.}
-\label{tab:T0560}
-\begin{center}
-\begin{tabular}{l l l}\hline
-Model   &     $\Delta G$ (Kcal/Mol) &  GDT\_TS \\ \hline
-Crystal &     0.000              & 100.00    \\
-Model 2 &     $22.153 \pm 0.491$ &  94.14    \\
-Model 4 &     $27.428  \pm 0.477$ &  76.56    \\ \hline
-\end{tabular}
-\end{center}
-\end{table}
-
-
 \begin{figure}
 \begin{center}
 \includegraphics[width=12cm,height=10cm]{T0540.pdf}
 \end{center}
 \caption{T0540}
-\label{fig:}
+\label{fig:T0540}
 \end{figure}
-
-\begin{table}
-\caption{The free energy and the GDT\_TS value of the CASP9 target T0540.}
-\label{tab:T0540}
-\begin{center}
-\begin{tabular}{l l l l}\hline
-Model   &     $\Delta G$ (Kcal/Mol) &  GDT\_TS & Group Submitted \\ \hline
-Crystal &     0.000              &  100.00   & -      \\
-Model 1 &     $22.003 \pm 0.575$ &  69.72    & LTB    \\
-Model 2 &     $53.786 \pm 0.553$ &  63.89    & Mufold \\ \hline
-\end{tabular}
-\end{center}
-\end{table}
 
 \begin{figure}
 \begin{center}
@@ -502,22 +442,6 @@ Model 2 &     $53.786 \pm 0.553$ &  63.89    & Mufold \\ \hline
 \label{fig:T0531}
 \end{figure}
 
-\begin{table}
-\caption{The free energy and the GDT\_TS value of the CASP9 target T0531.}
-\label{tab:T0531}
-\begin{center}
-\begin{tabular}{l l l}\hline
-Model   &     $\Delta G$ (Kcal/Mol) &  GDT\_TS \\ \hline
-Crystal &     0.000              & 100.00    \\
-Model 1 &     $12.496 \pm 0.704$ &  43.53    \\
-Model 2 &     $27.374 \pm 0.691$ &  34.48    \\
-Model 3 &     $13.914 \pm 0.673$ &  34.48    \\
-Model 4 &     $53.055 \pm 0.684$ &  28.02    \\
-Model 5 &     $29.508 \pm 0.698$ &  25.86   \\ \hline
-\end{tabular}
-\end{center}
-\end{table}
-
 \begin{figure}
 \begin{center}
 \includegraphics[width=12cm,height=10cm]{T0605.pdf}
@@ -525,20 +449,6 @@ Model 5 &     $29.508 \pm 0.698$ &  25.86   \\ \hline
 \caption{T0605}
 \label{fig:T0605}
 \end{figure}
-
-
-\begin{table}
-\caption{The free energy and the GDT\_TS value of the CASP9 target T0605.}
-\label{tab:T0605}
-\begin{center}
-\begin{tabular}{l l l}\hline
-Model   &     $\Delta G$ (Kcal/Mol) &  GDT\_TS \\ \hline
-Model 1 &     $0.000$ &  $97.96$    \\
-Model 2 &     $1.689 \pm ?$ &  $89.29$    \\
-Model 5 &     $16.064 \pm ?$ & $93.88$   \\ \hline
-\end{tabular}
-\end{center}
-\end{table}
 
 
 
@@ -577,17 +487,48 @@ conformation of the protein. For this purpose we use a thermodynamic cycle.
 In all the calculation amber 10 program is used with ff99SB with GB/SA implicit solvent.
 
 
-\bibliographystyle{achemso}
-\bibliography{paper}
+\begin{thebibliography}{99}
 
+\bibitem{Dill1997}
+Dill, K.A., and H.S. Chan.  From Levinthal to Pathways to Funnels:  The "New View" of Protein Folding Kinetics.  Nature Structural Biology 4: 10-19 (1997)
+
+
+\bibitem{Ytreberg2006}
 Ytreberg, F.; Zuckerman, D. Simple estimation of absolute free energies for biomolecules. J. Chem. Phys. 2006, 124, 104105.
 
+\bibitem{Park2008}
 Park, S.; Lau, A.; Roux, B. Computing conformational free energy by deactivated morphing. J. Chem. Phys. 2008, 129, 134102
 
+\bibitem{Zheng2008}
 Zheng, L.; Chen, M.; Yang, W. Random walk in orthogonal space to achieve efficient free-energy simulation of complex systems, Proc. Natl. Acad. Sci. 2008, 105 (51), 20227.
 
-Tyka, M.; Clarke, A.; Sessions, R. An Efficient, Path-Independent Method for Free-Energy Calculations. J.Phys.Chem. B 2006, 110, 17212–17220.
+\bibitem{Tyka2006}
+Tyka, M.; Clarke, A.; Sessions, R. An Efficient, Path-Independent Method for Free-Energy Calculations. J.Phys.Chem. B 2006, 110, 17212-17220.
 
+\bibitem{Cecchini2009}
+Cecchini, M., Krivov, S.V., Spichty, M., Karplus, M. Calculation of free-energy differences by confinement simulations. Application to peptide conformers. 
+J. Phys. Chem. B 113, p. 9728-9740 (2009).
+
+\bibitem{Krivov2004} 
+Krivov, S.; Karplus, M. Hidden complexity of free energy surfaces for peptide (protein) folding Proc. Natl. Acad. Sci. U.S.A. 2004, 101, (41), 14766.
+
+\bibitem{Alexander2007}
+Alexander, P.A.; He, Y.; Chen, Y.; Orban, J. Bryan, P. The design and characterization of two proteins with $88 \%$ sequence identity but different 
+structure and function. Proc. Natl. Acad. Sci. 2007, 104 (29), 11963-11968.
+
+\bibitem{He2008}
+He, Y.; Chen, Y.; Alexander, P.A.; Orban, J. NMR structures of two designed proteins with high sequence identity but different fold and function. Proc. Natl. Acad. Sci. 2008, 105 (38), 14412-14417.
+
+\bibitem{Alexander2009}
+Alexander, P.A.; He, Y.; Chen, Y.; Orban, J. Bryan, P. A minimal sequence code for switching protein structure and function. Proc. Natl. Acad. Sci. 2009, 106(50), 21149-21154.
+
+\bibitem{Shortle20009}
+Shortle, D. One sequence plus one mutation equals two folds. Proc. Natl. Acad. Sci. 2009, 106(50), 21011-21012. 
+
+\bibitem{Sheffler2009}
+Sheffler, W.; Baker, D. RosettaHoles: Rapid assessment of protein core packing for structure prediction, refinement, design, and validation. Protein Science. 2009, 18(1), 229-239.
+
+\end{thebibliography}
 
 \end{document}
 
