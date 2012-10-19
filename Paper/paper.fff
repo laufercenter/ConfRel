@@ -1,0 +1,109 @@
+\begin{figure*}
+
+\includegraphics[width=3.5 in,height=4 in]{orban.pdf}
+\label{fig:orban}
+\caption{The confinement method correctly predicts the structural preferences of six chameleon
+sequences. (A) The six sequences used in this study. (B) Each sequence adopts either a Protein
+G-like fold (denoted GB) or a three-helix bundle fold (denoted GA). The relative free energies of
+the two folds are reported for each sequence.}
+\end{figure*}
+\efloatseparator
+ 
+\begin{figure*}
+
+\begin{center}
+\includegraphics[width=3.5 in,height=3.5 in]{method.pdf}
+\end{center}
+\caption{Graphical representation of the thermodynamic cycle involving confinement method.}
+\label{fig:method}
+\end{figure*}
+\efloatseparator
+ 
+\begin{figure*}
+
+\begin{center}
+\includegraphics[width=3.5 in,height=3.0 in]{bhp.pdf}
+\end{center}
+\caption{Two conformations from $\beta$ hairpin from protein G, bhp1 and bhp2. The two stranded $\beta$ sheet, bhp1 is the native structure and the three stranded $\beta$ sheet is known as bhp3.}
+\label{fig:bhp_conf}
+\end{figure*}
+\efloatseparator
+ 
+\begin{figure*}
+
+\begin{center}
+\includegraphics[width=3.5 in,height=3.0 in]{G95.pdf}
+\end{center}
+\caption{Two protein with 95 \% similar sequence but different folds}
+\label{fig:G95}
+\end{figure*}
+\efloatseparator
+ 
+\begin{figure*}
+
+\begin{center}
+\includegraphics[width=3.8 in,height=3.0 in]{T0559.pdf}
+\end{center}
+\caption{The native and three submitted model structure, along with their GDT\_TS, RMSD and relative Free energy values
+of protein BVU3908 from Bacteroides vulgatus (PDB id: 2L01 and CASP code: T0559).}
+\label{fig:T0559}
+\end{figure*}
+\efloatseparator
+ 
+\begin{figure*}
+
+\begin{center}
+\includegraphics[width=3.8 in,height=3.0 in]{T0538.pdf}
+\end{center}
+\caption{The native and three model structure of engineered protein from Asr4154 protein (PDB ID: 2L09 and CASP code:T0538). The model 1,2 and 3 are
+from the group PconsR, Shell and FOLDIT respectively.}
+\label{fig:T0538}
+\end{figure*}
+\efloatseparator
+ 
+\begin{figure*}
+
+\begin{center}
+\includegraphics[width=3.5 in,height=3.0 in]{T0560.pdf}
+\end{center}
+\caption{Native and two model structure of protein BT2368 from Bacteroides thetaiotaomicron (pdb id: 2L02 and CASP code: T0560). The two models
+were from the group "Splicer".}
+\label{fig:T0560}
+\end{figure*}
+\efloatseparator
+ 
+\begin{figure*}
+
+\begin{center}
+\includegraphics[width=3.5 in,height=3.0 in]{T0540.pdf}
+\end{center}
+\caption{X-ray crystallographic structure and two submitted models of fas apoptosis inhibitory protein (pdb id: 3MX7 and CASP code: T0540).
+Model 1 and Model 2 in this analysis were submitted by the group LTB and MUFOLD respectively.}
+\label{fig:T0540}
+\end{figure*}
+\efloatseparator
+ 
+\begin{figure*}
+
+\begin{center}
+\includegraphics[width=3.5 in,height=5.7 in]{T0531.pdf}
+\end{center}
+\caption{The native structure and 5 models of extracellular domain of the jumping translocation
+breakpoint protein (pdb id: 2KJX and the CASP code: T0531).}
+\label{fig:T0531}
+\end{figure*}
+\efloatseparator
+ 
+\begin{figure*}
+
+\begin{center}
+\includegraphics[width=12cm,height=10cm]{T0605.pdf}
+\end{center}
+\caption{ Three models of the leucine zipper domain of cGMP dependent protein
+kinase I (original pdb id: 3NMD and CASP target: T0605). The original target sequence of this protein was 72 residues.
+However only residues 3 to 66 is only kept during result announcement as that part can be found from crystallographic analysis. The
+region 3 to 66 are almost identical in all the 3 models  }
+\label{fig:T0605}
+\end{figure*}
+\efloatseparator
+ 
