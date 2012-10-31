@@ -146,7 +146,6 @@ lower free energy to the experimentally determined structure than to any of the 
 
 \begin{table}
 \label{table:casp_control}
-
 \begin{center}
 \begin{tabular}{l l l}\hline
     CASP Target  & PDB Identifier & $\Delta\Delta G_{native \to best decoy}$ (kcal/mol) \\ \hline
@@ -154,10 +153,10 @@ lower free energy to the experimentally determined structure than to any of the 
      T0538       &    2L09        &          $-2.48 \pm 0.47$ \\ \hline
      T0540       &    3MX7        &          $22.00 \pm 0.49$ \\ \hline
      T0559       &    2L01        &          $2.24 \pm 0.24$ \\ \hline
-     T0560       &    2L02        &          $22.15 \pm 0.49$ \\ \hline 
+     T0560       &    2L02        &          $22.15 \pm 0.49$ \\ \hline
+     T0569       &    2KWY        &          $-9.40 \pm 0.69$  \\ \hline
 \end{tabular}
 \end{center}
-
 \caption{The confinement method assigns a more favorable free energy to the experimentally
 determined structure than to computer-generated predictions. For each target, we examined as many as
 five predictions submitted by CASP participants. Positive $\Delta\Delta G$ values indicate that the
@@ -322,6 +321,16 @@ remain consistent, it may happen that the theoretical model produced by the grou
 crystal structure. This is particularly difficult target for rank ordering as all the models those are considered for this 
 calculation are within RMSD values of 2.6 \AA.   
 
+There is another instance where this method fails. This is the case of solution NMR structure of a domain of adhesion exoprotein 
+from Pediococcus pentosaceus. The
+pdb id and CASP code of this 79 residue protein are 2KWY and T0569 respectively. We have compared the native structure with the
+best model structure submitted for this target in CASP9. This model structute was submitted by the group " Mufold". ALl the
+five model structures submitted by this group was found to be close. Thus we proceed by comparing only the native structure and
+the best predicted model of this target. Visualization upon superimposition of two structures reveals that
+the difference between the two structure is at the region consist of residues 48 to 65, where model1 is much more disordered compare to the
+native structure(see Figure~\ref{fig:T0569}) . Other regions look similar for both the cases with of model1 is within 2.6 \AA
+rmsd value of the native structure. In this case we found that the confinement method predict that the predicted model is stable than the
+native structure with a free energy difference of $9.4 \pm 0.7$ Kcal/Mol.
 
 \subsubsection{What can we say about low resolution models?}
 
@@ -365,7 +374,7 @@ matches well with the GDT\_TS score. On the other hand the MUFOLD-WQA predicted 
 There is no doubt that the consensus approaches can predict the model quality in a faster manner. But we expect that confinement
 approach can predict the model quality in a relatively expensive but much accurate way. 
 
-Further Analysis is going on Target 560.
+\Arijit{Will upload the result from Target 560 once cluster is back.}
 
 
 \subsubsection{CASP10}
@@ -414,33 +423,41 @@ application may be to study the protein folding kinetics, specially to study the
 
 \section{Method}
 
-The confinement method has been described in details in ref. by Tyka et.al. and Cecchini et. al.
-Here we briefly describe the methodology.  We compute free energy $\Delta G_{AB}$ between A and B
-conformation of the protein. For this purpose we use a thermodynamic cycle.
+The confinement method has been described in details in ref. by Tyka et.al. \cite{Tyka2006} and 
+Cecchini et. al. \cite{Cecchini2009}. The basic approach of confinement approach is same in both
+these paper. However, there are some technical differences. Here we briefly describe what we follow
+to compute free energy $\Delta G_{AB}$ between A and B
+conformation of the protein.
 
 \begin{enumerate}
 
-\item  We minimized both the conformation. These minimized conformation(A* and B*) are the
-    restrained conformation of that state
+\item  We first minimized both the conformation, A and B. These minimized conformation(A* and B*) 
+       are the reference conformation of that state
 
-\item Backbone dihedral angle of the whole protein is restrained by a harmonic potential to define
-    the configurational state.
+\item Backbone dihedral angle of both the full protein is restrained by a harmonic potential. This is required to keep
+    the configurational state of the protein. This approach is particularly important, so that the any misfolded part 
+    of the protein does not chage its configuration. 
 
-\item  In order to calculate the free energy $\Delta G_{A,A*}$ and  $\Delta G_{B,B*}$ A and B are
-    gradually transformed in A* and B* by applying a harmonic restraint potential to all atom. For
-    this purpose around 21 simulation were run each of 20 ns with increasing harmonic restraint
-    potential from 0.00005 to 81.92 untill the free and the restrained state overlap well. The final
-    restrained state was chosen so high so that the rotational contributional of the protein frozen
-    out and only remaining contribution remain that of vibrational free enrgy. The fluctuation from
-    the reference structure was recorded and the free energy is calculated using a numerical
-    approach developed by Tyka et. al.
+\item  The free energy is calculated using a thermodynamic cycle. The first part of this approach is the confinement, where
+       the state A and B are confined to the reference state A* and B*. This is done gradually by applying larger and larger
+       harmonic restraint on all the atoms of the biomolecule. This is done by running 21 molecular dynamics simulation 
+       each of 20 ns long, where the harmonic restraint constant was varied from 0.00005 to 81.92 untill the free and the 
+       restrained state overlap well. The final restrained state was chosen so high so that the rotational contributional 
+       of the protein frozen out and only remaining contribution remain that of vibrational free enrgy. The fluctuation from
+       the reference structure was recorded and the free energy is calculated using a numerical
+       approach developed by Tyka et. al. \cite{Tyka2006}. The confinement free energy calculated in this way recorder as 
+       $\Delta G_{A,A*}$ and $\Delta G_{B,B*}$ as shown in Figure~\ref{fig:method}.     
 
 \item  Finally the thermodynamic cycle is closed by calculating the free energy between the final
-    restrained state using normal mode analysis.
+       restrained state A* and B* using normal mode analysis or quasiharmonic analysis. The free energy calculated in 
+       this way is shown as $\Delta G_{A*,B*}$ in Figure~\ref{fig:method}.
+
+\item  The full free energy, $\Delta G_{A,B}$ between the two state A and B is calculated using the equation 
+       $\Delta G_{A,B}$ = $\Delta G_{A,A*}$ - $\Delta G_{B,B*}$ + $\Delta G_{A*,B*}$  
 
 \end{enumerate}
 
-In all the calculation amber 10 program is used with ff99SB with GB/SA implicit solvent.
+In all the calculation amber 10 program is used with ff99SB with GB/SA implicit solvent.  
 
 
 
@@ -512,6 +529,15 @@ Model 1 and Model 2 in this analysis were submitted by the group LTB and MUFOLD 
 \caption{The native structure and 5 models of extracellular domain of the jumping translocation
 breakpoint protein (pdb id: 2KJX and the CASP code: T0531).}
 \label{fig:T0531}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=3.2 in,height=3.8 in]{T0569.pdf}
+\end{center}
+\caption{Native and best model structure of a domain of adhesion exoprotein from Pediococcus pentosaceus (pdb id: 2KWY and CASP code: T0569).
+The best model was from the group "Mufold".}
+\label{fig:T0569}
 \end{figure}
 
 \begin{figure}
