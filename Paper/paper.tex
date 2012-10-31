@@ -38,14 +38,15 @@
 \begin{abstract}
 
 The calculation of free energy differences is of central importance in the simulation of biochemical
-systems.  The computation of the free energy difference between pairs of macromolecule with large
-conformational change is particularly a difficult task and computationally expensive with existing
-methods. In this work, an improved version of the confinement approach is used to calculate absolute
-free energies of bio molecular systems. The method does not require a reaction coordinate or
-transition path. It is fast to compute. We show that the method correctly picks out the state of
-lowest free energy of a pair of structures having similar sequence but different fold. We also show
-using models from CASP9 that the method picks out native-like structures from misfolded or decoys,
-provided at least one good structure is in the input set.
+systems.  The computation of the free energy difference between pairs of macromolecular
+conformations is currently a particularly difficult and computationally expensive task with existing
+methods. In this work, an improved \Alberto{what is the improvement} version of the confinement approach is used to calculate absolute
+free energies of bio molecular systems. The method provides two main advantages: it does not require a reaction coordinate or
+transition path and it is fast to compute. Throught out the article we show its use in different
+challenging modeling problems. In particular, we show its use in predicting the conformational
+preference of chamaleon sequences (sequences with high sequence identity and different
+folds). This sequence dependent conformational preference set the stage for the use of the method in
+protein design.
 
 \end{abstract}
 
@@ -79,6 +80,7 @@ advanced method like replica exchange molecular dynamics the three dimensional s
 trapped in a local minima for a considerable time. Due to various reasons it can also be misfolded
 and trapped in a local energy minima. And one can mistakenly identify the misfolded state as the
 native state (give the example of human pin1ww domain from Benout Roux and Klaus Schultan).
+
 
 Calculation of free energy has been successfully attempted by a number of groups \cite{Meirovitch2007}, 
 \cite{Ytreberg2006} - \cite{Zheng2008}, . In recent years methods like Refrence system method \cite{Ytreberg2006}, 
@@ -175,7 +177,7 @@ remarkably different structures. Orban and co-workers have designed a series of 
 (based on Protein G) that adopt one of two different folds depending on small changes in sequence
 (see Figure~\ref{fig:orban}). Sequences that adopt a mixed alpha/beta structure similar to Protein G
 are denoted as ``GB'', while sequences that form a three-helix bundle are denoted as ``GA''. One
-pair of sequences (GA88/GB88) are 88 percent identical and differ in seven positions. Another pair
+pair of sequences (GA88/GB88) are 88 percent identical in sequence and differ in seven positions. Another pair
 (GA95/GA95) are 95 percent identical and differ in three positions. The last pair (GA98/GB98) differ
 only in a single tyrosine to alanine mutation.
 
@@ -188,11 +190,12 @@ structure as its partner chameleon sequence. For example, we took the sequence o
 model with the same overall structure as GB88. We then used the confinement method to assess the
 free energy difference between the experimentally determined structure of GA88 and the model (with
 the GA88 sequence and the GB88 structure). The confinement method was able to predict the
-conformational preferences correctly for all six sequences (data not shown). There is, however, a
-serious problem with this analysis: we are comparing an experimentally determined structure with a
-computer generated model. It might be possible that we were able to make correct predictions simply
+conformational preferences correctly for all six sequences (data not shown). This is however not
+surprising. It is well known [CITE] that it is easy to distinguish computational models from native
+structures. Despite the fact that this models are built by having a huge amount of structural
+information, it might be possible that we were able to make correct predictions simply
 because artefacts of our modeling procedure always lead to the model having a higher free energy
-than the experimental structure.
+than the experimental structure. 
 
 To avoid this potential problem, we instead computed the relative free energy two different
 structural models for each sequence. One model is based on the GA structure and the other on the GB
@@ -205,7 +208,7 @@ of chamelon sequence is that the structural transitions require states with dimi
 It is widely believed that if the free energy of the native state and the alternative state is within
  a range of $-5 Kcal/Mol$ then  it can quickly change fold when the stability of the native state 
 decreases. The stability of the native state can decrease for a number reason ranging from chemical 
-modification, breaking of disulphide bond or mutation as in this case. The free energy differences, that
+modification, breaking of disulphide bonds or mutations as in this case. The free energy differences, that
 came out from our calculation ranges from
 around 2.9 to 5.7 kcal/mol, which is consistent with the above hypothesis \cite{He2008}, \cite{{Alexander2009}}.
 
@@ -265,8 +268,8 @@ solution to this problem. We have tried two experiments centered on CASP. First 
 order some structures from the previous CASP9 experiment. Our second test was to participate as a
 metapredictor group in CASP10. In both methods, our ranking is determined as a free energy measure,
 and it is compared with the ranking given by a geometrical comparison between native and submitted
-models called GDT\_TS (Global distance test score \cite{Zemla2003}. 
-GDT\_TS represent the average percentage of residues that are in close proximity in two
+models called GDT\_TS (Global distance test score \cite{Zemla2003}). 
+GDT\_TS represents the average percentage of residues that are in close proximity in two
 structures optimally superimposed using four different distance cutoffs (1, 2, 4 and 8 Å).
 
 We have chosen the inital models on which to test the methods based on server groups that have
@@ -298,8 +301,8 @@ To further test the method we have taken the example of protein BT2368 from Bact
 the native structure and the two of the five submitted models from the group "Splicer". The remaining three models are discarded as 
 again they are similar to the rest of the models. The comparison of GDT\_TS score as shown in 
 Figure~\ref{fig:T0560} and published in final CASP result is only for models with residues 3 to 66. In order to keep
-consistency, we have also do our analysis with models and crystal structure consisting residues 3 to 66. As expected,
-the native state is identified correctly, and the two other models is ranked in the correct order.   
+consistency, we have also done our analysis with models and crystal structure consisting residues 3 to 66. As expected,
+the native state is identified correctly, and the two other models are ranked in the correct order.   
 
 Our next test was between models from the best submissions of different groups. 
 For this purpose we have chosen the x-ray crystallographic structure of 
@@ -315,7 +318,7 @@ This protein contains 54 amino acid residues with three alpha helixes and two ve
 The model that is closest to the native structure was generated by the group PconsR with a GDT\_TS value of 96.23.
 We have also considered one model from group "Shell" (GDT\_TS = 90.09) and "FOLDIT" (GDT\_TS = 86.32) for our analysis along with
 the native crystal struture. The models from PconsR, Shell and FOLDIT are labelled as model 1, model 2 and model 3 
-respectively in Figure~\ref{fig:T0538}. As presented from Figure~\ref{fig:T0538}, one can found that the 
+respectively in Figure~\ref{fig:T0538}. As seen in Figure~\ref{fig:T0538}, one can find that the 
 model from PconsR has lowest free energy value, making it a more stable structure. Although ranking of the other models
 remain consistent, it may happen that the theoretical model produced by the group "PconsR" much more stable than the 
 crystal structure. This is particularly difficult target for rank ordering as all the models those are considered for this 
@@ -335,8 +338,8 @@ native structure with a free energy difference of $9.4 \pm 0.7$ Kcal/Mol.
 \subsubsection{What can we say about low resolution models?}
 
 We mentioned earlier that our predictive abilities are greatly decreased with low model qualities. It is
-better to have atleast one good model to pick out the native/native like structures from the rest of the decoy. 
-In oorder to test this hypothesis we performed another test with target T0531 of CASP9, in which we compared the crystal 
+better to have at least one good model to pick out the native/native like structures from the rest of the decoy. 
+In order to test this hypothesis we performed another test with target T0531 of CASP9, in which we compared the crystal 
 structure to five models from the MUFOLD server. The pdb id of this extracellular domain of the jumping translocation 
 breakpoint protein is 2KJX and the CASP target code is T0531.
 Looking at Figure~\ref{fig:T0531} shows: 1.) native is correctly
@@ -347,8 +350,8 @@ energies, meaning that the actual ordering could change a lot \cite{Perez2012}.
 
 \subsubsection{Difficulty in CASP Experiments}
 
-It is often difficult to model CASP targets using confinement and release method. There are many cases,
-where the sequence of a particular target are trimmed during actual result presentation. This is illustrated
+It is often difficult to model CASP targets using the confinement and release method. There are many cases,
+where the sequence of a particular target is trimmed during actual result presentation. This is illustrated
 with the crystal structure of the leucine zipper domain of cGMP dependent protein kinase I (pdb id: 3NMD
 and CASP9 code: T0605) as shown in Figure~\ref{fig:T0605}. The actual CASP 9 target consisted of 72 amino acid residues, but
 as only 18-66 amino acid residues could be detected in actual crystal structure of this protein, the final result was trimmed 
@@ -360,13 +363,14 @@ affected in such scenario as the only major difference between those models are 
 \subsubsection{Can confinement method perform better quality assessment in protein structure prediction ?}
 A part of CASP experiment is dedicated to the assessment of the quality of predicted model \cite{Kryshtafovych2011}. 
 Most of the top performing group in this catagory use consensus approaches for quality assessment \cite{Wang2011}.
-A review of CASP9 quality assessment also pointed out that the method which are based on clustering technique perform
-much better compare to those methos which are based on analysis of individual model \cite{Kryshtafovych2011}. 
-In this background we try to answer, whether confinement method can do better quality assessment compare to the best performing
+A review of CASP9 quality assessment also pointed out that the methods which are based on clustering
+techniques perform
+much better compared to those methos which are based on analysis of individual models \cite{Kryshtafovych2011}. 
+In this background we try to answer, whether the confinement method can do better quality assessment compare to the best performing
 group (MUFOLD-WQA) in this catagory.
 We have again picked up the CASP taget T0538 to answer this question. We have chosen the Model 3 submitted by PconsR (GDT\_TS = 96) 
-and model 5 from the MULTICOM-NOVEL ( GDT\_TS = 83). Both are server predicted model and they were further used for quality assessment 
-by the group MUFOLD-WQA \cite{Wang2011}. It is important to note that the model from PconsR was most accurate predicted model for this 
+and model 5 from the MULTICOM-NOVEL ( GDT\_TS = 83). Both are server predicted models and they were further used for quality assessment 
+by the group MUFOLD-WQA \cite{Wang2011}. It is important to note that the model from PconsR was the most accurate predicted model for this 
 target and the model from MULTICOM-NOVEL was predicted as best by the quality assessment experiments of MUFOLD-WQA. 
 Our free energy analysis we have shown that model from Pconsr is better than the model from 
 MULTICOM-NOVEL $(\Delta \Delta G (Model\_Pconsr - Model\_MULTICOM-NOVEL = -8.2 Kcal/Mol)$, which   
@@ -377,34 +381,26 @@ approach can predict the model quality in a relatively expensive but much accura
 \Arijit{Will upload the result from Target 560 once cluster is back.}
 
 
-\subsubsection{CASP10}
-
-We participated in CASP10 as a metapredictor group. Given the tigh schedule of the CASP competition,
-we only attempted proteins under 100 residues in length. Our main problem during this part of the
-competition. was that proteins were trimmed from the actual calculation.
-%\Alberto{Justin,Arijit: Probably should not comment on metapredicting since we were not able to do
-%    good due to the trimming factor. Instead, we should move forward with Justin's idea of using
-%    structures that other meta predictors did badly at. What stage is that in?}
-
 \section{Conclusion}
 
 Proteins are essential parts of organisms and participate in virtually every process within living cells. 
 In order to understand different functions of proteins, detect diseases caused by them and design more efficient drugs 
-it is often useful to have the three dimensional structure of the protein. Experimental studies using NMR and X-ray crystallography is 
-not enough to detect large number of structures. In recent past there are number of studies directed towards understanding protein 
+it is necessary to have the three dimensional structure of the protein. Experimental studies using NMR and X-ray crystallography is 
+not able to keep up with the sheer number of protein sequences available. In recent past there are number of studies directed towards understanding protein 
 structure using theoretical tools. Experimentally, it is relatively easy to identify the native structure from the data obtained 
 from x-ray crystallography or NMR. On the other hand using theoretical tools it is often difficult to identify the native structure 
 using both physics based methods and knowledge based method. In order to rank structure from the available data, some groups use 
 clustering algorithms and the structure of the
 most populated cluster is picked out as the most probable structure. However, it may happen that the structure may be trapped and 
 spend most of its time in a kinetic trap, which may give a wrong interpretation of the clustering result. On the other hand, some groups
-also depend on potential energy function to pick out their best structure. In this paper, we have used a free energy method to identify
+also depend on potential energy functions to pick out their best structure, lacking an entropic
+component. In this paper, we have used a free energy method to identify
 the native/native like structure. First, we have tested this method for a chameleon sequence, which has a $95$ percent sequence identity
-but one of them has a $3 \alpha$ structure and another one has $4 \beta + \alpha$ structure. Using the current method, we can found that 
-the native structure always has most stable structure. We have also tested this method for different targets of CASP experiments. We found
+but one of them has a $3 \alpha$ structure and another one has $4 \beta + \alpha$ structure. Using the current method, we found that 
+the native structure is always the most stable \Alberto{This is not true!!}. We have also tested this method for different targets of CASP experiments. We found
 that in most cases, it can pick out the native/native like structure in terms of lowest free enrgy value. 
 
-However, there may be some limitation of this method in terms of size of the protein molecule. The normal mode analysis may not be
+However, there may be some limitations to this method in terms of size of the protein molecule. The normal mode analysis may not be
 accurate for proteins larger than 100 amino acid residues. This can be approximated by removing the hydrogen molecules from 
 the system. 
 The method can be also give wrong result if all the models in the decoy are very poor. It may also be difficult to rank structures if 
@@ -459,6 +455,18 @@ conformation of the protein.
 
 In all the calculation amber 10 program is used with ff99SB with GB/SA implicit solvent.  
 
+\Alberto{Somewhere in the introduction or methods}
+There are two big bottlenecks in this calculation. The first has to do with the amount of
+simulations that have to be performed to confine the ensemble of conformations close to a microstate
+into a single microstate, the second bottleneck has to do with the size of the system in the normal
+mode calculation. We have tackled the first issue by using GPU (Graphical Processing Unit) technology as opposed to the classical
+CPUs, which gives us a two order of magnitude boost in computational efficiency. Normal mode
+analysis calculations are Oh(N**3) and require large amounts of memory, effectively limiting the
+size of the systems under study. Where as this can be overcome by larger memory machines, these are
+often not available, and so we propose an alternative by using quasiharmonic analysis. This is still
+an Oh(N**3) problem, but we now the motions of atoms are already determined in trajectories, and so
+we can choose to do quasiharmonic analysis excluding hydrogens, which will reduce the number of
+atoms N to almost N/2. This means that we can use this method for systems twice as large.
 
 
 \begin{figure}
