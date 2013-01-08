@@ -39,14 +39,21 @@
 
 The calculation of free energy differences is of central importance in the simulation of biochemical
 systems.  The computation of the free energy difference between pairs of macromolecular
+<<<<<<< HEAD
 conformations is currently a particularly difficult and computationally expensive task with existing
 methods. In this work, an improved \Alberto{Arijit: what is the improvement??} version of the confinement approach is used to calculate absolute
+=======
+conformations is particularly difficult and computationally expensive task with existing
+methods. In this work, confinement approach is used to calculate absolute
+>>>>>>> 63f47f1c44813a2bcb8b0bf01a1c508ce54de50e
 free energies of bio molecular systems. The method provides two main advantages: it does not require a reaction coordinate or
-transition path and it is fast to compute. Throught out the article we show its use in different
+transition path and it is fast to compute. The free energy calculated can be decomposed into per residue contribution in a 
+approximate way. Per residue free energy allow us
+to identify the reason behind conformational preference of the biomolecules. Through out the article we show its use in different
 challenging modeling problems. In particular, we show its use in predicting the conformational
 preference of chamaleon sequences (sequences with high sequence identity and different
-folds). This sequence dependent conformational preference set the stage for the use of the method in
-protein design.
+folds). This sequence dependent conformational preference and per residue free energy decomposition set the stage for the use of this 
+method in protein design. 
 
 \end{abstract}
 
@@ -65,7 +72,7 @@ important for proteins to achieve their native conformation since defects in pro
 the molecular cause of a range of human genetic disorder. For example a misfolded protein known as
 prion when enters any healthy organism it converts properly folded protein into misfolded one.
 Thus, Free energy can also act as a scale to identify between the misfolded and the native state of
-the protein. These observations further give free energy a special importance in structural biology.
+the protein. These facts further give free energy a special importance in structural biology.
 
 However, the theoretical calculation of conformational free energy change become difficult if the
 states of interest are very different \cite{Meirovitch2007}. In such scenario timescale involved in such tranformation may
@@ -77,23 +84,18 @@ complicated in case of protein folding.  As free energy landscape of the protein
 is rough \cite{Dill1997}, \cite{Dill2008}
 it can be trapped in a energy well during its visit in the conformational space. Even with the
 advanced method like replica exchange molecular dynamics the three dimensional structure may be
-trapped in a local minima for a considerable time. Due to various reasons it can also be misfolded
-and trapped in a local energy minima. And one can mistakenly identify the misfolded state as the
-native state (give the example of human pin1ww domain from Benout Roux and Klaus Schultan).
+trapped in a local minima for a considerable time and trapped in a local energy minima
+and one can mistakenly identify the misfolded state as the native state.
+% (give the example of human pin1ww domain from Benout Roux and Klaus Schultan).
 
 
 Calculation of free energy has been successfully attempted by a number of groups \cite{Meirovitch2007}, 
 \cite{Ytreberg2006} - \cite{Zheng2008}, . In recent years methods like Refrence system method \cite{Ytreberg2006}, 
-Decativated Morphing \cite{Park2008}, Orthogonal Space Random 
-Work, Confinement Method have came out for calculation of free energy method. 
-
-Some of the groups
-relies on one of the great strength of free energy calculation, that it is a state function and thus
-it is independent of path.
-
+Decativated Morphing \cite{Park2008}, Orthogonal Space Random Work \cite{Zheng2008}, Confinement 
+Method \cite{Tyka2006}, \cite{Cecchini2009} have came out for calculation of free energy method. 
 In this work we have applied the confinement method which was originally devoled by Tyka et. al. \cite{Tyka2006} and
-Cecchini et. al. \cite{Cecchini2009}. The free energy is a state function and thus it can be independent of path. 
-Confinement method relies on this fact and uses a thermodynamic cycle where first, non-harmonic degrees of
+Cecchini et. al. \cite{Cecchini2009}. This method relies on the fact that free energy is a state function and 
+thus independent of path. It uses a thermodynamic cycle where first, non-harmonic degrees of
 freedom are removed by applying a series of restraint to the system. Then the free energy of the
 remaining harmonic system is obtained using a normal mode calculation and combined with the
 non-harmonic part to give the total absolute free energy.  Previously, this method was applied to
@@ -101,7 +103,10 @@ calculate the conformational free energy of a 16 amino acid residue peptide, kno
 first reproduced that known result. Then we have applied this method to larger proteins for the
 first time. The free energy of conformation of pair of proteins with similar sequence but completely
 different fold was calculated. Encouraged by the result, we applied the method of different targets
-of CASP9 competition.
+of CASP9 competition and tested whether it can predict the most stable conformation of the protein based 
+on its free energy. The remarkable ability of confinement method to identify residues which 
+stabilizes/destabilizes a particular conformation from per residue free energy analysis set the stage
+for future application of this method in protein design.
 
 %of protein can be obtained to atomic resolution by X-ray crystallography or NMR. Unfortunately, the
 %sheer amount of time and economic investment for structure determination cannot keep up with the
@@ -132,37 +137,39 @@ confinement method \cite{Cecchini2009} (see Supporting Information for further d
 Previous applications of the confiment method have focused on relatively short peptides, up to $17$
 residues in length. In this work we apply the confinement method to
 larger proteins. On that direction, We first test the confinement method for a chamelon sequence and 
-found that it can correctly pick out the prefential structure of the chamelon sequence. Another of the 
+found that it can correctly pick out the prefential structure of the chamelon sequence. Other 
 applications we explore in the present work is the re-scoring, or
 metaprediction, of structures submitted during the Critical Assessment of Structure Prediction
 (CASP) experiment (described in detail later). We computed the relative free energies of predictions
-submitted during CASP9 10, with the expectation that the most native-like prediction will have
+submitted during CASP9, with the expectation that the most native-like prediction will have
 the lowest free energy. As a control, for several targets we also calculated the relative free
-energy of the experimental structure (once it was available from the PDB). As
+energy of the experimentally determined structure. As
 Table~\ref{table:casp_control} shows, in most cases, the confinement method correctly assigns a
 lower free energy to the experimentally determined structure than to any of the decoys. 
+Most interestingly, we decomposed the free energy into its per residue component, which help 
+us to identify the residues which stabilize or destabilize a particular conformation of the protein.
 %Although differentiating between experimentally determined structures and computer generated predictions is
 %not a stringent test of a scoring method---for example, examining the residue-residue packing can
 %easily distinguish between the two [ref Rosetta Holes]---the results none the less serve as a useful
 %"sanity check".
 
 \begin{table}
-\label{table:casp_control}
 \begin{center}
-\begin{tabular}{l l l}\hline
-    CASP Target  & PDB Identifier & $\Delta\Delta G_{native \to best decoy}$ (kcal/mol) \\ \hline
-     T0531       &    2KJX        &          $12.49 \pm 0.70$ \\ \hline
-     T0538       &    2L09        &          $-2.48 \pm 0.47$ \\ \hline
-     T0540       &    3MX7        &          $22.00 \pm 0.49$ \\ \hline
-     T0559       &    2L01        &          $2.24 \pm 0.24$ \\ \hline
-     T0560       &    2L02        &          $22.15 \pm 0.49$ \\ \hline
-     T0569       &    2KWY        &          $-9.40 \pm 0.69$  \\ \hline
-\end{tabular}
-\end{center}
 \caption{The confinement method assigns a more favorable free energy to the experimentally
 determined structure than to computer-generated predictions. For each target, we examined as many as
 five predictions submitted by CASP participants. Positive $\Delta\Delta G$ values indicate that the
 experimental structure is predicted to be more favorable than any of the decoys.}
+\label{table:casp_control}
+\begin{tabular}{l l l}\hline
+    CASP Target  & PDB Identifier & $\Delta\Delta G_{native \to best decoy}$ (kcal/mol) \\ \hline
+     T0531       &    2KJX        &          $11.15 \pm 0.70$ \\ \hline
+     T0538       &    2L09        &          $-3.00 \pm 0.47$ \\ \hline
+     T0540       &    3MX7        &          $16.94 \pm 0.49$ \\ \hline
+     T0559       &    2L01        &          $2.10 \pm 0.24$ \\ \hline
+     T0560       &    2L02        &          $18.00 \pm 0.49$ \\ \hline
+     T0569       &    2KWY        &          $20.01 \pm 0.69$  \\ \hline
+\end{tabular}
+\end{center}
 
 \end{table}
 
@@ -212,6 +219,94 @@ modification, breaking of disulphide bonds or mutations as in this case. The fre
 came out from our calculation ranges from
 around 2.9 to 5.7 kcal/mol, which is consistent with the above hypothesis \cite{He2008}, \cite{{Alexander2009}}.
 
+
+\subsection{Per residue free energy calculation can identify the mechanistic detail behind conformational pereference 
+of a particular residue}
+
+We decomposed the calculated free energy into per residue decomposition as described in method section. This help us for
+identification of important residues that stabilizes a particular conformation. 
+In this direction, We first calculate the per residue free energy for the GA95 and GB95 sequences. Similar to the total 
+free energy for each sequence, we calculate the free energy difference between $4 \beta + \alpha$ and $3 \alpha$ structure for each 
+residue. The free energy, $\Delta \Delta G (4 \beta + \alpha$ - $3 \alpha)$ is plotted in Figure~\ref{fig:orban_full}(F). 
+In this plot, the negative peak indicate the residue will stabilize the $4 \beta + \alpha$ conformation of a particular
+residue and the positive peak will stabilize the $3 \alpha$ structure. As, the differences of amino acid 
+residues are only at 3 position, there are some common features of residues in both GA95 and GB95 sequences in both 
+$3 \alpha$ and $4 \beta + \alpha$ conformation. They are reported in Figure~\ref{fig:orban_full} 
+and Table~\ref{table:orban_perresidue}. Before, we further go into that detail, it is important to note that 
+experimental observations classified the protein into two parts: Amino acids 9-51 are fully structured in both
+the fold, where as residues 1-8 and 52-56 are unstructured in $3 \alpha$, but form $\beta$ strand in $4 \beta + \alpha$ structure.
+Most of the amino acid residues in the region 1-9 favors $4 \beta + \alpha$ structure and can also seen from the plot 
+Figure~\ref{fig:orban_full}(F). Here, we try to explain some of the largest peak in that plot. The residues Leu-5 and 
+Leu-7 favors $4 \beta + \alpha$ structure as these hydrophobic residues are oriented towards the protein hydrophobic 
+core, whereas in $3 \alpha$ structure they are exposed to the solvent (Figure~\ref{fig:orban_full}(A)). One can argue that 
+hydrophilic residues in these positions can stabilize the $3 \alpha$ conformation.
+The next big peak is located at position 11. A close observation of the sidechain orientation of residue Gln at position 11 reveal that it
+is exposed to the protein surface in both the conformation, but in $3 \alpha$ structure it has an additional H-bond with Glu-15 which gives
+it more stability compare to the $4 \beta + \alpha$ structure (Figure~\ref{fig:orban_full}(B)). The peak 
+at position 14 is due to the hydrophilic Glu, which is completely
+exposed to the solvent in $4 \beta + \alpha$ conformation as shown in (Figure~\ref{fig:orban_full}(E)), but only partially exposed 
+to the solvent in $3 \alpha$ form. 
+This is the reason why Glu at position 14 stabilize $4 \beta + \alpha$ conformation. Another high peak is at position 26, which indicate
+that the residue in that position stabilizes $4 \beta + \alpha$ conformation. Again, the hydrophobic amino acid residue, Ala at position 26
+is oriented towards the hydrophobic core of the protein in $4 \beta + \alpha$ conformation , whereas it is exposed towards the protein surface 
+in $3 \alpha$ structure (Figure~\ref{fig:orban_full}(C)). Similar situations arise for residues at position 54 and 56. 
+These residues are in the region, where $4 \beta + \alpha$ form is fully structured and $3 \alpha$ form is unstructured. 
+As shown in Figure~\ref{fig:orban_full}(D), the sidechain of hydrophobic Val-54 is oriented towards the hydrophobic core in 
+$4 \beta + \alpha$ conformation and thus have hydrophobic interactions with other residues in this conformation.
+On the other hand, in $3 \alpha$ it is exposed to the solvent. The reverse happens for the residue at position 56.
+Here the hydrophilic residue Glu is partially or not at all exposed to the protein surface in $4 \beta + \alpha$ but fully exposed 
+to the solvent in $3 \alpha$ conformation (Figure~\ref{fig:orban_full}(G)). This is the reason, why one can see a positive peak for position 56. 
+Similarly, hydrophobic Ile-49 in $4 \beta + \alpha$ conformation is exposed to protein surface and solvent, whereas as shown in 
+Figure~\ref{fig:orban_full}(H)$3 \alpha$ conformation 
+it has hydrophobic interaction with other hydrophobic residues in protein core.   
+Now, let us discuss the differences of $3 \alpha$ and $4 \beta + \alpha$ fold due to specific difference of mutated amino acid 
+residues in GA and GB sequence. The differences are in positions 20, 30 and 45. While GA95 has Leu-20-Ile-30-Leu-45, GB95 sequence 
+has Ala-20-Phe-30-Tyr-45 at those position. One can find that the peak at position 49 stabilizes the GA sequence more than that of GB
+sequence. In $3 \alpha$ fold, Ile-49 has hydrophobic interactions with Leu-20 and Ile-30 with GA sequence, whereas with GB sequence it 
+has such interactions with smaller Ala-20 and Phe-30 residues (Figure~\ref{fig:orban_full}(I). In $3 \alpha$, with GB sequence, Phe-30 
+being a larger group can not be completely accomodated in the hydrophobic core(Figure~\ref{fig:orban_full}(J)) and therefore, 
+partially exposed to the protein surface. There is a very interesting difference for residue at position 45 as well. In GB95 sequence
+and $4 \beta + \alpha$ fold there is H-bonding between Tyr-45 and Asp-47 (Figure~\ref{fig:orban_full}(K)), which is absent in the
+$3 \alpha$ conformation. On the other hand with GA conformation, this H-bond is absent for both the conformation as there is a Leu at position
+45. Although, one can not find much difference between $4 \beta + \alpha$ and $3 \alpha$ conformation
+for position 20 for both GA95 and GB95 sequence. There are significant difference for the residues at position 30 and 45.  
+These residues have some long term effects as well. As already explained, residue Ile-49 has much more hydrophic interactions with residues
+at position 20 and 30 in GA sequence, which is less in GB sequence. There are difference for Asp-47 as well. With $3 \alpha$ conformation 
+and GA95 sequence, Asp-47 has H-bonding with Lys-50, which is absent in the other conformation.    
+      
+\begin{table}
+\begin{center}
+\caption{Analysis of per residue free energy decomposition of GA95 and GB95 sequence reveal that certain residues prefer
+either $3 \alpha$  or $4 \beta + \alpha$ structure. These observations and the reason behind such conformational preferences are listed in this
+table.}
+\label{table:orban_perresidue}
+\begin{tabular}{| l | l | l |}
+\hline
+    Observation                                & $3 \alpha$ structure           &    $4 \beta + \alpha$ structure                       \\ \hline
+    Leu-5 and Leu-7 favor                      & hydrophobic residues are       & oriented towards the                                  \\ 
+    $4 \beta + \alpha$                         & exposed to the solvent         & hydrophobic core                                      \\ \hline
+    Gln-11 favors $3 \alpha$                   & Gln-11 has H-bond with Glu-15  & no such H-bond                                        \\ \hline
+    Glu-14 favors $4 \beta + \alpha$           & hydrophilic residue partially  & completely exposed                                    \\       
+                                               & exposed to the solvent         & to the solvent                                        \\ \hline        
+    Ala-26 favors  $4 \beta + \alpha$          & hydrophobic residue oriented   & oriented towards the                                   \\ 
+                                               & towards surface                & hydrophobic core                                       \\ \hline
+    Ile-49 favors $3 \alpha$                   & hydrophobic interaction        & exposed to the                                          \\
+                                               & inside the protein             & solvent                                                \\ \hline 
+    Val-54 favors $4 \beta + \alpha$           & hydrophobic residue exposed    & hydrophobic interaction                                \\
+                                               & to the solvent                 & inside the protein                                      \\ \hline
+    Glu-56 favors $3 \alpha$                   & hydrophilic residue partially  & completely exposed                                    \\
+                                               & exposed to the solvent         & to the solvent                                        \\ \hline
+    Phe-30 in GB sequence                      & exposed to the solvent         & oriented towards the                                  \\
+    favors $4 \beta + \alpha$                  & in protein surface             & hydrophobic core                                      \\ \hline   
+    Tyr-45 in GB Sequence                      & No H-bonding                   & H-bond with Asp-47                                    \\  
+    favors $4 \beta + \alpha$                  &                                &                                                       \\ \hline
+    Asp-47 in GA sequence                      & H-bond with Lys-50             & No H-bond, No Tyr-45                                  \\  
+    favors $3 \alpha$                                 &                         & in GA sequence                                         \\ \hline
+\end{tabular}
+\end{center}
+\end{table}
+
+
 \begin{figure}
 \includegraphics[width=3.5 in,height=4 in]{orban.pdf}
 \label{fig:orban}
@@ -219,6 +314,24 @@ around 2.9 to 5.7 kcal/mol, which is consistent with the above hypothesis \cite{
 sequences. (A) The six sequences used in this study. (B) Each sequence adopts either a Protein
 G-like fold (denoted GB) or a three-helix bundle fold (denoted GA). The relative free energies of
 the two folds are reported for each sequence.}
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=7 in,height=5.8 in]{orban_full.pdf}
+\label{fig:orban_full}
+\caption{Orientation of residues of different sidechains in $4 \beta + \alpha$ and $3 \alpha$ form
+A. Orientation of Hydrophobic residues Leu-5 and Leu-7.
+B. Gln-11 has H-bond with Glu-15 in $3 \alpha$, which is absent in $4 \beta + \alpha$
+C. Hydrophobic Ala-26
+D. Hydrophobic Val-54.
+E. Hydrophilic Glu-14.
+F. The plot of free energy difference for GA95 and GB95 sequence. Positive peak stabilize $3 \alpha$ form and negative peak 
+stabilize $4 \beta + \alpha$. 
+G. Hydrophilic Glu-56 .
+H. Orientation of Hydrophic Ile-49.
+I. With GA95 sequence, Ile-49 have hydrophic interaction with both Leu-20 and Ile-30.
+J. Larger Phe-30 in GB sequence, move towards the protein surface in $4 \beta + \alpha$.
+K. Tyr-45 form H-bond with Asp-47 in $4 \beta + \alpha$.}  
 \end{figure}
 
 %\begin{table}
@@ -243,13 +356,14 @@ the two folds are reported for each sequence.}
 
 \subsection{The confinement method correctly identifies the most native-like predictions from a
 subset of CASP predictions}
-\Alberto{Arijit: we need a global table of success, rather than individual tables. The simplest form
-    would have 3 columns: name of the PDB, number of structures tested, percent of success of
-    picking 1st model}
+
+%\Alberto{Arijit: we need a global table of success, rather than individual tables. The simplest form
+%    would have 3 columns: name of the PDB, number of structures tested, percent of success of
+%    picking 1st model}
 
 This method is particularly well suited to pick out the native/native like structure from misfolded or decoys. We have
 tested this using different models from CASP (critical assessment of structure
-prediction). CASP is a blind test world wide competition in which different groups apply their
+prediction). CASP is a blind test in which different groups world wide apply their
 methods to predict the 3D structure of proteins given their sequence. This is done with a strict 3
 week limit on each target (3 day for servers) and each group is allowed to submit 5 possible
 structures (ranked from better to worst). In our role as assessors during the CASP8 and CASP9 \cite{MacCallum2011}
@@ -265,8 +379,10 @@ accuracy is the fact that ranking is often done via a potential energy function,
 lacks an entropy component. Other initiatives including knowledge based potentials do use some sort
 of free energy to rank order, but its accuracy is not enough. Our method provides a physics based
 solution to this problem. We have tried two experiments centered on CASP. First we tried to rank
-order some structures from the previous CASP9 experiment. Our second test was to participate as a
-metapredictor group in CASP10. In both methods, our ranking is determined as a free energy measure,
+order some structures from the previous CASP9 experiment. We have tested different options for that purpose.
+First, we rank order submition from same group. Then we rank submition from different groups. Our second test was 
+to check whether this method can do better quality assessment/metaprediction than the best group in that catagory in CASP9. 
+In both methods, our ranking is determined as a free energy measure,
 and it is compared with the ranking given by a geometrical comparison between native and submitted
 models called GDT\_TS (Global distance test score \cite{Zemla2003}). 
 GDT\_TS represents the average percentage of residues that are in close proximity in two
@@ -280,9 +396,10 @@ subset of structures we choose, we use the confinement method in a pairwise proc
 the structures. In all cases, we have calculated the free energy with respect to the native structure either obtained from NMR or 
 x-ray crystallography but we do not need to make comparisons to native in order to do rank ordering.
 
-\subsubsection{CASP9}
+\subsubsection{confinement method can rank different models submitted by the same group and distinguish the native structure}
 
-The question that we want to answer here is whether we can distinguish between native structure and the submitted models? 
+The question that we want to answer here is whether we can rank models submitted by the same group.In all cases, we have calculated the free energy
+difference between the native structure and the submitted models as well. 
 %Identifying the native state from a set of models is a very easy test, that most metapredictors
 %already handle correctly, but it is also a first proof of principle. 
 First we choose a protein BVU3908 from Bacteroides vulgatus whose PDB id and CASP target code are
@@ -294,7 +411,7 @@ values as shown in Figure~\ref{fig:T0559} indicate that the model 1 was predicte
 whereas the order of model 3 and 5 was wrong. The main difference
 between the model 3 and the rest of the model is that the orientation of first alpha helix of model 3 is opposite.
 On the other hand, as shown in Figure~\ref{fig:T0559} confine and release method not only can differentiate the native 
-structure from the submitted models , it can also correctly rank all the models.  
+structure from the submitted models , it can also correctly rank all the models like their The GDT\_TS score.  
 
 To further test the method we have taken the example of protein BT2368 from Bacteroides thetaiotaomicron. The PDB id of this 
 74 amino acid residue protein is 2L02 and CASP target code is T0560. We have compared the free energy difference between 
@@ -302,17 +419,42 @@ the native structure and the two of the five submitted models from the group "Sp
 again they are similar to the rest of the models. The comparison of GDT\_TS score as shown in 
 Figure~\ref{fig:T0560} and published in final CASP result is only for models with residues 3 to 66. In order to keep
 consistency, we have also done our analysis with models and crystal structure consisting residues 3 to 66. As expected,
-the native state is identified correctly, and the two other models are ranked in the correct order.   
+the native state is identified correctly, and the two other models are ranked in the correct order in accordance with the GDT\_TS score.   
+
+\subsubsection{Confinement method can rank models submitted by different groups}
 
 Our next test was between models from the best submissions of different groups. 
 For this purpose we have chosen the x-ray crystallographic structure of 
-fas apoptosis inhibitory protein molecule whose pdb id and CASP target codes are 3MX7 and T0540 respectively. 
-This protein contain 90 amino acid residues with 8 beta strands. We have chosen best models from groups 
-"LTB" and "Mufold" for our analysis, which are labelled as Model 1 and Model 2 in Figure~\ref{fig:T0540}. 
-As presented in  Figure~\ref{fig:T0540} we found that this method is able to correctly order the models which matches 
+fas apoptosis inhibitory protein molecule whose pdb id and CASP target codes are 3MX7 and T0540 respectively.
+This protein contain 90 amino acid residues with 8 beta strands. We have chosen best models from groups
+"LTB" and "Mufold" for our analysis, which are labelled as Model 1 and Model 2 in Figure~\ref{fig:T0540}.
+As presented in  Figure~\ref{fig:T0540} we found that this method is able to correctly order the models which matches
 with the GDT\_TS score. 
 
-There are however some instances where the method can fail, specially when GDT scores are
+\subsubsection{Per residue free energy calculation identify the residues that are responsible for difference between two conformation}
+
+In order to understand the per residue contribution towards the free energy, we have first calculated the total free energy of NMR 
+structure of a domain of adhesion exoprotein from Pediococcus pentosaceus and its submitted CASP9 model. The 
+pdb id and CASP code of this 79 residue protein are 2KWY and T0569 respectively. We have compared the native structure with the
+best model structure submitted for this target in CASP9. This model structure was submitted by the group " Mufold". All the
+five model structures submitted by this group was found to be close, within a GDT\_TS score  of 72 to 78. Thus we proceed by 
+comparing only the native structure and
+the best predicted model of this target. Visualization upon superimposition of two structures reveals that
+the difference between the two structure is at the region consist of residues 48 to 65, where model1 is much more disordered compare to the
+native structure(see Figure~\ref{fig:T0569}). Other regions look similar for both the cases with of model1 is within 2.6 \AA backbone
+rmsd value of the native structure. We found that, confinement method can still differentiate between the native structure and 
+the generated model. We have also calculated the per residue free energy with a aim that this can identify the residue which are responsible
+for such free enerfy difference. The per residue free energy decomposition is shown in  Figure~\ref{fig:T0569_per_residue}(A). We indeed 
+found that two hydrophobic residues Val-59 and Ile-61 are oriented towards the solvent in the protein 
+surface in the generated model (Figure~\ref{fig:T0569_per_residue}(B). This the region, where there is a beta sheet in the original crystal structure, which is absent in the 
+model. There are also some region, which stabilizes the generated model compare to that of the crystal. A close inspection reveal that 
+the hydrophilic Glu in position 67 is completely exposed to the protein surface and solvent in the best model, whereas it is partially exposed in the 
+crystal. This is presented in Figure~\ref{fig:T0569_per_residue}(C). The peak at position 76 is due to the H-bond between Lys-76 and Asp-11, 
+which is absent in original crystalographic structure (Figure~\ref{fig:T0569_per_residue}(D)). 
+   
+\subsubsection{Confinement method fails ?}
+
+There are however some instances where the method can fail, specially when GDT scores and all the structures are
 very close. We have found this for an engineered protein from Asr4154 protein (PDB ID: 2L09 and CASP Target T0538).
 This protein contains 54 amino acid residues with three alpha helixes and two very short beta strand. 
 The model that is closest to the native structure was generated by the group PconsR with a GDT\_TS value of 96.23.
@@ -322,18 +464,17 @@ respectively in Figure~\ref{fig:T0538}. As seen in Figure~\ref{fig:T0538}, one c
 model from PconsR has lowest free energy value, making it a more stable structure. Although ranking of the other models
 remain consistent, it may happen that the theoretical model produced by the group "PconsR" much more stable than the 
 crystal structure. This is particularly difficult target for rank ordering as all the models those are considered for this 
-calculation are within RMSD values of 2.6 \AA.   
-
-There is another instance where this method fails. This is the case of solution NMR structure of a domain of adhesion exoprotein 
-from Pediococcus pentosaceus. The
-pdb id and CASP code of this 79 residue protein are 2KWY and T0569 respectively. We have compared the native structure with the
-best model structure submitted for this target in CASP9. This model structute was submitted by the group " Mufold". ALl the
-five model structures submitted by this group was found to be close. Thus we proceed by comparing only the native structure and
-the best predicted model of this target. Visualization upon superimposition of two structures reveals that
-the difference between the two structure is at the region consist of residues 48 to 65, where model1 is much more disordered compare to the
-native structure(see Figure~\ref{fig:T0569}) . Other regions look similar for both the cases with of model1 is within 2.6 \AA
-rmsd value of the native structure. In this case we found that the confinement method predict that the predicted model is stable than the
-native structure with a free energy difference of $9.4 \pm 0.7$ Kcal/Mol.
+calculation are within RMSD values of 1.6 - 2.0 \AA. In order to understand the reason behind the mismatch of GDT\_TS values
+of crystal and the model1, we have decomposed the total free energy into the per residue component. A close analysis of 
+the per residue free energy value, we found that although, crystal and different model have closed GDT\_TS and backbone RMSD 
+value, there are number of sidechains oriented in a very different way. As shown in Figure~\ref{fig:T0538compare}(A),
+there is a salt bridge between Arg-32 and Glu-35 present in the crystallographic structure, which is absent in the
+model 1. In model 1, Arg-32 has another salt bridge with Glu-28. Glu-28 in crystal has the salt bridge with Lys-24. In model 1, Lys-24 is
+exposed towards the protein surface. This is shown in Figure~\ref{fig:T0538compare}(A). There are more such interesting and may be crucial
+sidechain differences between the model and the crystallographic structure, which indicate the limitation of the GDT\_TS based 
+ranking of the protein structure. As, shown in Figure~\ref{fig:T0538compare}(B), Arg-26 and Glu-50 has a salt bridge in the crystallographic 
+structure. Also, Phe-51 is oriented towards the protein core in the crystallographic structure. In model 1, the salt bridge between Arg-26 and Glu-50
+is absent and the Phe-51 is oriented towards the protein surface.   
 
 \subsubsection{What can we say about low resolution models?}
 
@@ -348,16 +489,16 @@ ranking and the free energy ranking, only two structures with GDT\_TS score less
 incorrectly. It is worth to note that models 2 and 3 have the same GDT and very different free
 energies, meaning that the actual ordering could change a lot \cite{Perez2012}.
 
-\subsubsection{Difficulty in CASP Experiments}
+%\subsubsection{Difficulty in CASP Experiments}
 
-It is often difficult to model CASP targets using the confinement and release method. There are many cases,
-where the sequence of a particular target is trimmed during actual result presentation. This is illustrated
-with the crystal structure of the leucine zipper domain of cGMP dependent protein kinase I (pdb id: 3NMD
-and CASP9 code: T0605) as shown in Figure~\ref{fig:T0605}. The actual CASP 9 target consisted of 72 amino acid residues, but
-as only 18-66 amino acid residues could be detected in actual crystal structure of this protein, the final result was trimmed 
-with respect to that crystal structure with 49 amino acid residues which consist of a single alpha helix. The amino acid residues 18 and 66 are shown in
-three models submitted by the group "Baker". It is important to note that blind prediction of model ranking on the basis of free energy can be hugely 
-affected in such scenario as the only major difference between those models are the trimmed parts, specially the region consisting residues 1-18.    
+%It is often difficult to model CASP targets using the confinement and release method. There are many cases,
+%where the sequence of a particular target is trimmed during actual result presentation. This is illustrated
+%with the crystal structure of the leucine zipper domain of cGMP dependent protein kinase I (pdb id: 3NMD
+%and CASP9 code: T0605) as shown in Figure~\ref{fig:T0605}. The actual CASP 9 target consisted of 72 amino acid residues, but
+%as only 18-66 amino acid residues could be detected in actual crystal structure of this protein, the final result was trimmed 
+%with respect to that crystal structure with 49 amino acid residues which consist of a single alpha helix. The amino acid residues 18 and 66 are shown in
+%three models submitted by the group "Baker". It is important to note that blind prediction of model ranking on the basis of free energy can be hugely 
+%affected in such scenario as the only major difference between those models are the trimmed parts, specially the region consisting residues 1-18.    
 
 
 \subsubsection{Can confinement method perform better quality assessment in protein structure prediction ?}
@@ -367,26 +508,52 @@ A review of CASP9 quality assessment also pointed out that the methods which are
 techniques perform
 much better compared to those methos which are based on analysis of individual models \cite{Kryshtafovych2011}. 
 In this background we try to answer, whether the confinement method can do better quality assessment compare to the best performing
-group (MUFOLD-WQA) in this catagory.
-We have again picked up the CASP taget T0538 to answer this question. We have chosen the Model 3 submitted by PconsR (GDT\_TS = 96) 
-and model 5 from the MULTICOM-NOVEL ( GDT\_TS = 83). Both are server predicted models and they were further used for quality assessment 
+group (MUFOLD-WQA) in this catagory. In CASP9, the overall reliability of models in quality assessment (QA) was accepted in a mode known as
+QMODE 1. Here, predictors were asked to score each model on a scale from 0 to 1, with higher values corresponding to better models \cite{Kryshtafovych2011}. 
+We have again picked up the CASP taget T0538 to answer this question. We have chosen the Model 3 submitted by PconsR (GDT\_TS = 96, QMODE 1 = 0.5434) 
+and model 5 from the MULTICOM-NOVEL ( GDT\_TS = 83, QMODE 1 = 0.5865). Both are server predicted models and they were further used for quality assessment 
 by the group MUFOLD-WQA \cite{Wang2011}. It is important to note that the model from PconsR was the most accurate predicted model for this 
-target and the model from MULTICOM-NOVEL was predicted as best by the quality assessment experiments of MUFOLD-WQA. 
-Our free energy analysis we have shown that model from Pconsr is better than the model from 
-MULTICOM-NOVEL $(\Delta \Delta G (Model\_Pconsr - Model\_MULTICOM-NOVEL = -8.2 Kcal/Mol)$, which   
+target and the model from MULTICOM-NOVEL was predicted as best by the quality assessment experiments of MUFOLD-WQA. Also, 
+the QMODE 1 value presented here is from the group MUFOLD-WQA. 
+Our free energy analysis predict that the model from Pconsr is indeed better than the model from 
+MULTICOM-NOVEL $(\Delta \Delta G (Model\_Pconsr - Model\_MULTICOM-NOVEL = -3.9 Kcal/Mol)$, which   
 matches well with the GDT\_TS score. On the other hand the MUFOLD-WQA predicted the ranking in the reverse order. 
-There is no doubt that the consensus approaches can predict the model quality in a faster manner. But we expect that confinement
-approach can predict the model quality in a relatively expensive but much accurate way. 
 
-\Arijit{Will upload the result from Target 560 once cluster is back.}
+We have also carried out the similar type of analysis for the case of Target 560 of CASP9 experiment. For that 
+we have chosen the model 1 from the group PconsR (GDT\_TS = 94, QMODE 1 = 0.5178), Bilab\-Enable (GDT\_TS = 87, QMODE 1 = 0.5344) 
+and Multicom\_Refine (GDT\_TS = 74, QMODE 1 = 0.4770). If, one want to rank order with respect to the GDT\_TS values, the model from 
+PconsR is the best predicted model, but according to the QA assessment by MUFOLD-WQA, the model from Bilab-Enable was found to be best predicted model. 
+All the QMODE 1 values are from MUFOLD\-WQA. In CASP 9, the sequence of 74 residues were given to predict the structure and for 
+quality assessment, whereas during GDT\_TS analysis only residues 3-66 were considered. When we considered the full 74 amino acid 
+residues, the free energy calculated were $(\Delta \Delta G (Model\_Pconsr - Model\_Bilab\-Enable = 3.3 Kcal/Mol)$ and 
+$(\Delta \Delta G (Model\_Pconsr - Model\_Multicom\_Refine = -30.0 Kcal/Mol)$ which 
+support the QA assessment by MUFOLD-WQA. On the other hand, if we calculate the same free energy with the trimmed version of the protein 
+(with residues 3-66), the values of the free energy difference become -1.7 and -31.1 Kcal/Mol respectively, which support the GDT\_TS score. 
+The summary of this whole observation is presented in Table~\ref{table:560QA}.
+There is no doubt that the consensus approach can predict the model quality in a faster manner. But we expect that confinement
+method can predict the model quality in a relatively expensive but much accurate way.
+
+\begin{table}
+\label{table:560QA}
+\begin{center}
+\begin{tabular}{| l | l | l | l | l |}
+\hline
+Model            &  $\Delta \Delta G$ (1-74)  & $\Delta \Delta G$ (3-66) &    GDT\_TS    & QMODE 1  \\ \hline
+PconsR           &         0.0                &      0.0                 &    94         &  0.5178   \\ \hline
+Bilab\-Enable     &        -3.3                &      1.7                 &    87         &  0.5344   \\ \hline
+Multicom\_Refine &        30.0                &     31.1                 &    74         &  0.4770   \\ \hline
+\end{tabular}
+\end{center}
+\caption{Comparison of quality assessment by the group MUFOLD\-WQA and the confinement method of the CASP9 target 560 (pdb id: 2L02). 
+The GDT\_TS score obtained from CASP9 website, was based on the trimmed model containing residue 3-66, whereas, the QMODE 1 values are from
+quality assessment by the group MUFOLD\-WQA and based on residues 1-74.}
+\end{table}  
 
 
 \section{Conclusion}
 
-Proteins are essential parts of organisms and participate in virtually every process within living cells. 
-In order to understand different functions of proteins, detect diseases caused by them and design more efficient drugs 
-it is necessary to have the three dimensional structure of the protein. Experimental studies using NMR and X-ray crystallography is 
-not able to keep up with the sheer number of protein sequences available. In recent past there are number of studies directed towards understanding protein 
+
+In recent past there are number of studies directed towards understanding protein 
 structure using theoretical tools. Experimentally, it is relatively easy to identify the native structure from the data obtained 
 from x-ray crystallography or NMR. On the other hand using theoretical tools it is often difficult to identify the native structure 
 using both physics based methods and knowledge based method. In order to rank structure from the available data, some groups use 
@@ -394,23 +561,36 @@ clustering algorithms and the structure of the
 most populated cluster is picked out as the most probable structure. However, it may happen that the structure may be trapped and 
 spend most of its time in a kinetic trap, which may give a wrong interpretation of the clustering result. On the other hand, some groups
 also depend on potential energy functions to pick out their best structure, lacking an entropic
-component. In this paper, we have used a free energy method to identify
-the native/native like structure. First, we have tested this method for a chameleon sequence, which has a $95$ percent sequence identity
-but one of them has a $3 \alpha$ structure and another one has $4 \beta + \alpha$ structure. Using the current method, we found that 
-the native structure is always the most stable \Alberto{This is not true!!}. We have also tested this method for different targets of CASP experiments. We found
-that in most cases, it can pick out the native/native like structure in terms of lowest free enrgy value. 
-
-However, there may be some limitations to this method in terms of size of the protein molecule. The normal mode analysis may not be
-accurate for proteins larger than 100 amino acid residues. This can be approximated by removing the hydrogen molecules from 
-the system. 
+component. In this work we attempted to identify the native/native like protein strcuture from the decoy using free energy as a scale.
+We have used previously developed confinement method to larger systems.
+We found that in majority of the case, the native structure is always the most stable and we can rank the protein structure upto 100 amino 
+acid residues long. This method works very well if atleast one of the strcuture in the decoy is good. The main advantage of this method is 
+that it does not require any reaction coordinate. An interesting application, that we have developed using this method is per residue
+free energy calculation. Although, we have calculated that in an approximate way, but it give important information regarding conformational 
+preference of a particular residue. In future, this may help for protein design. 
+First, we have tested this method for a series of chameleon sequences, which have $88$, $95$ and $98$ percent sequence identity
+but one of them has a $3 \alpha$ structure and another one has $4 \beta + \alpha$ structure. We found that the method can pick the 
+the conformational preferance of a particular sequence, which matches with the experimental results. Per residue free energy calculation 
+identify the residues that stabilize/destabilize a particular conformation and can help for better protein design. 
+Encouraged by that result we have tested this method for different targets of CASP experiments. We found 
+in most cases, it can pick out the native/native like structure in terms of lowest free enrgy value and rank the protein structure
+with terms of free energy. 
 The method can be also give wrong result if all the models in the decoy are very poor. It may also be difficult to rank structures if 
 all the structures are very very close to the native structure. But that does not matter at all as our main aim is to differentiate
 between the good and the bad structure. In this article we have extensively tested this method using examples from CASP experiment.
-This method can be computationally expensive in actual CASP experiment if one want rank thousands of submitted models in CASP 
-experiments. However, in real life experiment with a particular target this method can give accurate result. The important 
-fact about Confinement method is that all the part of the calculation can be done independently. We have mostly carried out 
-our calculation with Amber program \cite{Case2005} in GPU computer. With a avarage 56 residue we found that it take only 4 hour to complete 
-20 ns of the confinement step. So, with available computer power this method will be easy to use.  
+This method can be computationally expensive in actual CASP experiment if one want rank hundreds of submitted models in CASP 
+experiments. However, in real life experiment with a particular target, we expect this method can give accurate result. The important 
+fact about confinement method is that all the part of the calculation can be done independently. 
+There is another big bottlenecks in this calculation. This has to do with the amount of
+simulations that have to be performed to confine the ensemble of conformations close to a microstate
+into a single microstate. We have tackled this issue by using GPU (Graphical Processing Unit) technology as opposed to the classical
+CPUs, which gives us a two order of magnitude boost in computational efficiency.
+For example, we have mostly carried out our calculation with Amber program \cite{Case2005} in GPU computer. With a avarage 56 residue 
+we found that it take only 4 hour to complete 20 ns of the confinement step. So, with available computer power this method will 
+be easy to use for real problems. 
+%There is another issue, which is normal mode
+%analysis calculations are Oh(N**3) and require large amounts of memory, effectively limiting the
+%size of the systems under study. In most cases quasiharmonic analysis.   
  
 This method can be further used for calculating free energy due to very large conformational change. Another application may be
 for the case of ligand binding. It can also be used to distinguish the most stable structure during protein design. Another, important
@@ -453,20 +633,25 @@ conformation of the protein.
 
 \end{enumerate}
 
-In all the calculation amber 10 program is used with ff99SB with GB/SA implicit solvent.  
+In all the calculation amber 11 program is used with ff99SB with GB/SA implicit solvent. Interestingly, we extend the
+method for calculation of per residue free energy in an approximate way. For this purpose, the confinement energy, 
+$\Delta G_{A,A*}$ and $\Delta G_{B,B*}$ of each residue is calculated in the usual numerical way as described above. The
+internal energy of each residue is calculated using the decomp module of amber from the final restrained trajectory. We 
+call this method approximate as we ignore the contribution from the normal mode or quasiharmonic analysis. 
+However, this contrbution to the total free energy is very less (less than $1.0 Kcal/Mol$), which allow us to 
+study the mechanistic details of conformational preference of each residue.      
 
-\Alberto{Somewhere in the introduction or methods}
-There are two big bottlenecks in this calculation. The first has to do with the amount of
-simulations that have to be performed to confine the ensemble of conformations close to a microstate
-into a single microstate, the second bottleneck has to do with the size of the system in the normal
-mode calculation. We have tackled the first issue by using GPU (Graphical Processing Unit) technology as opposed to the classical
-CPUs, which gives us a two order of magnitude boost in computational efficiency. Normal mode
-analysis calculations are Oh(N**3) and require large amounts of memory, effectively limiting the
-size of the systems under study. Where as this can be overcome by larger memory machines, these are
-often not available, and so we propose an alternative by using quasiharmonic analysis. This is still
-an Oh(N**3) problem, but we now the motions of atoms are already determined in trajectories, and so
-we can choose to do quasiharmonic analysis excluding hydrogens, which will reduce the number of
-atoms N to almost N/2. This means that we can use this method for systems twice as large.
+%There are two big bottlenecks in this calculation. The first has to do with the amount of
+%simulations that have to be performed to confine the ensemble of conformations close to a microstate
+%into a single microstate, the second bottleneck has to do with the size of the system in the normal
+%mode calculation. We have tackled the first issue by using GPU (Graphical Processing Unit) technology as opposed to the classical
+%CPUs, which gives us a two order of magnitude boost in computational efficiency. Normal mode
+%analysis calculations are Oh(N**3) and require large amounts of memory, effectively limiting the
+%size of the systems under study. Where as this can be overcome by larger memory machines, these are
+%often not available, and so we propose an alternative by using quasiharmonic analysis. This is still
+%an Oh(N**3) problem, but we now the motions of atoms are already determined in trajectories, and so
+%we can choose to do quasiharmonic analysis excluding hydrogens, which will reduce the number of
+%atoms N to almost N/2. This means that we can use this method for systems twice as large.
 
 
 \begin{figure}
@@ -477,22 +662,13 @@ atoms N to almost N/2. This means that we can use this method for systems twice 
 \label{fig:method}
 \end{figure}
 
-
-\begin{figure}
-\begin{center}
-\includegraphics[width=3.5 in,height=3.0 in]{bhp.pdf}
-\end{center}
-\caption{Two conformations from $\beta$ hairpin from protein G, bhp1 and bhp2. The two stranded $\beta$ sheet, bhp1 is the native structure and the three stranded $\beta$ sheet is known as bhp3.}
-\label{fig:bhp_conf}
-\end{figure}
-
-\begin{figure}
-\begin{center}
-\includegraphics[width=3.5 in,height=3.0 in]{G95.pdf}
-\end{center}
-\caption{Two protein with 95 \% similar sequence but different folds}
-\label{fig:G95}
-\end{figure}
+%\begin{figure}
+%\begin{center}
+%\includegraphics[width=3.5 in,height=3.0 in]{G95.pdf}
+%\end{center}
+%\caption{Two protein with 95 \% similar sequence but different folds}
+%\label{fig:G95}
+%\end{figure}
 
 \begin{figure}
 \begin{center}
@@ -511,6 +687,18 @@ of protein BVU3908 from Bacteroides vulgatus (PDB id: 2L01 and CASP code: T0559)
 from the group PconsR, Shell and FOLDIT respectively.}
 \label{fig:T0538}
 \end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=4.9 in,height=4.0 in]{Target_538_compare.pdf}
+\end{center}
+\caption{Difference of the sidechain orientation between model 1 and crystallographic structure in Target-538.
+A. The salt bridge between Glu-35 and Arg-32 in crystal structure. In model 1, this is compensated by H-bonding between 
+Arg-32 and Glu-28. There is another salt bridge between Glu-28 and Lys-24.
+B. Salt bridge between Arg-26 and Glu-50 in crystal structure. Orientation of Phe-51 is different in crystal than in model1.}
+\label{fig:T0538compare}
+\end{figure}
+
 
 \begin{figure}
 \begin{center}
@@ -550,14 +738,26 @@ The best model was from the group "Mufold".}
 
 \begin{figure}
 \begin{center}
-\includegraphics[width=12cm,height=10cm]{T0605.pdf}
+\includegraphics[width=5 in,height=4 in]{Target_569_per_residue.pdf}
 \end{center}
-\caption{ Three models of the leucine zipper domain of cGMP dependent protein
-kinase I (original pdb id: 3NMD and CASP target: T0605). The original target sequence of this protein was 72 residues.
-However only residues 3 to 66 is only kept during result announcement as that part can be found from crystallographic analysis. The
-region 3 to 66 are almost identical in all the 3 models  }
-\label{fig:T0605}
+\caption{A. Plot of per residue free energy difference between the model and the crystal structure of Traget 569 (pdb id: 2KWY) of CASP9.
+B. In model 1, the beta sheet containing Val-59 and Ile-61 is disordered. These hydrophobic residues are exposed to the solvent.
+C. Glu-67 is partially exposed to the solvent in crystal and it is fully exposed in model 1.
+D. There is a H-bond between Lys-76 and Asp-11 in model 1, which is absent in the crystallaographic structure.}
+\label{fig:T0569_per_residue}
 \end{figure}
+
+
+%\begin{figure}
+%\begin{center}
+%\includegraphics[width=12cm,height=10cm]{T0605.pdf}
+%\end{center}
+%\caption{ Three models of the leucine zipper domain of cGMP dependent protein
+%kinase I (original pdb id: 3NMD and CASP target: T0605). The original target sequence of this protein was 72 residues.
+%However only residues 3 to 66 is only kept during result announcement as that part can be found from crystallographic analysis. The
+%region 3 to 66 are almost identical in all the 3 models  }
+%\label{fig:T0605}
+%\end{figure}
 
 
 \begin{thebibliography}{99}
