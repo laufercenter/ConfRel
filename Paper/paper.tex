@@ -132,7 +132,11 @@ and this method is able to correctly rank structures in the majority of cases we
 
 \subsection{The confinement method produces correct results in control experiments}
 
-As a first step, we performed several control experiments to verify that our implementation of the
+\Alberto{ This is benchmarking, good internal, but not relevant. Should go to SI,out, or summarized
+    in one sentence:  "After reproducing the results of Cecchini and coworkers we were interested in
+the ability to apply this method to larger systems"}
+
+\Alberto{As a first step, we performed several control experiments to verify that our implementation of the
 confinement method produces results compatible with previous calculations reported in the
 literature.
 
@@ -143,18 +147,19 @@ $\beta$-sheet; and (2) a conformation, called bhp3, which has a three-stranded $
 Analysis of long (4 $\mu$s) equilibrium simulations \cite{Cecchini2009},\cite{Krivov2004}  shows that bhp1 is the more favorable
 configuration by 1.8 kcal/mol. Using the confinement method, we obtain a value 1.7 kcal/mol, which
 is in good agreement with the equilibrium simulations and with previous calculations using the
-confinement method \cite{Cecchini2009} (see Supporting Information for further details).
+confinement method \cite{Cecchini2009} (see Supporting Information for further details).}
 
 Previous applications of the confiment method have focused on relatively short peptides, up to $17$
 residues in length. In this work we apply the confinement method to
-larger proteins. On that direction, We first test the confinement method for a chamelon sequence and 
+larger proteins. On that direction, we first test the confinement method for a chamelon sequence and 
 found that it can correctly pick out the prefential structure of the chamelon sequence. Other 
 applications we explore in the present work is the re-scoring, or
 metaprediction, of structures submitted during the Critical Assessment of Structure Prediction
 (CASP) experiment (described in detail later). We computed the relative free energies of predictions
 submitted during CASP9, with the expectation that the most native-like prediction will have
 the lowest free energy. As a control, for several targets we also calculated the relative free
-energy of the experimentally determined structure. As
+energy of the experimentally determined structure. \Alberto{should not start with results yet, first
+we are describing what we are going to show them} As
 Table~\ref{table:casp_control} shows, in most cases, the confinement method correctly assigns a
 lower free energy to the experimentally determined structure than to any of the decoys. 
 Most interestingly, we decomposed the free energy into its per residue component, which help 
@@ -191,12 +196,12 @@ sequences}
 In general, proteins with similar sequences tend to have similar structures. This idea is the basis
 of comparative modeling and fold recognition in protein structure prediction. There are, however,
 examples---often referred to as chameleon sequences---of proteins with similar sequences that have
-remarkably different structures. Orban and co-workers have designed a series of 56-residue proteins
-(based on Protein G) that adopt one of two different folds depending on small changes in sequence
-(see Figure~\ref{fig:orban}). Sequences that adopt a mixed alpha/beta structure similar to Protein G
+remarkably different structures. Orban and co-workers have designed a sequence of 56-residues that
+is marginally stable in one of two possible folds. By mutating key residues in this sequence they
+are able to stabilize one fold or the other (see Figure~\ref{fig:orban}). Sequences that adopt a mixed alpha/beta structure similar to Protein G
 are denoted as ``GB'', while sequences that form a three-helix bundle are denoted as ``GA''. One
 pair of sequences (GA88/GB88) are 88 percent identical in sequence and differ in seven positions. Another pair
-(GA95/GA95) are 95 percent identical and differ in three positions. The last pair (GA98/GB98) differ
+(GA95/GB95) are 95 percent identical and differ in three positions. The last pair (GA98/GB98) differ
 only in a single tyrosine to alanine mutation.
 
 The fact such small changes in sequence can lead to such dramatic changes in structure is rather
@@ -215,7 +220,7 @@ information, it might be possible that we were able to make correct predictions 
 because artefacts of our modeling procedure always lead to the model having a higher free energy
 than the experimental structure. 
 
-To avoid this potential problem, we instead computed the relative free energy two different
+To avoid this potential problem, we instead computed the relative free energy of two different
 structural models for each sequence. One model is based on the GA structure and the other on the GB
 structure (see Supporting Information for details on the modeling procedure). This is a much more
 realistic test of the confinement method's ability to accurately calculate relative free energies.
@@ -234,9 +239,16 @@ around 2.9 to 5.7 kcal/mol, which is consistent with the above hypothesis \cite{
 \subsection{Per residue free energy calculation can identify the mechanistic detail behind conformational pereference 
 of a particular residue}
 
-We decomposed the calculated free energy into per residue decomposition as described in method section. This help us for
-identification of important residues that stabilizes a particular conformation. 
-In this direction, We first calculate the per residue free energy for the GA95 and GB95 sequences. Similar to the total 
+We decomposed the calculated free energy into per residue decomposition as described in the methods
+section. This helps us to
+identify important residues that stabilize a particular conformation. 
+\Alberto{This is not Reader Friendly at all. we do not have to describe every little detail. I would
+    rather have a table where we have the pairing and the reason for favoring one structure or the
+    other. In the main text I would say that the main reason for preferences of one fold or another
+    has to do with the relative solvent exposure of the residue in one conformation or another, or
+    the possibility of stablishing hydrogen/salt bridges in one conformation. This would be my
+preference, ditching everything below until the next section. What do you think?}
+In this direction, we first calculate the per residue free energy for the GA95 and GB95 sequences. Similar to the total 
 free energy for each sequence, we calculate the free energy difference between $4 \beta + \alpha$ and $3 \alpha$ structure for each 
 residue. The free energy, $\Delta \Delta G (4 \beta + \alpha$ - $3 \alpha)$ is plotted in Figure~\ref{fig:orban_full}(F). 
 In this plot, the negative peak indicate the residue will stabilize the $4 \beta + \alpha$ conformation of a particular
@@ -245,17 +257,18 @@ residues are only at 3 position, there are some common features of residues in b
 $3 \alpha$ and $4 \beta + \alpha$ conformation. They are reported in Figure~\ref{fig:orban_full} 
 and Table~\ref{table:orban_perresidue}. Before, we further go into that detail, it is important to note that 
 experimental observations classified the protein into two parts: Amino acids 9-51 are fully structured in both
-the fold, where as residues 1-8 and 52-56 are unstructured in $3 \alpha$, but form $\beta$ strand in $4 \beta + \alpha$ structure.
-Most of the amino acid residues in the region 1-9 favors $4 \beta + \alpha$ structure and can also seen from the plot 
+the folds, where as residues 1-8 and 52-56 are unstructured in $3 \alpha$, but form $\beta$ strand in $4 \beta + \alpha$ structure.
+Most of the amino acid residues in the region 1-9 favor $4 \beta + \alpha$ structure as can be seen from the plot 
 Figure~\ref{fig:orban_full}(F). Here, we try to explain some of the largest peak in that plot. The residues Leu-5 and 
-Leu-7 favors $4 \beta + \alpha$ structure as these hydrophobic residues are oriented towards the protein hydrophobic 
+Leu-7 favor $4 \beta + \alpha$ structure as these hydrophobic residues are oriented towards the protein hydrophobic 
 core, whereas in $3 \alpha$ structure they are exposed to the solvent (Figure~\ref{fig:orban_full}(A)). One can argue that 
 hydrophilic residues in these positions can stabilize the $3 \alpha$ conformation.
 The next big peak is located at position 11. A close observation of the sidechain orientation of residue Gln at position 11 reveal that it
 is exposed to the protein surface in both the conformation, but in $3 \alpha$ structure it has an additional H-bond with Glu-15 which gives
-it more stability compare to the $4 \beta + \alpha$ structure (Figure~\ref{fig:orban_full}(B)). The peak 
+it more stability compared to the $4 \beta + \alpha$ structure (Figure~\ref{fig:orban_full}(B)). The peak 
 at position 14 is due to the hydrophilic Glu, which is completely
-exposed to the solvent in $4 \beta + \alpha$ conformation as shown in (Figure~\ref{fig:orban_full}(E)), but only partially exposed 
+exposed to the solvent in $4 \beta + \alpha$ conformation as shown in
+(Figure~\ref{fig:orban_full}(E)), but is only partially exposed 
 to the solvent in $3 \alpha$ form. 
 This is the reason why Glu at position 14 stabilize $4 \beta + \alpha$ conformation. Another high peak is at position 26, which indicate
 that the residue in that position stabilizes $4 \beta + \alpha$ conformation. Again, the hydrophobic amino acid residue, Ala at position 26
