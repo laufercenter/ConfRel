@@ -505,13 +505,14 @@ is absent and the Phe-51 is oriented towards the protein surface.
 We mentioned earlier that our predictive abilities are greatly decreased with low model qualities. It is
 better to have at least one good model to pick out the native/native like structures from the rest of the decoy. 
 In order to test this hypothesis we performed another test with target T0531 of CASP9, in which we compared the crystal 
-structure to five models from the MUFOLD server. The pdb id of this extracellular domain of the jumping translocation 
-breakpoint protein is 2KJX and the CASP target code is T0531.
+structure to five models from the MUFOLD server. Pdb id of this extracellular domain of the jumping translocation 
+breakpoint protein is 2KJX and CASP target code is T0531.
 Looking at Figure~\ref{fig:T0531} shows: 1.) native is correctly
 identified as expected and 2.) Surprisingly there is a high level of correlation between the GDT
-ranking and the free energy ranking, only two structures with GDT\_TS score less than  35  are ordered
+ranking and the free energy ranking for model 1 and model 3, the rest three structures with GDT\_TS score less than  35  are ordered
 incorrectly. It is worth to note that models 2 and 3 have the same GDT and very different free
-energies, meaning that the actual ordering could change a lot \cite{Perez2012}.
+energies, meaning that the actual ordering could change a lot \cite{Perez2012}. It is encouraging that at least
+the method can pick out the best model with low GDT score of 44.  
 
 %\subsubsection{Difficulty in CASP Experiments}
 
