@@ -18,7 +18,7 @@
 % Custom macros for author comments
 \newcommand{\Alberto}[1]{\color{ForestGreen}#1\normalcolor }
 \newcommand{\Justin}[1]{\color{blue}#1\normalcolor}
-\newcommand{\Arijit}[1]{\color{yellow}#1\normalcolor}
+\newcommand{\Arijit}[1]{\color{magenta}#1\normalcolor}
 \newcommand{\Ken}[1]{\color{red}#1\normalcolor}
 
 \author{Arijit~Roy}
@@ -68,12 +68,13 @@ point or even after unfolding
 it by changing different condition most proteins will go back to the native state after
 reinstituting native like conditions. Often, the changes in free energy between different
 conformations is small, but nonetheless crucial in favoring the native state
- since defects in protein folding may be
-the molecular cause of a range of human genetic disorders. For example a misfolded protein known as
-a
-prion can misfold correctly folded proteins when entering a healthy organism.
-\Alberto{I'm not sure I understand this here} \Arijit{Thus, Free energy can also act as a scale to identify between the misfolded and the native state of
-the protein.} These facts further give free energy a special importance in structural biology.
+ since defects in protein folding may be the molecular cause of a range of human genetic disorders.
+ For example a misfolded protein known as a
+prion can misfold correctly folded proteins when entering a healthy organism. Thus it is important for 
+protein to have its native structure. As protein native structure stays in the global free energy minimum, 
+\Arijit{free energy can be used as a scale for accurate identification of misfolded state from the protein native state.}
+\Alberto{I'm not sure I understand this here} 
+These facts further give free energy a special importance in structural biology.
 
 However, the theoretical calculation of conformational free energy change becomes difficult if the
 states of interest are very different \cite{Meirovitch2007}. In such scenario timescales involved in
@@ -152,7 +153,7 @@ confinement method \cite{Cecchini2009} (see Supporting Information for further d
 Previous applications of the confiment method have focused on relatively short peptides, up to $17$
 residues in length. In this work we apply the confinement method to
 larger proteins. On that direction, we first test the confinement method for a chamelon sequence and 
-found that it can correctly pick out the prefential structure of the chamelon sequence. Other 
+found that it can correctly pick out the preferential structure of the chamelon sequence. Other 
 applications we explore in the present work is the re-scoring, or
 metaprediction, of structures submitted during the Critical Assessment of Structure Prediction
 (CASP) experiment (described in detail later). We computed the relative free energies of predictions
@@ -242,7 +243,7 @@ of a particular residue}
 We decomposed the calculated free energy into per residue decomposition as described in the method
 section. This helps us to identify important residues that stabilize a particular conformation. 
 In this direction, we first calculate the per residue free energy for the GA95 and GB95 sequences. 
-The per residue free energy, $\Delta \Delta G (4 \beta + \alpha$ - $3 \alpha)$ is plotted in Figure~\ref{fig:orban_full}(F).
+The per residue free energy, $\Delta \Delta G ((4 \beta + \alpha$) - ($3 \alpha))$ is plotted in Figure~\ref{fig:orban_full}(F).
 In this plot, the negative peak indicate the residue will stabilize the $4 \beta + \alpha$ conformation of a particular
 residue and the positive peak will stabilize the $3 \alpha$ structure. As, the differences of amino acid
 residues are only at 3 position, there are some common features of residues in both GA95 and GB95 sequences in both
@@ -405,7 +406,7 @@ In both methods, our ranking is determined as a free energy measure,
 and it is compared with the ranking given by a geometrical comparison between native and submitted
 models called GDT\_TS (Global distance test score \cite{Zemla2003}). 
 GDT\_TS represents the average percentage of residues that are in close proximity in two
-structures optimally superimposed using four different distance cutoffs (1, 2, 4 and 8 Å).
+structures optimally superimposed using four different distance cutoffs (1, 2, 4 and 8 \AA).
 
 We have chosen the inital models on which to test the methods based on server groups that have
 traditionally done good in past CASP events. There is a high correlation between the structures that
@@ -526,7 +527,7 @@ A part of CASP experiment is dedicated to the assessment of the quality of predi
 Most of the top performing group in this catagory use consensus approaches for quality assessment \cite{Wang2011}.
 A review of CASP9 quality assessment also pointed out that the methods which are based on clustering
 techniques perform
-much better compared to those methos which are based on analysis of individual models \cite{Kryshtafovych2011}. 
+much better compared to those methods which are based on analysis of individual models \cite{Kryshtafovych2011}. 
 In this background we try to answer, whether the confinement method can do better quality assessment compare to the best performing
 group (MUFOLD-WQA) in this catagory. In CASP9, the overall reliability of models in quality assessment (QA) was accepted in a mode known as
 QMODE 1. Here, predictors were asked to score each model on a scale from 0 to 1, with higher values corresponding to better models \cite{Kryshtafovych2011}. 
@@ -597,8 +598,8 @@ Encouraged by that result we have tested this method for different targets of CA
 in most cases, it can pick out the native/native like structure in terms of lowest free enrgy value and rank the protein structure
 with terms of free energy. 
 The method can be also give wrong result if all the models in the decoy are very poor. It may also be difficult to rank structures if 
-all the structures are very very close to the native structure. But that does not matter at all as our main aim is to differentiate
-between the good and the bad structure. In this article we have extensively tested this method using examples from CASP experiment.
+all the structures are very very close to the native structure. But we want to ignore this fact as our main aim is to differentiate
+between the good and the bad structure. In this article we have extensively tested this method using examples from CASP 
 This method can be computationally expensive in actual CASP experiment if one want rank hundreds of submitted models in CASP 
 experiments. However, in real life experiment with a particular target, we expect this method can give accurate result. The important 
 fact about confinement method is that all the part of the calculation can be done independently. 
