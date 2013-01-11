@@ -37,12 +37,12 @@
 
 \begin{abstract}
 
-The calculation of free energy differences is of central importance in the simulation of biochemical
+Calculation of free energy differences is of central importance in the simulation of biochemical
 systems. It is particularly difficult to calculate between pairs of macromolecular
 conformations as well as a computationally expensive task with existing
-methods. In this work, the confinement approach is used to calculate absolute
-free energies of biomolecular systems. The method provides two main advantages: it does not require a reaction coordinate or
-transition path and it is fast to compute. The free energy calculated can be decomposed into a per
+methods. In this work, confinement approach is used to calculate absolute
+free energies of biomolecular systems. This method provides two main advantages: it does not require a reaction coordinate or
+transition path and it is fast to compute. Free energy calculated can be decomposed into a per
 residue contribution in an 
 approximate way. Per residue free energy allows us
 to identify the reason behind conformational preferences in biomolecules. Through out the article we show its use in different
@@ -61,7 +61,7 @@ between two well defined
 states plays an important role. Examples range from small to large conformational changes of proteins due to
 ligand binding, change of pH or other conditions \cite{Meirovitch2007}, \cite{Chipot2007}, \cite{Jorgensen2004}. 
 Free energy also plays an important role in the case of protein
-folding. The ground breaking work of Christian B. Anfinsen and coworkers showed that the native
+folding. Ground breaking work of Christian B. Anfinsen and coworkers showed that the native
 structures of small globular proteins have a unique, thermodynamically stable native structure with
 their conformation at the global free energy minimum \cite{Anfinsen1973}. Regardless of the starting
 point or even after unfolding 
@@ -81,9 +81,9 @@ such conformational transitions may
 be beyond the sampling ability of classical molecular dynamics simulation.  Generally, in order to
 calculate the free energy a pathway or reaction coordinate is needed with several intermediate structures.
 Methods like umbrella sampling \cite{Torrie1977}, thermodynamic integration \cite{Tironi1994} along with classical MD can suffer from
-overlap problem and require a large computational effort. The idea of a reaction coordinate became
+overlap problem and requires a larger computational effort. The idea of a reaction coordinate became
 even more
-complicated in the case of protein folding.  As the free energy landscape for protein folding 
+complicated in the case of protein folding.  As free energy landscape for protein folding 
 is rough \cite{Dill1997}, \cite{Dill2008}, the molecule 
 can get trapped in an energy well during conformational sampling. Even with 
 advanced methods like replica exchange molecular dynamics, the three dimensional structure may be
@@ -92,7 +92,7 @@ misfolded states might be selected as native like
 % (give the example of human pin1ww domain from Benout Roux and Klaus Schultan).
 
 
-The calculation of free energy has been successfully attempted by a number of groups \cite{Meirovitch2007}, 
+Calculation of free energy have been successfully attempted by a number of groups \cite{Meirovitch2007}, 
 \cite{Ytreberg2006} - \cite{Zheng2008}. In recent years methods like the Reference system method \cite{Ytreberg2006}, 
 Decativated Morphing \cite{Park2008}, Orthogonal Space Random Work \cite{Zheng2008} or the Confinement 
 Method \cite{Tyka2006}, \cite{Cecchini2009} to name a few have been used to calculate free energy
@@ -104,7 +104,7 @@ freedom are removed by applying a series of restraints to the system. Then the f
 remaining harmonic system is obtained using a normal mode calculation and combined with the
 non-harmonic part to give the total absolute free energy.  Previously, this method was applied to
 calculate the conformational free energy of a 16 amino acid residue peptide, known as BHP.  We have
-first reproduced that known result. Then we have applied this method to larger proteins for the
+first reproduced that known result. Next we have applied this method to larger proteins for the
 first time. The free energy difference of pairs of conformations in proteins with similar sequence but completely
 different fold was calculated. \Alberto{i made this part too long, have to summarize here and define
 better inside text?-->} Encouraged by the result, we applied the method to help tackle the
@@ -130,7 +130,7 @@ and this method is able to correctly rank structures in the majority of cases we
 
 \section{Results and Discussion}
 
-\subsection{The confinement method produces correct results in control experiments}
+\subsection{Confinement method produces correct results in control experiments}
 
 \Alberto{ This is benchmarking, good internal, but not relevant. Should go to SI,out, or summarized
     in one sentence:  "After reproducing the results of Cecchini and coworkers we were interested in
@@ -171,7 +171,7 @@ us to identify the residues which stabilize or destabilize a particular conforma
 
 \begin{table}
 \begin{center}
-\caption{The confinement method assigns a more favorable free energy to the experimentally
+\caption{Confinement method assigns a more favorable free energy to the experimentally
 determined structure than to computer-generated predictions. For each target, we examined as many as
 five predictions submitted by CASP participants. Positive $\Delta\Delta G$ values indicate that the
 experimental structure is predicted to be more favorable than any of the decoys.}
@@ -190,7 +190,7 @@ experimental structure is predicted to be more favorable than any of the decoys.
 \end{table}
 
 
-\subsection{The confinement method correctly predicts the structural preferences of chameleon
+\subsection{Confinement method correctly predicts the structural preferences of chameleon
 sequences}
 
 In general, proteins with similar sequences tend to have similar structures. This idea is the basis
@@ -225,15 +225,15 @@ structural models for each sequence. One model is based on the GA structure and 
 structure (see Supporting Information for details on the modeling procedure). This is a much more
 realistic test of the confinement method's ability to accurately calculate relative free energies.
 
-The results of these calculations are presented in Figure~\ref{fig:orban}. The confinement method
+The results of these calculations are presented in Figure~\ref{fig:orban}. Confinement method
 identifies the correct structure for all five sequences. One of the hypothesis for fold switching
 of chamelon sequence is that the structural transitions require states with diminished stability.
 It is widely believed that if the free energy of the native state and the alternative state is within
- a range of $-5 Kcal/Mol$ then  it can quickly change fold when the stability of the native state 
+ a range of $5 Kcal/Mol$ then it can quickly change fold when the stability of the native state 
 decreases. The stability of the native state can decrease for a number reason ranging from chemical 
 modification, breaking of disulphide bonds or mutations as in this case. The free energy differences, that
 came out from our calculation ranges from
-around 2.9 to 5.7 kcal/mol, which is consistent with the above hypothesis \cite{He2008}, \cite{{Alexander2009}}.
+around 3.5 to 5.0 kcal/mol, which is consistent with the above hypothesis \cite{He2008}, \cite{{Alexander2009}}.
 
 
 \subsection{Per residue free energy calculation can identify the mechanistic detail behind conformational pereference 
@@ -306,26 +306,31 @@ table.}
 \label{table:orban_perresidue}
 \begin{tabular}{| l | l | l |}
 \hline
-    Observation                                & $3 \alpha$ structure           &    $4 \beta + \alpha$ structure                       \\ \hline
-    Leu-5 and Leu-7 favor                      & hydrophobic residues are       & oriented towards the                                  \\ 
-    $4 \beta + \alpha$                         & exposed to the solvent         & hydrophobic core                                      \\ \hline
-    Gln-11 favors $3 \alpha$                   & Gln-11 has H-bond with Glu-15  & no such H-bond                                        \\ \hline
+    Information from per                                 & What is happening in           & What is happening in                      \\ 
+    residue plot                                         & $3 \alpha$ conformation        & $4 \beta + \alpha$  conformation          \\ \hline
+    Leu-7 favors                                         & hydrophobic residue is         & oriented towards the                      \\ 
+    $4 \beta + \alpha$ (Figure~\ref{fig:orban_full}(A))  & exposed to the solvent         & hydrophobic core                          \\ \hline
+    Gln-11 stabilizes $3 \alpha$                   & Gln-11 has H-bond                         & no such H-bond                           \\ 
+    (Figure~\ref{fig:orban_full}(B))           &  with Glu-15                              &                                           \\ \hline 
     Glu-14 favors $4 \beta + \alpha$           & hydrophilic residue partially  & completely exposed                                    \\       
-                                               & exposed to the solvent         & to the solvent                                        \\ \hline        
-    Ala-26 favors  $4 \beta + \alpha$          & hydrophobic residue oriented   & oriented towards the                                   \\ 
-                                               & towards surface                & hydrophobic core                                       \\ \hline
-    Ile-49 favors $3 \alpha$                   & hydrophobic interaction        & exposed to the                                          \\
-                                               & inside the protein             & solvent                                                \\ \hline 
-    Val-54 favors $4 \beta + \alpha$           & hydrophobic residue exposed    & hydrophobic interaction                                \\
-                                               & to the solvent                 & inside the protein                                      \\ \hline
+    (Figure~\ref{fig:orban_full}(E))           & exposed to the solvent         & to the solvent                                        \\ \hline        
+    Ala-26 favors  $4 \beta + \alpha$          & hydrophobic residue            & oriented towards the                                   \\ 
+     (Figure~\ref{fig:orban_full}(C))          & oriented towards surface       & hydrophobic core                                       \\ \hline
+    Ile-49 favors $3 \alpha$                   & hydrophobic interaction        & sidechain exposed                                       \\
+    (Figure~\ref{fig:orban_full}(H) and (I))   & inside the protein             & to the solvent                                          \\ \hline 
+    Ile-49 favors GA more                      & more hydrophobic               &  unchanged                                              \\
+    than GB                                    & interactions with residues     &                                                         \\ 
+    (Figure~\ref{fig:orban_full}(H) and (I))  &  at 20, 30 in GA                &                                                         \\ \hline
+    Val-54 favors $4 \beta + \alpha$           & hydrophobic residue            & hydrophobic interaction                                \\
+    Figure~\ref{fig:orban_full}(D))             & exposed to the solvent        & inside the protein                                      \\ \hline
     Glu-56 favors $3 \alpha$                   & hydrophilic residue partially  & completely exposed                                    \\
-                                               & exposed to the solvent         & to the solvent                                        \\ \hline
+    (Figure~\ref{fig:orban_full}(G))            & exposed to the solvent         & to the solvent                                        \\ \hline
     Phe-30 in GB sequence                      & exposed to the solvent         & oriented towards the                                  \\
-    favors $4 \beta + \alpha$                  & in protein surface             & hydrophobic core                                      \\ \hline   
-    Tyr-45 in GB Sequence                      & No H-bonding                   & H-bond with Asp-47                                    \\  
-    favors $4 \beta + \alpha$                  &                                &                                                       \\ \hline
+    stabilizes $4 \beta + \alpha$                  & in protein surface             & hydrophobic core                                      \\ \hline   
+    Tyr-45 in GB favors                      & No H-bonding                   & H-bond with Asp-47                                    \\  
+    $4 \beta + \alpha$ (Figure~\ref{fig:orban_full}(K))&                 &                                                       \\ \hline
     Asp-47 in GA sequence                      & H-bond with Lys-50             & No H-bond, No Tyr-45                                  \\  
-    favors $3 \alpha$                                 &                         & in GA sequence                                         \\ \hline
+    favors $3 \alpha$                          &                         & in GA sequence                                         \\ \hline
 \end{tabular}
 \end{center}
 \end{table}
@@ -334,32 +339,33 @@ table.}
 \begin{figure}
 \includegraphics[width=3.5 in,height=4 in]{orban.pdf}
 \label{fig:orban}
-\caption{The confinement method correctly predicts the structural preferences of six chameleon
+\caption{Confinement method correctly predicts the structural preferences of six chameleon
 sequences. (A) The six sequences used in this study. (B) Each sequence adopts either a Protein
 G-like fold (denoted GB) or a three-helix bundle fold (denoted GA). The relative free energies of
 the two folds are reported for each sequence.}
 \end{figure}
 
 \begin{figure}
-\includegraphics[width=6.5 in,height=5.4 in]{orban_full.pdf}
+\includegraphics[width=6.4 in,height=5.3 in]{orban_full.pdf}
 \label{fig:orban_full}
-\caption{Orientation of residues of different sidechains in $4 \beta + \alpha$ and $3 \alpha$ form
-A. Orientation of Hydrophobic residues Leu-5 and Leu-7.
+\caption{Sidechain orientation of some important residues which stabilize/destabilize either of the $4 \beta + \alpha$ or $3 \alpha$ conformation.
+The details are in Table~\ref{table:orban_perresidue} and the main text.  
+A. Leu-7.
 B. Gln-11 has H-bond with Glu-15 in $3 \alpha$, which is absent in $4 \beta + \alpha$
-C. Hydrophobic Ala-26
-D. Hydrophobic Val-54.
-E. Hydrophilic Glu-14.
-F. The plot of free energy difference for GA95 and GB95 sequence. Positive peak stabilize $3 \alpha$ form and negative peak 
+C. Ala-26
+D. Val-54.
+E. Glu-14.
+F. plot of free energy difference for GA95 and GB95 sequence. Positive peak stabilize $3 \alpha$ form and negative peak 
 stabilize $4 \beta + \alpha$. 
-G. Hydrophilic Glu-56 .
-H. Orientation of Hydrophic Ile-49.
-I. With GA95 sequence, Ile-49 have hydrophic interaction with both Leu-20 and Ile-30.
-J. Larger Phe-30 in GB sequence, move towards the protein surface in $4 \beta + \alpha$.
-K. Tyr-45 form H-bond with Asp-47 in $4 \beta + \alpha$.}  
+G. Glu-56 .
+H. sidechain orientation of Hydrophic Ile-49, along with Leu-20 and Ile-30 with GA95 sequence
+I. sidechain orientation of Hydrophic Ile-49, along with Ala-20 and Phe-30 with GB95 sequence
+J. Tyr-45 forms H-bond with Asp-47 with GB95 sequence and $4 \beta + \alpha$ conformation
+K. No H-bond possible between Leu-45 and Asp-47 with GB95 sequence and $4 \beta + \alpha$ conformation .}  
 \end{figure}
 
 %\begin{table}
-%\caption{The confinement method correctly reproduces the structural preferences of a series of
+%\caption{Confinement method correctly reproduces the structural preferences of a series of
 %designed peptides. Each sequence adopts either a Protein G-like fold ($4 \beta + \alpha$) or forms a
 %helix bundle ($3 \alpha$).}
 %\label{table:orban}
