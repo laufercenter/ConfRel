@@ -515,8 +515,10 @@ So far we have seen that the method is good at predicting preferences when the s
 very close to each other, how far from native can we go? In this section we want to explore what
 happens when we use the method to describe low quality models. We use one of the CASP targets (pdb
 id = 2KJX, CASP id = T0531) .
-We mentioned earlier that our predictive abilities are greatly decreased with low model qualities. It is
-better to have at least one good model to pick out the native/native like structures from the rest of the decoy. 
+We mentioned earlier that our predictive abilities are greatly decreased with low model qualities. 
+Comparing low qualitive models between themselves is not very informative,
+    however, comparing all of them to a native/native like structure, allows to rank order this
+structures. 
 In order to test this hypothesis we performed another test with target T0531 of CASP9, in which we compared the crystal 
 structure to five models from the MUFOLD server. Pdb id of this extracellular domain of the jumping translocation 
 breakpoint protein is 2KJX and CASP target code is T0531.
@@ -525,7 +527,7 @@ identified as expected and 2.) Surprisingly there is a high level of correlation
 ranking and the free energy ranking for model 1 and model 3, the rest three structures with GDT\_TS score less than  35  are ordered
 incorrectly. It is worth to note that models 2 and 3 have the same GDT and very different free
 energies, meaning that the actual ordering could change a lot \cite{Perez2012}. It is encouraging that at least
-the method can pick out the best model with low GDT score of 44.  
+the method can pick out the best model even though it is got a low GDT score: 44.  
 
 %\subsubsection{Difficulty in CASP Experiments}
 
@@ -539,16 +541,17 @@ the method can pick out the best model with low GDT score of 44.
 %affected in such scenario as the only major difference between those models are the trimmed parts, specially the region consisting residues 1-18.    
 
 
-\subsubsection{Can confinement method perform better quality assessment in protein structure prediction ?}
-A part of CASP experiment is dedicated to the assessment of the quality of predicted model \cite{Kryshtafovych2011}. 
-Most of the top performing group in this catagory use consensus approaches for quality assessment \cite{Wang2011}.
+\subsubsection{Can the confinement method perform better quality assessment in protein structure prediction?}
+A part of the CASP experiment is dedicated to the assessment of the quality of predicted models \cite{Kryshtafovych2011}. 
+Most of the top performing groups in this category use consensus approaches for quality assessment \cite{Wang2011}.
 A review of CASP9 quality assessment also pointed out that the methods which are based on clustering
 techniques perform
-much better compared to those methos which are based on analysis of individual models \cite{Kryshtafovych2011}. 
-In this background we try to answer, whether the confinement method can do better quality assessment compare to the best performing
+much better compared to those methods which are based on analysis of individual models \cite{Kryshtafovych2011}. 
+In this background we try to answer, whether the confinement method can do better quality assessment
+compared to the best performing
 group (MUFOLD-WQA) in this catagory. In CASP9, the overall reliability of models in quality assessment (QA) was accepted in a mode known as
 QMODE 1. Here, predictors were asked to score each model on a scale from 0 to 1, with higher values corresponding to better models \cite{Kryshtafovych2011}. 
-We have again picked up the CASP taget T0538 to answer this question. We have chosen the Model 3 submitted by PconsR (GDT\_TS = 96, QMODE 1 = 0.5434) 
+We have again picked up the CASP taget T0538 to answer this question. We have chosen Model 3 submitted by PconsR (GDT\_TS = 96, QMODE 1 = 0.5434) 
 and model 5 from the MULTICOM-NOVEL ( GDT\_TS = 83, QMODE 1 = 0.5865). Both are server predicted models and they were further used for quality assessment 
 by the group MUFOLD-WQA \cite{Wang2011}. It is important to note that the model from PconsR was the most accurate predicted model for this 
 target and the model from MULTICOM-NOVEL was predicted as best by the quality assessment experiments of MUFOLD-WQA. Also, 
@@ -557,19 +560,21 @@ Our free energy analysis predict that the model from Pconsr is indeed better tha
 MULTICOM-NOVEL $(\Delta \Delta G (Model\_Pconsr - Model\_MULTICOM-NOVEL = -3.9 Kcal/Mol)$, which   
 matches well with the GDT\_TS score. On the other hand the MUFOLD-WQA predicted the ranking in the reverse order. 
 
-We have also carried out the similar type of analysis for the case of Target 560 of CASP9 experiment. For that 
+We have also carried out a similar type of analysis for the case of Target 560 from the CASP9 experiment. For that 
 we have chosen the model 1 from the group PconsR (GDT\_TS = 94, QMODE 1 = 0.5178), Bilab\-Enable (GDT\_TS = 87, QMODE 1 = 0.5344) 
-and Multicom\_Refine (GDT\_TS = 74, QMODE 1 = 0.4770). If, one want to rank order with respect to the GDT\_TS values, the model from 
+and Multicom\_Refine (GDT\_TS = 74, QMODE 1 = 0.4770). If, one wants to rank order with respect to the GDT\_TS values, the model from 
 PconsR is the best predicted model, but according to the QA assessment by MUFOLD-WQA, the model from Bilab-Enable was found to be best predicted model. 
 All the QMODE 1 values are from MUFOLD\-WQA. In CASP 9, the sequence of 74 residues were given to predict the structure and for 
 quality assessment, whereas during GDT\_TS analysis only residues 3-66 were considered. When we considered the full 74 amino acid 
 residues, the free energy calculated were $(\Delta \Delta G (Model\_Pconsr - Model\_Bilab\-Enable = 3.3 Kcal/Mol)$ and 
-$(\Delta \Delta G (Model\_Pconsr - Model\_Multicom\_Refine = -30.0 Kcal/Mol)$ which 
+$(\Delta \Delta G (Model\_Pconsr - Model\_Multicom\_Refine = -30.0 Kcal/Mol)$ \Alberto{-30 sounds
+huge!} which 
 support the QA assessment by MUFOLD-WQA. On the other hand, if we calculate the same free energy with the trimmed version of the protein 
 (with residues 3-66), the values of the free energy difference become -1.7 and -31.1 Kcal/Mol respectively, which support the GDT\_TS score. 
 The summary of this whole observation is presented in Table~\ref{table:560QA}.
-There is no doubt that the consensus approach can predict the model quality in a faster manner. But we expect that confinement
-method can predict the model quality in a relatively expensive but much accurate way.
+There is no doubt that the consensus approach can predict the model quality in a faster manner. But
+we expect that the confinement
+method can predict the model quality in a relatively expensive but much more accurate way.
 
 \begin{table}
 \label{table:560QA}
@@ -591,29 +596,41 @@ quality assessment by the group MUFOLD\-WQA and based on residues 1-74.}
 \section{Conclusion}
 
 
-In recent past there are number of studies directed towards understanding protein 
+\Alberto{The last 50 years represent our effort to understand what the native state of a protein
+    looks like by using theoretical methods. Experimental evidence coming from NMR and x-ray
+    cristallography remain so far the only real ways to solve the structure of the native state.
+    However, this methods are expensive and slow. Theoretical methods on the other hand are cheaper,
+    but despite improvement still have a long way to go. Often this computational pipelines produce
+    ensembles of diverse structures and identifying which structure is more native like is still a
+    problem. Here we have shown how the application of the confinement method can help identify
+    native like states. The high success rate balances with the computational expense. However, with
+    GPU technology and the rate at which computers improve, this computational expense is becoming
+less of a bottle neck.}
+\Alberto{I don't agree with some of the points here, but I think I covered what you meant in the
+previous paragraph}
+In the recent past there have been a number of studies directed towards understanding protein 
 structure using theoretical tools. Experimentally, it is relatively easy to identify the native structure from the data obtained 
 from x-ray crystallography or NMR. On the other hand using theoretical tools it is often difficult to identify the native structure 
 using both physics based methods and knowledge based method. In order to rank structure from the available data, some groups use 
 clustering algorithms and the structure of the
 most populated cluster is picked out as the most probable structure. However, it may happen that the structure may be trapped and 
-spend most of its time in a kinetic trap, which may give a wrong interpretation of the clustering result. On the other hand, some groups
+spend most of its time in a kinetic trap ***kinetic traps in MD,not other methods, local
+minima***, which may give a wrong interpretation of the clustering result. On the other hand, some groups
 also depend on potential energy functions to pick out their best structure, lacking an entropic
 component. In this work we attempted to identify the native/native like protein strcuture from the decoy using free energy as a scale.
-We have used previously developed confinement method to larger systems.
-We found that in majority of the case, the native structure is always the most stable and we can rank the protein structure upto 100 amino 
-acid residues long. This method works very well if atleast one of the strcuture in the decoy is good. Main advantage of this method is 
+We have used the previously developed confinement method, applying it to larger systems.
+
+We found that in majority of cases, the native structure is always the most stable and we can rank
+protein structures upto 100 amino 
+acid residues long. This method works very well if at least one of the strcuture in the decoy set
+has high quality. The main advantage of this method is 
 that it does not require any reaction coordinate. Thus one can calculate the free energy difference between two very different conformations. 
-An interesting application, that we have developed using this method is per residue
-free energy calculation. Although, we have calculated that in an approximate way, but it give important information regarding conformational 
-preference of a particular residue. In future, this may help for protein design. 
-First, we have tested this method for a series of chameleon sequences, which have $88$, $95$ and $98$ percent sequence identity
-but one of them has a $3 \alpha$ structure and another one has $4 \beta + \alpha$ structure. We found that the method can pick the 
-the conformational preferance of a particular sequence, which matches with the experimental results. Per residue free energy calculation 
-identify the residues that stabilize/destabilize a particular conformation and can help for better protein design. 
-Encouraged by that result we have tested this method for different targets of CASP experiments. We found 
-in most cases, it can pick out the native/native like structure in terms of lowest free enrgy value and rank the protein structure
-with terms of free energy. 
+An interesting application from this method that we have exploited is the partition of free energies
+on a per residue basis.
+ Although, it is an approximate partition, it gives important insight regarding the conformational 
+preferences of a particular residue. The use of this decomposition in understanding the effect of a
+small number of aminoacids in our test chamaleon sequences allows us to think that in the future,
+this method may be used for protein design. 
 The method can be also give wrong result if all the models in the decoy are very poor. It may also be difficult to rank structures if 
 all the structures are very very close to the native structure. But that does not matter at all as our main aim is to differentiate
 between the good and the bad structure. In this article we have extensively tested this method using examples from CASP experiment.
@@ -640,28 +657,29 @@ Another, important application may be to study the protein folding kinetics, spe
 \section{Method}
 
 The confinement method has been described in details in ref. by Tyka et.al. \cite{Tyka2006} and 
-Cecchini et. al. \cite{Cecchini2009}. The basic approach of confinement approach is same in both
-these paper. However, there are some technical differences. Here we briefly describe what we follow
-to compute free energy $\Delta G_{AB}$ between A and B
-conformation of the protein.
+Cecchini et. al. \cite{Cecchini2009}. The basic approach of the confinement approach is the same in both
+these papers. However, there are some technical differences. Here we briefly describe the procedure
+to compute free energy $\Delta G_{AB}$ between two conformations A and B of a protein. The basic
+idea to compute the free energy between conformations A and B is to perform a thermodynamic cycle: 
 
 \begin{enumerate}
 
-\item  We first minimized both the conformation, A and B. These minimized conformation(A* and B*) 
-       are the reference conformation of that state
+\item  Minimization of A and B. These minimized conformations (A* and B*) 
+       are the reference conformation of that state. During this minimization the backbone is kept
+       restrained to the original position to avoid large conformational changes.
 
-\item Backbone dihedral angle of both the full protein is restrained by a harmonic potential. This is required to keep
-    the configurational state of the protein. This approach is particularly important, so that the any misfolded part 
-    of the protein does not chage its configuration. 
-
-\item  The free energy is calculated using a thermodynamic cycle. The first part of this approach is the confinement, where
-       the state A and B are confined to the reference state A* and B*. This is done gradually by applying larger and larger
-       harmonic restraint on all the atoms of the biomolecule. This is done by running 21 molecular dynamics simulation 
-       each of 20 ns long, where the harmonic restraint constant was varied from 0.00005 to 81.92 untill the free and the 
-       restrained state overlap well. The final restrained state was chosen so high so that the rotational contributional 
-       of the protein frozen out and only remaining contribution remain that of vibrational free enrgy. The fluctuation from
-       the reference structure was recorded and the free energy is calculated using a numerical
-       approach developed by Tyka et. al. \cite{Tyka2006}. The confinement free energy calculated in this way recorder as 
+   \item  The free energy of confining the ensemble (A or B) to a microstate (A* or B*) is
+       calculated. This is done by gradually applying larger and larger
+       harmonic restraints on all the atoms of the biomolecule. This is done by running 21 molecular dynamics simulation 
+       (20 ns long each), where the harmonic restraint force constant was scaled from 0.00005
+       \Alberto{units??}
+       (mostly free) to 81.92 (frozen in one microstate). In this final restrained state, the
+       rotational contribution to the free energy is frozen out
+       and the only remaining contribution is the vibrational part. The free energy for this step is
+       estimated from the fluctuations around
+       the reference structure using a numerical
+       approach developed by Tyka et. al. \cite{Tyka2006}. The confinement free energy calculated in
+       this way is recorded as 
        $\Delta G_{A,A*}$ and $\Delta G_{B,B*}$ as shown in Figure~\ref{fig:method}.     
 
 \item  Finally the thermodynamic cycle is closed by calculating the free energy between the final
@@ -673,12 +691,14 @@ conformation of the protein.
 
 \end{enumerate}
 
-In all the calculation amber 11 program is used with ff99SB with GB/SA implicit solvent. Interestingly, we extend the
+ All calculations where performed with the amber 11 suit of programs in combination with ff99SB and GB/SA implicit solvent. Interestingly, we extend the
 method for calculation of per residue free energy in an approximate way. For this purpose, the confinement energy, 
 $\Delta G_{A,A*}$ and $\Delta G_{B,B*}$ of each residue is calculated in the usual numerical way as described above. The
 internal energy of each residue is calculated using the decomp module of amber from the final restrained trajectory. We 
 call this method approximate as we ignore the contribution from the normal mode or quasiharmonic analysis. 
-However, this contrbution to the total free energy is very less (less than $1.0 Kcal/Mol$), which allow us to 
+However, this contrbution to the total free energy is much smaller (less than $1.0
+Kcal/Mol$\Alberto{that sounds huge, i would say what percent of error we stimate, I think it was
+lower than 1kcal/mol}), which allow us to 
 study the mechanistic details of conformational preference of each residue.      
 
 %There are two big bottlenecks in this calculation. The first has to do with the amount of
