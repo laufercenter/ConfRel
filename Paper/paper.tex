@@ -92,7 +92,7 @@ misfolded states might be selected as native like
 % (give the example of human pin1ww domain from Benout Roux and Klaus Schultan).
 
 
-Calculation of free energy have been successfully attempted by a number of groups \cite{Meirovitch2007}, 
+The calculation of free energy have been successfully attempted by a number of groups \cite{Meirovitch2007}, 
 \cite{Ytreberg2006} - \cite{Zheng2008}. In recent years methods like the Reference system method \cite{Ytreberg2006}, 
 Decativated Morphing \cite{Park2008}, Orthogonal Space Random Work \cite{Zheng2008} or the Confinement 
 Method \cite{Tyka2006}, \cite{Cecchini2009} to name a few have been used to calculate free energy
@@ -130,7 +130,7 @@ and this method is able to correctly rank structures in the majority of cases we
 
 \section{Results and Discussion}
 
-\subsection{Confinement method produces correct results in control experiments}
+\subsection{The confinement method produces correct results in control experiments}
 
 \Alberto{ This is benchmarking, good internal, but not relevant. Should go to SI,out, or summarized
     in one sentence:  "After reproducing the results of Cecchini and coworkers we were interested in
@@ -171,7 +171,7 @@ us to identify the residues which stabilize or destabilize a particular conforma
 
 \begin{table}
 \begin{center}
-\caption{Confinement method assigns a more favorable free energy to the experimentally
+\caption{The confinement method assigns a more favorable free energy to the experimentally
 determined structure than to computer-generated predictions. For each target, we examined as many as
 five predictions submitted by CASP participants. Positive $\Delta\Delta G$ values indicate that the
 experimental structure is predicted to be more favorable than any of the decoys.}
@@ -190,7 +190,7 @@ experimental structure is predicted to be more favorable than any of the decoys.
 \end{table}
 
 
-\subsection{Confinement method correctly predicts the structural preferences of chameleon
+\subsection{The confinement method correctly predicts the structural preferences of chameleon
 sequences}
 
 In general, proteins with similar sequences tend to have similar structures. This idea is the basis
@@ -220,7 +220,7 @@ information, it might be possible that we were able to make correct predictions 
 because artefacts of our modeling procedure always lead to the model having a higher free energy
 than the experimental structure. 
 
-To avoid this potential problem, we instead computed the relative free energy of two different
+To avoid this potential problem, we instead computed relative free energy of two different
 structural models for each sequence. One model is based on the GA structure and the other on the GB
 structure (see Supporting Information for details on the modeling procedure). This is a much more
 realistic test of the confinement method's ability to accurately calculate relative free energies.
@@ -236,63 +236,52 @@ came out from our calculation ranges from
 around 3.5 to 5.0 kcal/mol, which is consistent with the above hypothesis \cite{He2008}, \cite{{Alexander2009}}.
 
 
-\subsection{Per residue free energy calculation can identify the mechanistic detail behind conformational pereference 
+\subsection{The per residue free energy calculation can identify the mechanistic detail behind conformational pereference 
 of a particular residue}
 
-We decomposed the calculated free energy into per residue decomposition as described in the methods
-section. This helps us to
-identify important residues that stabilize a particular conformation. 
+We decomposed the calculated free energy into per residue decomposition as described in the method
+section. This helps us to identify important residues that stabilize a particular conformation. 
+In this direction, we first calculate the per residue free energy for the GA95 and GB95 sequences. 
+The per residue free energy, $\Delta \Delta G (4 \beta + \alpha$ - $3 \alpha)$ is plotted in Figure~\ref{fig:orban_full}(F).
+In this plot, the negative peak indicate the residue will stabilize the $4 \beta + \alpha$ conformation of a particular
+residue and the positive peak will stabilize the $3 \alpha$ structure. As, the differences of amino acid
+residues are only at 3 position, there are some common features of residues in both GA95 and GB95 sequences in both
+$3 \alpha$ and $4 \beta + \alpha$ conformation. Role of some important residues in stabilizing either 
+$4 \beta + \alpha$ or $3 \alpha$ conformation and possible reason for such conformational preferences are discussed in 
+details in Figure~\ref{fig:orban_full} and Table~\ref{table:orban_perresidue}. It is important to note that
+experimental observations classified the protein into two parts: Amino acids 9-51 are fully structured in both
+the folds, where as residues 1-8 and 52-56 are unstructured in $3 \alpha$, but form $\beta$ strand in $4 \beta + \alpha$ structure.
+Most of the amino acid residues in the region 1-9 favor $4 \beta + \alpha$ structure as can be seen from the plot
+Figure~\ref{fig:orban_full}(F). Interestingly, we can explain most of the big peak in this plot. They are presented 
+in Figure~\ref{fig:orban_full} and Table~\ref{table:orban_perresidue}. Here, we explain only one case. The first big peak
+appears at position 7. Here, the hydrophobic Leu-7 stabilizes the $4 \beta + \alpha$ conformation as its sidechain is oriented 
+towards the protein hydrophobic core, whereas in $3 \alpha$ structure it exposed to the solvent (Figure~\ref{fig:orban_full}(A)).
+Thus, if someone want to better design the $3 \alpha$ conformation of this protein, we propose to mutate Leu at this position
+with some hydrophilic residue. Similarly, we found that the free energy differences arise in two conformation for various 
+reasons ranging from hydrogen/salt bridge formation to relative solvent exposure of hydrophobic residues etc. They are 
+listed in Figure~\ref{fig:orban_full} and Table~\ref{table:orban_perresidue}.     
+
+
 \Alberto{This is not Reader Friendly at all. we do not have to describe every little detail. I would
     rather have a table where we have the pairing and the reason for favoring one structure or the
     other. In the main text I would say that the main reason for preferences of one fold or another
     has to do with the relative solvent exposure of the residue in one conformation or another, or
     the possibility of stablishing hydrogen/salt bridges in one conformation. This would be my
 preference, ditching everything below until the next section. What do you think?}
-In this direction, we first calculate the per residue free energy for the GA95 and GB95 sequences. Similar to the total 
-free energy for each sequence, we calculate the free energy difference between $4 \beta + \alpha$ and $3 \alpha$ structure for each 
-residue. The free energy, $\Delta \Delta G (4 \beta + \alpha$ - $3 \alpha)$ is plotted in Figure~\ref{fig:orban_full}(F). 
-In this plot, the negative peak indicate the residue will stabilize the $4 \beta + \alpha$ conformation of a particular
-residue and the positive peak will stabilize the $3 \alpha$ structure. As, the differences of amino acid 
-residues are only at 3 position, there are some common features of residues in both GA95 and GB95 sequences in both 
-$3 \alpha$ and $4 \beta + \alpha$ conformation. They are reported in Figure~\ref{fig:orban_full} 
-and Table~\ref{table:orban_perresidue}. Before, we further go into that detail, it is important to note that 
-experimental observations classified the protein into two parts: Amino acids 9-51 are fully structured in both
-the folds, where as residues 1-8 and 52-56 are unstructured in $3 \alpha$, but form $\beta$ strand in $4 \beta + \alpha$ structure.
-Most of the amino acid residues in the region 1-9 favor $4 \beta + \alpha$ structure as can be seen from the plot 
-Figure~\ref{fig:orban_full}(F). Here, we try to explain some of the largest peak in that plot. The residues Leu-5 and 
-Leu-7 favor $4 \beta + \alpha$ structure as these hydrophobic residues are oriented towards the protein hydrophobic 
-core, whereas in $3 \alpha$ structure they are exposed to the solvent (Figure~\ref{fig:orban_full}(A)). One can argue that 
-hydrophilic residues in these positions can stabilize the $3 \alpha$ conformation.
-The next big peak is located at position 11. A close observation of the sidechain orientation of residue Gln at position 11 reveal that it
-is exposed to the protein surface in both the conformation, but in $3 \alpha$ structure it has an additional H-bond with Glu-15 which gives
-it more stability compared to the $4 \beta + \alpha$ structure (Figure~\ref{fig:orban_full}(B)). The peak 
-at position 14 is due to the hydrophilic Glu, which is completely
-exposed to the solvent in $4 \beta + \alpha$ conformation as shown in
-(Figure~\ref{fig:orban_full}(E)), but is only partially exposed 
-to the solvent in $3 \alpha$ form. 
-This is the reason why Glu at position 14 stabilize $4 \beta + \alpha$ conformation. Another high peak is at position 26, which indicate
-that the residue in that position stabilizes $4 \beta + \alpha$ conformation. Again, the hydrophobic amino acid residue, Ala at position 26
-is oriented towards the hydrophobic core of the protein in $4 \beta + \alpha$ conformation , whereas it is exposed towards the protein surface 
-in $3 \alpha$ structure (Figure~\ref{fig:orban_full}(C)). Similar situations arise for residues at position 54 and 56. 
-These residues are in the region, where $4 \beta + \alpha$ form is fully structured and $3 \alpha$ form is unstructured. 
-As shown in Figure~\ref{fig:orban_full}(D), the sidechain of hydrophobic Val-54 is oriented towards the hydrophobic core in 
-$4 \beta + \alpha$ conformation and thus have hydrophobic interactions with other residues in this conformation.
-On the other hand, in $3 \alpha$ it is exposed to the solvent. The reverse happens for the residue at position 56.
-Here the hydrophilic residue Glu is partially or not at all exposed to the protein surface in $4 \beta + \alpha$ but fully exposed 
-to the solvent in $3 \alpha$ conformation (Figure~\ref{fig:orban_full}(G)). This is the reason, why one can see a positive peak for position 56. 
-Similarly, hydrophobic Ile-49 in $4 \beta + \alpha$ conformation is exposed to protein surface and solvent, whereas as shown in 
-Figure~\ref{fig:orban_full}(H)$3 \alpha$ conformation 
-it has hydrophobic interaction with other hydrophobic residues in protein core.   
+
+\Arijit{I have rewrite this part.There was a table. I made it better. I want to keep some discussion though if you agree.}
+
+ 
 Now, let us discuss the differences of $3 \alpha$ and $4 \beta + \alpha$ fold due to specific difference of mutated amino acid 
 residues in GA and GB sequence. The differences are in positions 20, 30 and 45. While GA95 has Leu-20-Ile-30-Leu-45, GB95 sequence 
 has Ala-20-Phe-30-Tyr-45 at those position. One can find that the peak at position 49 stabilizes the GA sequence more than that of GB
 sequence. In $3 \alpha$ fold, Ile-49 has hydrophobic interactions with Leu-20 and Ile-30 with GA sequence, whereas with GB sequence it 
-has such interactions with smaller Ala-20 and Phe-30 residues (Figure~\ref{fig:orban_full}(I). In $3 \alpha$, with GB sequence, Phe-30 
-being a larger group can not be completely accomodated in the hydrophobic core(Figure~\ref{fig:orban_full}(J)) and therefore, 
+has such interactions with smaller Ala-20 (Figure~\ref{fig:orban_full}(I). In $3 \alpha$, with GB sequence, Phe-30 
+being a larger group can not be completely accomodated in the hydrophobic core(Figure~\ref{fig:orban_full}(I)) and therefore, 
 partially exposed to the protein surface. There is a very interesting difference for residue at position 45 as well. In GB95 sequence
 and $4 \beta + \alpha$ fold there is H-bonding between Tyr-45 and Asp-47 (Figure~\ref{fig:orban_full}(K)), which is absent in the
 $3 \alpha$ conformation. On the other hand with GA conformation, this H-bond is absent for both the conformation as there is a Leu at position
-45. Although, one can not find much difference between $4 \beta + \alpha$ and $3 \alpha$ conformation
+45 (Figure~\ref{fig:orban_full}(J)). Although, one can not find much difference between $4 \beta + \alpha$ and $3 \alpha$ conformation
 for position 20 for both GA95 and GB95 sequence. There are significant difference for the residues at position 30 and 45.  
 These residues have some long term effects as well. As already explained, residue Ile-49 has much more hydrophic interactions with residues
 at position 20 and 30 in GA sequence, which is less in GB sequence. There are difference for Asp-47 as well. With $3 \alpha$ conformation 
