@@ -432,7 +432,7 @@ The best predictor group for this target was "BAKER-ROSETTASERVER".
 We initlally checked similarity between the models submitted by "BAKER-ROSETTASERVER" and discarded two of them from the 
 analysis on the basis of being too similar to some of the other models. The GDT\_TS score and rmsd
 values as shown in Figure~\ref{fig:T0559} indicate that the model 1 was predicted correctly, 
-whereas the order of model 3 and 5 was wrong. The main difference
+whereas the order of model 3 and 5 was wrong. Main difference
 between the model 3 and the rest of the model is that the orientation of first alpha helix of model 3 is opposite.
 On the other hand, as shown in Figure~\ref{fig:T0559} confine and release method not only can differentiate the native 
 structure from the submitted models , it can also correctly rank all the models like their The GDT\_TS score.  
@@ -589,8 +589,9 @@ also depend on potential energy functions to pick out their best structure, lack
 component. In this work we attempted to identify the native/native like protein strcuture from the decoy using free energy as a scale.
 We have used previously developed confinement method to larger systems.
 We found that in majority of the case, the native structure is always the most stable and we can rank the protein structure upto 100 amino 
-acid residues long. This method works very well if atleast one of the strcuture in the decoy is good. The main advantage of this method is 
-that it does not require any reaction coordinate. An interesting application, that we have developed using this method is per residue
+acid residues long. This method works very well if atleast one of the strcuture in the decoy is good. Main advantage of this method is 
+that it does not require any reaction coordinate. Thus one can calculate the free energy difference between two very different conformations. 
+An interesting application, that we have developed using this method is per residue
 free energy calculation. Although, we have calculated that in an approximate way, but it give important information regarding conformational 
 preference of a particular residue. In future, this may help for protein design. 
 First, we have tested this method for a series of chameleon sequences, which have $88$, $95$ and $98$ percent sequence identity
@@ -618,8 +619,9 @@ be easy to use for real problems.
 %size of the systems under study. In most cases quasiharmonic analysis.   
  
 This method can be further used for calculating free energy due to very large conformational change. Another application may be
-for the case of ligand binding. It can also be used to distinguish the most stable structure during protein design. Another, important
-application may be to study the protein folding kinetics, specially to study the phi value analysis.            
+for the case of ligand binding. It can also be used to distinguish the most stable structure during protein design. Decompition of 
+total free energy into the per residue component help identifying residues that give stability to a particular conformation. 
+Another, important application may be to study the protein folding kinetics, specially to study the phi value analysis.            
 
 
 \section{Method}
