@@ -22,14 +22,15 @@
 \newcommand{\Ken}[1]{\color{red}#1\normalcolor}
 
 \author{Arijit~Roy}
-\author{Justin~L.~MacCallum}
 \author{Alberto~Perez}
 \author{Ken~A.~Dill}
+\author{Justin~L.~MacCallum}
 \affil{Laufer Center for Physical and Quantitative Biology\\
     Stony Brook University\\
     Stony Brook, NY 11794-5252.}
 
-\title{Physics-based protein structure prediction and design using the confinement method}
+\title{Predicting the conformational preferences of proteins using a physics-based free energy
+method}
 
 \begin{document}
 
@@ -56,126 +57,92 @@ method in protein design.
 
 \section{Introduction}
 
-In computational structural biology there are numerous cases where the free energy difference
-between two well defined 
-states plays an important role. Examples range from small to large conformational changes of proteins due to
-ligand binding, change of pH or other conditions \cite{Meirovitch2007}, \cite{Chipot2007}, \cite{Jorgensen2004}. 
-Free energy also plays an important role in the case of protein
-folding. Ground breaking work of Christian B. Anfinsen and coworkers showed that the native
-structures of small globular proteins have a unique, thermodynamically stable native structure with
-their conformation at the global free energy minimum \cite{Anfinsen1973}. Regardless of the starting
-point or even after unfolding 
-it by changing different condition most proteins will go back to the native state after
-reinstituting native like conditions. Often, the changes in free energy between different
-conformations is small, but nonetheless crucial in favoring the native state
- since defects in protein folding may be the molecular cause of a range of human genetic disorders.
- For example a misfolded protein known as a
-prion can misfold correctly folded proteins when entering a healthy organism. Thus it is important for 
-protein to have its native structure. As protein native structure stays in the global free energy minimum, 
-\Arijit{free energy can be used as a scale for accurate identification of misfolded state from the protein native state.}
-\Alberto{I'm not sure I understand this here} 
-These facts further give free energy a special importance in structural biology.
+Protein conformation and associated conformational changes are important in biology. The mechanism
+of enzymes, the function of structural proteins, and the binding of proteins to DNA or other
+proteins all depend on protein conformations and the relative free energies of different
+conformational states. Proteins can undergo conformational changes for a variety of reasons,
+including ligand binding, change of pH or other conditions \cite{Meirovitch2007}, \cite{Chipot2007},
+\cite{Jorgensen2004}. The process of protein folding also depends on the free energies of different
+conformational states. The native structure is at a free energy minimum \cite{Anfinsen1973}, while
+the kinetics are determined by the free energies of various on- and off-pathway intermediates.
 
-However, the theoretical calculation of conformational free energy change becomes difficult if the
-states of interest are very different \cite{Meirovitch2007}. In such scenario timescales involved in
-such conformational transitions may
-be beyond the sampling ability of classical molecular dynamics simulation.  Generally, in order to
-calculate the free energy a pathway or reaction coordinate is needed with several intermediate structures.
-Methods like umbrella sampling \cite{Torrie1977}, thermodynamic integration \cite{Tironi1994} along with classical MD can suffer from
-overlap problem and requires a larger computational effort. The idea of a reaction coordinate became
-even more
-complicated in the case of protein folding.  As free energy landscape for protein folding 
-is rough \cite{Dill1997}, \cite{Dill2008}, the molecule 
-can get trapped in an energy well during conformational sampling. Even with 
-advanced methods like replica exchange molecular dynamics, the three dimensional structure may be
-trapped in a local minima for a considerable time, giving rise to nonconverged distributions where
-misfolded states might be selected as native like
-% (give the example of human pin1ww domain from Benout Roux and Klaus Schultan).
+However, the theoretical calculation of conformational free energy changes is difficult when the
+states of interest are very different \cite{Meirovitch2007}. In these cases, the timescales involved
+in such conformational transitions may be too long to simulate directly. For example, in protein
+folding the free energy landscape is rough \cite{Dill1997}, \cite{Dill2008}, and the molecule can
+become trapped in an energy well during conformational sampling. Even with advanced methods like
+replica exchange molecular dynamics, the three dimensional structure may be trapped in a local
+minima for a considerable time. Sometimes this problem can be circumvented by defining a pathway or
+reaction coordinate connecting the states of interest. The free energy along this reaction
+coordinate can then be determined using methods such as umbrella sampling \cite{Torrie1977},
+targeted MD \cite{}, or thermodynamic integration \cite{Tironi1994}. However, accurately sampling
+this reaction coordinate may still be difficult and require a large computationl effort. In the case
+of protein folding, it is often difficult to even devise a meaningful reaction coordinate that could
+connect the unfolded and folded states efficiently \cite{}.
 
+The calculation of protein conformational free energy has been successfully attempted by a number of
+groups \cite{Meirovitch2007,Ytreberg2006,Zheng2008}. In recent years, methods such as the reference
+system method \cite{Ytreberg2006}, decativated morphing \cite{Park2008}, orthogonal space random
+walk \cite{Zheng2008}, and the confinement method \cite{Tyka2006,Cecchini2009} have been used to
+calculate free energy differences.
 
-The calculation of free energy have been successfully attempted by a number of groups \cite{Meirovitch2007}, 
-\cite{Ytreberg2006} - \cite{Zheng2008}. In recent years methods like the Reference system method \cite{Ytreberg2006}, 
-Decativated Morphing \cite{Park2008}, Orthogonal Space Random Work \cite{Zheng2008} or the Confinement 
-Method \cite{Tyka2006}, \cite{Cecchini2009} to name a few have been used to calculate free energy
-differences.
-In this work we have applied the confinement method which was originally devoled by Tyka et. al. \cite{Tyka2006} and
-Cecchini et. al. \cite{Cecchini2009}. This method relies on the fact that the free energy difference is a state function and 
-thus it is independent of the sampling path. This approach uses a thermodynamic cycle where first, non-harmonic degrees of
-freedom are removed by applying a series of restraints to the system. Then the free energy of the
-remaining harmonic system is obtained using a normal mode calculation and combined with the
-non-harmonic part to give the total absolute free energy.  Previously, this method was applied to
-calculate the conformational free energy of a 16 amino acid residue peptide, known as BHP.  We have
-first reproduced that known result. Next we have applied this method to larger proteins for the
-first time. The free energy difference of pairs of conformations in proteins with similar sequence but completely
-different fold was calculated. \Alberto{i made this part too long, have to summarize here and define
-better inside text?-->} Encouraged by the result, we applied the method to help tackle the
-problem of protein conformation ranking. We did this by selecting different targets from the
-Critical Assessment of Structure Prediction (CASP) event. In this event, different research groups
-try to find the 3D structure of a protein given a sequence in a blind way using their methodologies. Upon comparing
-with the real structure it is often seen that several groups are able to generate better structures
-than the ones they submit, but are not able to identify them. This is known as the ranking problem,
-and this method is able to correctly rank structures in the majority of cases we have tried.
- Finally, we have been exploring the ability of working on a per residue basis to identify which
- residues are the major players in the stabilization/destabilization of a pair of conformations. Our
- initial experience makes us thinkg that this method might be helpful in identifying key residues
- for protein design.
+In this work we explore confinement method\cite{Tyka2006,Cecchini2009}, which relies on the fact
+that the free energy difference is a state function and thus is independent of the sampling path.
+This approach uses a thermodynamic cycle \ref{fig:method} where first protein conformational entropy
+of the two end-states is frozen out by applying a series of restraints to the system. Next, the free
+energy difference between the two highly-restrained harmocic systems is obtained using a normal mode
+calculation.
 
-%of protein can be obtained to atomic resolution by X-ray crystallography or NMR. Unfortunately, the
-%sheer amount of time and economic investment for structure determination cannot keep up with the
-%rate at which proteins of unknown structure are sequenced. Therefore, computational models can be a
-%good way to bridge the increasing gap between sequence and structure. In this respect CASP
-%(Critical Assessment of Structure Prediction) has played a crucial role which is a community wide
-%experiments for the protein structure prediction.
-
+Previously, this method was applied to calculate the conformational free energy of a 16 amino acid
+residue peptide, known as BHP.  We have first reproduced that known result. Next, we have applied
+this method to larger proteins in two different case studies. In the first, we attempt to pick the
+most native like structures from a set of models produced during the Critical Assessment of
+Structure Prediction (CASP) \cite{} experiment. In the second case study, we examine the
+conformational preferences of a series of chameleon proteins designed by Orban and co-workers
+\cite{} that can switch between two completely different folds with only small changes in amino acid
+sequence.
 
 
 \section{Results and Discussion}
 
-\subsection{The confinement method produces correct results in control experiments}
+\subsection{Our implementation of the confiment method reproduces results from the literature}
 
-\Alberto{ This is benchmarking, good internal, but not relevant. Should go to SI,out, or summarized
-    in one sentence:  "After reproducing the results of Cecchini and coworkers we were interested in
-the ability to apply this method to larger systems"}
-
-\Alberto{As a first step, we performed several control experiments to verify that our implementation of the
+As a first step, we performed several control experiments to verify that our implementation of the
 confinement method produces results compatible with previous calculations reported in the
 literature.
 
-The method has previously been applied to a 16 amino acid residue $\beta$-hairpin from
-protein G, known as BHP \cite{Cecchini2009}. We calculated the free energy difference between two different
+The method has previously been applied to a 16 amino acid residue $\beta$-hairpin from protein G,
+known as BHP \cite{Cecchini2009}. We calculated the free energy difference between two different
 conformations of the peptide: (1) the native conformation, called bhp1, with a two-stranded
 $\beta$-sheet; and (2) a conformation, called bhp3, which has a three-stranded $\beta$-sheet.
-Analysis of long (4 $\mu$s) equilibrium simulations \cite{Cecchini2009},\cite{Krivov2004}  shows that bhp1 is the more favorable
-configuration by 1.8 kcal/mol. Using the confinement method, we obtain a value 1.7 kcal/mol, which
-is in good agreement with the equilibrium simulations and with previous calculations using the
-confinement method \cite{Cecchini2009} (see Supporting Information for further details).}
+Analysis of long (4 $\mu$s) equilibrium simulations \cite{Cecchini2009,Krivov2004}  shows that bhp1
+is the more favorable configuration by 1.8 kcal/mol. Using the confinement method, we obtain a value
+1.7 kcal/mol, which is in good agreement with the equilibrium simulations and with previous
+calculations using the confinement method \cite{Cecchini2009}.
 
-Previous applications of the confiment method have focused on relatively short peptides, up to $17$
-residues in length. In this work we apply the confinement method to
-larger proteins. On that direction, we first test the confinement method for a chamelon sequence and 
-found that it can correctly pick out the preferential structure of the chamelon sequence. Other 
-applications we explore in the present work is the re-scoring, or
-metaprediction, of structures submitted during the Critical Assessment of Structure Prediction
-(CASP) experiment (described in detail later). We computed the relative free energies of predictions
-submitted during CASP9, with the expectation that the most native-like prediction will have
-the lowest free energy. As a control, for several targets we also calculated the relative free
-energy of the experimentally determined structure. \Alberto{should not start with results yet, first
-we are describing what we are going to show them} As
-Table~\ref{table:casp_control} shows, in most cases, the confinement method correctly assigns a
-lower free energy to the experimentally determined structure than to any of the decoys. 
-Most interestingly, we decomposed the free energy into its per residue component, which help 
-us to identify the residues which stabilize or destabilize a particular conformation of the protein.
-%Although differentiating between experimentally determined structures and computer generated predictions is
-%not a stringent test of a scoring method---for example, examining the residue-residue packing can
-%easily distinguish between the two [ref Rosetta Holes]---the results none the less serve as a useful
-%"sanity check".
+\subsection{The confiment method predicts that experimental structures have lower free energies than
+computer-generated models}
+
+Previous applications of the confiment method have focused on relatively short peptides, up to 17
+residues in length. In this work we apply the confinement method to larger proteins. As a first
+test, we calculated the free energies of models submitted by predictors during the CASP9 experiment
+(often referred to as decoys) and compared them with the calculated free energy of the corresponding
+experimentally determined structure from the Protein Data Bank (PDB). As
+Table~\ref{table:casp_control} shows, in 5 out of 6 cases, the confinement method assigns a lower
+free energy to the experimentally determined structure than to any of the decoys---as would be
+expected. Although differentiating between experimentally determined structures and computer
+generated predictions is not a stringent test of a scoring method---for example, examining the
+residue-residue packing can easily distinguish between the two [ref Rosetta Holes]---the results
+none the less serve as a useful "sanity check".
 
 \begin{table}
 \begin{center}
 \caption{The confinement method assigns a more favorable free energy to the experimentally
-determined structure than to computer-generated predictions. For each target, we examined as many as
-five predictions submitted by CASP participants. Positive $\Delta\Delta G$ values indicate that the
-experimental structure is predicted to be more favorable than any of the decoys.}
+    determined structure than to computer-generated predictions. For each target, we examined as
+    many as five predictions submitted by CASP participants. We report the free energy difference
+    between the most favorable decoy and the experimentally determined structure. Positive
+    $\Delta\Delta G$ values indicate that the experimental structure is predicted to be more
+favorable than any of the decoys.}
 \label{table:casp_control}
 \begin{tabular}{l l l}\hline
     CASP Target  & PDB Identifier & $\Delta\Delta G_{native \to best decoy}$ (kcal/mol) \\ \hline
@@ -187,7 +154,6 @@ experimental structure is predicted to be more favorable than any of the decoys.
      T0569       &    2KWY        &          $20.01 \pm 0.69$  \\ \hline
 \end{tabular}
 \end{center}
-
 \end{table}
 
 
