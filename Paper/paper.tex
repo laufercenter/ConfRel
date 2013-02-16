@@ -592,7 +592,7 @@ quality assessment by the group MUFOLD\-WQA and based on residues 1-74.}
 \section{Conclusion}
 
 
-\Alberto{The last 50 years represent our effort to understand what the native state of a protein
+The last 50 years represent our effort to understand what the native state of a protein
     looks like by using theoretical methods. Experimental evidence coming from NMR and x-ray
     cristallography remain so far the only real ways to solve the structure of the native state.
     However, this methods are expensive and slow. Theoretical methods on the other hand are cheaper,
@@ -601,53 +601,17 @@ quality assessment by the group MUFOLD\-WQA and based on residues 1-74.}
     problem. Here we have shown how the application of the confinement method can help identify
     native like states. The high success rate balances with the computational expense. However, with
     GPU technology and the rate at which computers improve, this computational expense is becoming
-less of a bottle neck.}
-\Alberto{I don't agree with some of the points here, but I think I covered what you meant in the
-previous paragraph}
-In the recent past there have been a number of studies directed towards understanding protein 
-structure using theoretical tools. Experimentally, it is relatively easy to identify the native structure from the data obtained 
-from x-ray crystallography or NMR. On the other hand using theoretical tools it is often difficult to identify the native structure 
-using both physics based methods and knowledge based method. In order to rank structure from the available data, some groups use 
-clustering algorithms and the structure of the
-most populated cluster is picked out as the most probable structure. However, it may happen that the structure may be trapped and 
-spend most of its time in a kinetic trap ***kinetic traps in MD,not other methods, local
-minima***, which may give a wrong interpretation of the clustering result. On the other hand, some groups
-also depend on potential energy functions to pick out their best structure, lacking an entropic
-component. In this work we attempted to identify the native/native like protein strcuture from the decoy using free energy as a scale.
-We have used the previously developed confinement method, applying it to larger systems.
-
-We found that in majority of cases, the native structure is always the most stable and we can rank
-protein structures upto 100 amino 
-acid residues long. This method works very well if at least one of the strcuture in the decoy set
-has high quality. The main advantage of this method is 
-that it does not require any reaction coordinate. Thus one can calculate the free energy difference between two very different conformations. 
-An interesting application from this method that we have exploited is the partition of free energies
-on a per residue basis.
- Although, it is an approximate partition, it gives important insight regarding the conformational 
-preferences of a particular residue. The use of this decomposition in understanding the effect of a
-small number of aminoacids in our test chamaleon sequences allows us to think that in the future,
-this method may be used for protein design. 
-The method can be also give wrong result if all the models in the decoy are very poor. It may also be difficult to rank structures if 
-all the structures are very very close to the native structure. But we want to ignore this fact as our main aim is to differentiate
-between the good and the bad structure. In this article we have extensively tested this method using examples from CASP 
-This method can be computationally expensive in actual CASP experiment if one want rank hundreds of submitted models in CASP 
-experiments. However, in real life experiment with a particular target, we expect this method can give accurate result. The important 
-fact about confinement method is that all the part of the calculation can be done independently. 
-There is another big bottlenecks in this calculation. This has to do with the amount of
-simulations that have to be performed to confine the ensemble of conformations close to a microstate
-into a single microstate. We have tackled this issue by using GPU (Graphical Processing Unit) technology as opposed to the classical
-CPUs, which gives us a two order of magnitude boost in computational efficiency.
-For example, we have mostly carried out our calculation with Amber program \cite{Case2005} in GPU computer. With a avarage 56 residue 
-we found that it take only 4 hour to complete 20 ns of the confinement step. So, with available computer power this method will 
-be easy to use for real problems. 
-%There is another issue, which is normal mode
-%analysis calculations are Oh(N**3) and require large amounts of memory, effectively limiting the
-%size of the systems under study. In most cases quasiharmonic analysis.   
- 
-This method can be further used for calculating free energy due to very large conformational change. Another application may be
-the case of ligand binding. It can also be used to distinguish the most stable structure during protein design. Decompition of 
-total free energy into the per residue component help identifying residues that give stability to a particular conformation. 
-Another, important application may be to study the protein folding kinetics, specially to study the phi value analysis.            
+less of a bottle neck.
+We foresee great potential for this methodology for two reasons: independence from a reaction
+coordinate (just need start and end state) and avility to decompose the free energies on a per
+residues basis. This last point can be very useful in protein design. Finally, we have presented
+data for structure comparison of proteins, but we are currently exploring the possibility of
+using this methodology for getting free energies of ligand-protein binding. 
+\Alberto{Do we mention this in the text? too technical for conclusions:
+There is another issue, which is normal mode
+analysis calculations are Oh(N**3) and require large amounts of memory, effectively limiting the
+size of the systems under study. In most cases quasiharmonic analysis.   
+}
 
 \section{Method}
 
