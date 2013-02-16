@@ -22,14 +22,15 @@
 \newcommand{\Ken}[1]{\color{red}#1\normalcolor}
 
 \author{Arijit~Roy}
-\author{Justin~L.~MacCallum}
 \author{Alberto~Perez}
 \author{Ken~A.~Dill}
+\author{Justin~L.~MacCallum}
 \affil{Laufer Center for Physical and Quantitative Biology\\
     Stony Brook University\\
     Stony Brook, NY 11794-5252.}
 
-\title{Physics-based protein structure prediction and design using the confinement method}
+\title{Predicting the conformational preferences of proteins using a physics-based free energy
+method}
 
 \begin{document}
 
@@ -56,126 +57,92 @@ method in protein design.
 
 \section{Introduction}
 
-In computational structural biology there are numerous cases where the free energy difference
-between two well defined 
-states plays an important role. Examples range from small to large conformational changes of proteins due to
-ligand binding, change of pH or other conditions \cite{Meirovitch2007}, \cite{Chipot2007}, \cite{Jorgensen2004}. 
-Free energy also plays an important role in the case of protein
-folding. Ground breaking work of Christian B. Anfinsen and coworkers showed that the native
-structures of small globular proteins have a unique, thermodynamically stable native structure with
-their conformation at the global free energy minimum \cite{Anfinsen1973}. Regardless of the starting
-point or even after unfolding 
-it by changing different condition most proteins will go back to the native state after
-reinstituting native like conditions. Often, the changes in free energy between different
-conformations is small, but nonetheless crucial in favoring the native state
- since defects in protein folding may be the molecular cause of a range of human genetic disorders.
- For example a misfolded protein known as a
-prion can misfold correctly folded proteins when entering a healthy organism. Thus it is important for 
-protein to have its native structure. As protein native structure stays in the global free energy minimum, 
-\Arijit{free energy can be used as a scale for accurate identification of misfolded state from the protein native state.}
-\Alberto{I'm not sure I understand this here} 
-These facts further give free energy a special importance in structural biology.
+Protein conformation and associated conformational changes are important in biology. The mechanism
+of enzymes, the function of structural proteins, and the binding of proteins to DNA or other
+proteins all depend on protein conformations and the relative free energies of different
+conformational states. Proteins can undergo conformational changes for a variety of reasons,
+including ligand binding, change of pH or other conditions \cite{Meirovitch2007}, \cite{Chipot2007},
+\cite{Jorgensen2004}. The process of protein folding also depends on the free energies of different
+conformational states. The native structure is at a free energy minimum \cite{Anfinsen1973}, while
+the kinetics are determined by the free energies of various on- and off-pathway intermediates.
 
-However, the theoretical calculation of conformational free energy change becomes difficult if the
-states of interest are very different \cite{Meirovitch2007}. In such scenario timescales involved in
-such conformational transitions may
-be beyond the sampling ability of classical molecular dynamics simulation.  Generally, in order to
-calculate the free energy a pathway or reaction coordinate is needed with several intermediate structures.
-Methods like umbrella sampling \cite{Torrie1977}, thermodynamic integration \cite{Tironi1994} along with classical MD can suffer from
-overlap problem and requires a larger computational effort. The idea of a reaction coordinate became
-even more
-complicated in the case of protein folding.  As free energy landscape for protein folding 
-is rough \cite{Dill1997}, \cite{Dill2008}, the molecule 
-can get trapped in an energy well during conformational sampling. Even with 
-advanced methods like replica exchange molecular dynamics, the three dimensional structure may be
-trapped in a local minima for a considerable time, giving rise to nonconverged distributions where
-misfolded states might be selected as native like
-% (give the example of human pin1ww domain from Benout Roux and Klaus Schultan).
+However, the theoretical calculation of conformational free energy changes is difficult when the
+states of interest are very different \cite{Meirovitch2007}. In these cases, the timescales involved
+in such conformational transitions may be too long to simulate directly. For example, in protein
+folding the free energy landscape is rough \cite{Dill1997}, \cite{Dill2008}, and the molecule can
+become trapped in an energy well during conformational sampling. Even with advanced methods like
+replica exchange molecular dynamics, the three dimensional structure may be trapped in a local
+minima for a considerable time. Sometimes this problem can be circumvented by defining a pathway or
+reaction coordinate connecting the states of interest. The free energy along this reaction
+coordinate can then be determined using methods such as umbrella sampling \cite{Torrie1977},
+targeted MD \cite{}, or thermodynamic integration \cite{Tironi1994}. However, accurately sampling
+this reaction coordinate may still be difficult and require a large computationl effort. In the case
+of protein folding, it is often difficult to even devise a meaningful reaction coordinate that could
+connect the unfolded and folded states efficiently \cite{}.
 
+The calculation of protein conformational free energy has been successfully attempted by a number of
+groups \cite{Meirovitch2007,Ytreberg2006,Zheng2008}. In recent years, methods such as the reference
+system method \cite{Ytreberg2006}, decativated morphing \cite{Park2008}, orthogonal space random
+walk \cite{Zheng2008}, and the confinement method \cite{Tyka2006,Cecchini2009} have been used to
+calculate free energy differences.
 
-The calculation of free energy have been successfully attempted by a number of groups \cite{Meirovitch2007}, 
-\cite{Ytreberg2006} - \cite{Zheng2008}. In recent years methods like the Reference system method \cite{Ytreberg2006}, 
-Decativated Morphing \cite{Park2008}, Orthogonal Space Random Work \cite{Zheng2008} or the Confinement 
-Method \cite{Tyka2006}, \cite{Cecchini2009} to name a few have been used to calculate free energy
-differences.
-In this work we have applied the confinement method which was originally devoled by Tyka et. al. \cite{Tyka2006} and
-Cecchini et. al. \cite{Cecchini2009}. This method relies on the fact that the free energy difference is a state function and 
-thus it is independent of the sampling path. This approach uses a thermodynamic cycle where first, non-harmonic degrees of
-freedom are removed by applying a series of restraints to the system. Then the free energy of the
-remaining harmonic system is obtained using a normal mode calculation and combined with the
-non-harmonic part to give the total absolute free energy.  Previously, this method was applied to
-calculate the conformational free energy of a 16 amino acid residue peptide, known as BHP.  We have
-first reproduced that known result. Next we have applied this method to larger proteins for the
-first time. The free energy difference of pairs of conformations in proteins with similar sequence but completely
-different fold was calculated. \Alberto{i made this part too long, have to summarize here and define
-better inside text?-->} Encouraged by the result, we applied the method to help tackle the
-problem of protein conformation ranking. We did this by selecting different targets from the
-Critical Assessment of Structure Prediction (CASP) event. In this event, different research groups
-try to find the 3D structure of a protein given a sequence in a blind way using their methodologies. Upon comparing
-with the real structure it is often seen that several groups are able to generate better structures
-than the ones they submit, but are not able to identify them. This is known as the ranking problem,
-and this method is able to correctly rank structures in the majority of cases we have tried.
- Finally, we have been exploring the ability of working on a per residue basis to identify which
- residues are the major players in the stabilization/destabilization of a pair of conformations. Our
- initial experience makes us thinkg that this method might be helpful in identifying key residues
- for protein design.
+In this work we explore confinement method\cite{Tyka2006,Cecchini2009}, which relies on the fact
+that the free energy difference is a state function and thus is independent of the sampling path.
+This approach uses a thermodynamic cycle \ref{fig:method} where first protein conformational entropy
+of the two end-states is frozen out by applying a series of restraints to the system. Next, the free
+energy difference between the two highly-restrained harmocic systems is obtained using a normal mode
+calculation.
 
-%of protein can be obtained to atomic resolution by X-ray crystallography or NMR. Unfortunately, the
-%sheer amount of time and economic investment for structure determination cannot keep up with the
-%rate at which proteins of unknown structure are sequenced. Therefore, computational models can be a
-%good way to bridge the increasing gap between sequence and structure. In this respect CASP
-%(Critical Assessment of Structure Prediction) has played a crucial role which is a community wide
-%experiments for the protein structure prediction.
-
+Previously, this method was applied to calculate the conformational free energy of a 16 amino acid
+residue peptide, known as BHP.  We have first reproduced that known result. Next, we have applied
+this method to larger proteins in two different case studies. In the first, we attempt to pick the
+most native like structures from a set of models produced during the Critical Assessment of
+Structure Prediction (CASP) \cite{} experiment. In the second case study, we examine the
+conformational preferences of a series of chameleon proteins designed by Orban and co-workers
+\cite{} that can switch between two completely different folds with only small changes in amino acid
+sequence.
 
 
 \section{Results and Discussion}
 
-\subsection{The confinement method produces correct results in control experiments}
+\subsection{Our implementation of the confiment method reproduces results from the literature}
 
-\Alberto{ This is benchmarking, good internal, but not relevant. Should go to SI,out, or summarized
-    in one sentence:  "After reproducing the results of Cecchini and coworkers we were interested in
-the ability to apply this method to larger systems"}
-
-\Alberto{As a first step, we performed several control experiments to verify that our implementation of the
+As a first step, we performed several control experiments to verify that our implementation of the
 confinement method produces results compatible with previous calculations reported in the
 literature.
 
-The method has previously been applied to a 16 amino acid residue $\beta$-hairpin from
-protein G, known as BHP \cite{Cecchini2009}. We calculated the free energy difference between two different
+The method has previously been applied to a 16 amino acid residue $\beta$-hairpin from protein G,
+known as BHP \cite{Cecchini2009}. We calculated the free energy difference between two different
 conformations of the peptide: (1) the native conformation, called bhp1, with a two-stranded
 $\beta$-sheet; and (2) a conformation, called bhp3, which has a three-stranded $\beta$-sheet.
-Analysis of long (4 $\mu$s) equilibrium simulations \cite{Cecchini2009},\cite{Krivov2004}  shows that bhp1 is the more favorable
-configuration by 1.8 kcal/mol. Using the confinement method, we obtain a value 1.7 kcal/mol, which
-is in good agreement with the equilibrium simulations and with previous calculations using the
-confinement method \cite{Cecchini2009} (see Supporting Information for further details).}
+Analysis of long (4 $\mu$s) equilibrium simulations \cite{Cecchini2009,Krivov2004}  shows that bhp1
+is the more favorable configuration by 1.8 kcal/mol. Using the confinement method, we obtain a value
+1.7 kcal/mol, which is in good agreement with the equilibrium simulations and with previous
+calculations using the confinement method \cite{Cecchini2009}.
 
-Previous applications of the confiment method have focused on relatively short peptides, up to $17$
-residues in length. In this work we apply the confinement method to
-larger proteins. On that direction, we first test the confinement method for a chamelon sequence and 
-found that it can correctly pick out the preferential structure of the chamelon sequence. Other 
-applications we explore in the present work is the re-scoring, or
-metaprediction, of structures submitted during the Critical Assessment of Structure Prediction
-(CASP) experiment (described in detail later). We computed the relative free energies of predictions
-submitted during CASP9, with the expectation that the most native-like prediction will have
-the lowest free energy. As a control, for several targets we also calculated the relative free
-energy of the experimentally determined structure. \Alberto{should not start with results yet, first
-we are describing what we are going to show them} As
-Table~\ref{table:casp_control} shows, in most cases, the confinement method correctly assigns a
-lower free energy to the experimentally determined structure than to any of the decoys. 
-Most interestingly, we decomposed the free energy into its per residue component, which help 
-us to identify the residues which stabilize or destabilize a particular conformation of the protein.
-%Although differentiating between experimentally determined structures and computer generated predictions is
-%not a stringent test of a scoring method---for example, examining the residue-residue packing can
-%easily distinguish between the two [ref Rosetta Holes]---the results none the less serve as a useful
-%"sanity check".
+\subsection{The confiment method predicts that experimental structures have lower free energies than
+computer-generated models}
+
+Previous applications of the confiment method have focused on relatively short peptides, up to 17
+residues in length. In this work we apply the confinement method to larger proteins. As a first
+test, we calculated the free energies of models submitted by predictors during the CASP9 experiment
+(often referred to as decoys) and compared them with the calculated free energy of the corresponding
+experimentally determined structure from the Protein Data Bank (PDB). As
+Table~\ref{table:casp_control} shows, in 5 out of 6 cases, the confinement method assigns a lower
+free energy to the experimentally determined structure than to any of the decoys---as would be
+expected. Although differentiating between experimentally determined structures and computer
+generated predictions is not a stringent test of a scoring method---for example, examining the
+residue-residue packing can easily distinguish between the two [ref Rosetta Holes]---the results
+none the less serve as a useful "sanity check".
 
 \begin{table}
 \begin{center}
 \caption{The confinement method assigns a more favorable free energy to the experimentally
-determined structure than to computer-generated predictions. For each target, we examined as many as
-five predictions submitted by CASP participants. Positive $\Delta\Delta G$ values indicate that the
-experimental structure is predicted to be more favorable than any of the decoys.}
+    determined structure than to computer-generated predictions. For each target, we examined as
+    many as five predictions submitted by CASP participants. We report the free energy difference
+    between the most favorable decoy and the experimentally determined structure. Positive
+    $\Delta\Delta G$ values indicate that the experimental structure is predicted to be more
+favorable than any of the decoys.}
 \label{table:casp_control}
 \begin{tabular}{l l l}\hline
     CASP Target  & PDB Identifier & $\Delta\Delta G_{native \to best decoy}$ (kcal/mol) \\ \hline
@@ -187,7 +154,6 @@ experimental structure is predicted to be more favorable than any of the decoys.
      T0569       &    2KWY        &          $20.01 \pm 0.69$  \\ \hline
 \end{tabular}
 \end{center}
-
 \end{table}
 
 
@@ -199,12 +165,13 @@ of comparative modeling and fold recognition in protein structure prediction. Th
 examples---often referred to as chameleon sequences---of proteins with similar sequences that have
 remarkably different structures. Orban and co-workers have designed a sequence of 56-residues that
 is marginally stable in one of two possible folds. By mutating key residues in this sequence they
-are able to stabilize one fold or the other (see Figure~\ref{fig:orban}). Sequences that adopt a mixed alpha/beta structure similar to Protein G
-are denoted as ``GB'', while sequences that form a three-helix bundle are denoted as ``GA''. One
-pair of sequences (GA88/GB88) are 88 percent identical in sequence and differ in seven positions. Another pair
-(GA95/GB95) are 95 percent identical and differ in three positions. The last pair (GA98/GB98) differ
-only in a single tyrosine to alanine mutation.
-
+are able to stabilize one fold or the other (see Figure~\ref{fig:orban}). Sequences that adopt a
+mixed alpha/beta structure similar to Protein G are denoted as ``GB'', while sequences that form a
+three-helix bundle are denoted as ``GA''. We label the two folds as $3 \alpha$ and $4 \beta +
+\alpha$. The GA sequences are observed to fold into the $3 \alpha$ fold and the GB sequences fold
+into the $4 \beta + \alpha$ fold. One pair of sequences (GA88/GB88) are 88 percent identical in
+sequence and differ in seven positions. Another pair (GA95/GB95) are 95 percent identical and differ
+in three positions. The last pair (GA98/GB98) differ only in a single tyrosine to alanine mutation.
 The fact such small changes in sequence can lead to such dramatic changes in structure is rather
 remarkable. Accurately predicting the structural preferences of these structures presents a serious
 challenge for computational methods \cite{Alexander2007}$-$\cite{Shortle20009}.
@@ -214,83 +181,70 @@ structure as its partner chameleon sequence. For example, we took the sequence o
 model with the same overall structure as GB88. We then used the confinement method to assess the
 free energy difference between the experimentally determined structure of GA88 and the model (with
 the GA88 sequence and the GB88 structure). The confinement method was able to predict the
-conformational preferences correctly for all six sequences (data not shown). This is however not
+conformational preferences correctly for all six sequences (data not shown). This is, however, not
 surprising. It is well known [CITE] that it is easy to distinguish computational models from native
-structures. Despite the fact that this models are built by having a huge amount of structural
-information, it might be possible that we were able to make correct predictions simply
-because artefacts of our modeling procedure always lead to the model having a higher free energy
-than the experimental structure. 
+structures. To avoid this potential problem, we instead computed relative free energy of two
+different computer generated models for each sequence. One model is based on the GA structure and
+the other on the GB structure (see Supporting Information for details on the modeling procedure).
+This is a much more realistic test of the confinement method's ability to accurately calculate
+relative free energies.
 
-To avoid this potential problem, we instead computed relative free energy of two different
-structural models for each sequence. One model is based on the GA structure and the other on the GB
-structure (see Supporting Information for details on the modeling procedure). This is a much more
-realistic test of the confinement method's ability to accurately calculate relative free energies.
+The results of these calculations are presented in Figure~\ref{fig:orban}. The confinement method
+identifies the correct structure for all five sequences. One hypothesis for fold switching of
+chameleon sequences is that the structural transitions require states with diminished stability
+[ref]. It is believed that if the free energy of the native state and the alternative state are
+within a range of 5 Kcal/mol, then it is possible for the native state to be destabilized relative
+to the alternative state with only small changes in sequence. The stability of the native state can
+decrease for a number reason ranging from chemical modification, breaking of disulphide bonds or
+mutations---as is the case here. The calculated free energy differences range from around 3.5 to 5.0
+kcal/mol, which is consistent with the above hypothesis \cite{He2008}, \cite{{Alexander2009}}.
 
-The results of these calculations are presented in Figure~\ref{fig:orban}. Confinement method
-identifies the correct structure for all five sequences. One of the hypothesis for fold switching
-of chamelon sequence is that the structural transitions require states with diminished stability.
-It is widely believed that if the free energy of the native state and the alternative state is within
- a range of $5 Kcal/Mol$ then it can quickly change fold when the stability of the native state 
-decreases. The stability of the native state can decrease for a number reason ranging from chemical 
-modification, breaking of disulphide bonds or mutations as in this case. The free energy differences, that
-came out from our calculation ranges from
-around 3.5 to 5.0 kcal/mol, which is consistent with the above hypothesis \cite{He2008}, \cite{{Alexander2009}}.
+\subsection{Per-residue free energy calculation can identify the mechanistic detail behind
+conformational preferences}
 
+To understand the mechanism behind the conformational preferences of the different protein
+sequences, we decomposed the calculated free energy into per-residue contributions as described in
+the method section. This helps us to identify important residues that stabilize a particular
+conformation. The per residue free energy, $\Delta \Delta G ((4 \beta + \alpha$) - ($3 \alpha))$ is
+shown in Figure~\ref{fig:orban_full}(F). In this plot, a negative peak indicates that a residue
+favors the $4 \beta + \alpha$ conformation and a positive peak indicates that the residue favors the
+$3 \alpha$ structure.
 
-\subsection{The per residue free energy calculation can identify the mechanistic detail behind conformational pereference 
-of a particular residue}
+The GA and GB sequences are nearly identical, so there are some common features observed for all
+sequences. Roles of some important residues in stabilizing either $4 \beta + \alpha$ or $3 \alpha$
+conformation and possible reason for such conformational preferences are discussed in details in
+Figure~\ref{fig:orban_full} and Table~\ref{table:orban_perresidue}. The experimental observations
+classified the protein into two parts: Amino acids 9-51 are fully structured in both the folds,
+where as residues 1-8 and 52-56 are unstructured in $3 \alpha$, but form $\beta$ strand in $4 \beta
++ \alpha$ structure. Most of the amino acid residues in the region 1-9 favor $4 \beta + \alpha$
+structure as can be seen from the plot Figure~\ref{fig:orban_full}(F). We can explain most of the
+major peaks in this plot. For example,  first major peak appears at residue 7. Here, the hydrophobic
+Leu-7 stabilizes the $4 \beta + \alpha$ conformation as its sidechain is oriented towards the
+protein hydrophobic core, whereas in $3 \alpha$ structure it exposed to the solvent
+(Figure~\ref{fig:orban_full}(A)). Thus, we hypothesise that a mutation of Leu-7 to a hydrophilic
+residue would stabilize the $3 \alpha$ fold. The conformational preferences of most of the other
+large peaks can be similarly explained by hydrogen bonding, salt bridge formation, and solvent
+exposure of hydrophobic residues. They are listed in Figure~\ref{fig:orban_full} and
+Table~\ref{table:orban_perresidue}.
 
-We decomposed the calculated free energy into per residue decomposition as described in the method
-section. This helps us to identify important residues that stabilize a particular conformation. 
-In this direction, we first calculate the per residue free energy for the GA95 and GB95 sequences. 
-The per residue free energy, $\Delta \Delta G ((4 \beta + \alpha$) - ($3 \alpha))$ is plotted in Figure~\ref{fig:orban_full}(F).
-In this plot, the negative peak indicate the residue will stabilize the $4 \beta + \alpha$ conformation of a particular
-residue and the positive peak will stabilize the $3 \alpha$ structure. As, the differences of amino acid
-residues are only at 3 position, there are some common features of residues in both GA95 and GB95 sequences in both
-$3 \alpha$ and $4 \beta + \alpha$ conformation. Role of some important residues in stabilizing either 
-$4 \beta + \alpha$ or $3 \alpha$ conformation and possible reason for such conformational preferences are discussed in 
-details in Figure~\ref{fig:orban_full} and Table~\ref{table:orban_perresidue}. It is important to note that
-experimental observations classified the protein into two parts: Amino acids 9-51 are fully structured in both
-the folds, where as residues 1-8 and 52-56 are unstructured in $3 \alpha$, but form $\beta$ strand in $4 \beta + \alpha$ structure.
-Most of the amino acid residues in the region 1-9 favor $4 \beta + \alpha$ structure as can be seen from the plot
-Figure~\ref{fig:orban_full}(F). Interestingly, we can explain most of the big peak in this plot. They are presented 
-in Figure~\ref{fig:orban_full} and Table~\ref{table:orban_perresidue}. Here, we explain only one case. The first big peak
-appears at position 7. Here, the hydrophobic Leu-7 stabilizes the $4 \beta + \alpha$ conformation as its sidechain is oriented 
-towards the protein hydrophobic core, whereas in $3 \alpha$ structure it exposed to the solvent (Figure~\ref{fig:orban_full}(A)).
-Thus, if someone want to better design the $3 \alpha$ conformation of this protein, we propose to mutate Leu at this position
-with some hydrophilic residue. Similarly, we found that the free energy differences arise in two conformation for various 
-reasons ranging from hydrogen/salt bridge formation to relative solvent exposure of hydrophobic residues etc. They are 
-listed in Figure~\ref{fig:orban_full} and Table~\ref{table:orban_perresidue}.     
+We will now discuss the differences between the $3 \alpha$ and $4 \beta + \alpha$ folds due to the
+specific differences between the GA and GB sequences. The differences are in positions 20, 30, and
+45. GA95 has Leu-20, Ile-30, and Leu-45; GB95 has Ala-20, Phe-30, and Tyr-45. In the $3 \alpha$
+fold, residues 20 and 30 are involved in interactions with residue 49. The peak at position 49
+stabilizes the GA sequence more than that of GB sequence. In the $3 \alpha$ fold, Ile-49 has
+hydrophobic interactions with Leu-20 and Ile-30 with GA sequence, whereas with GB sequence it has
+such interactions with smaller Ala-20 (Figure~\ref{fig:orban_full}(I). Also, in the $3 \alpha$ fold
+with the GB sequence, Phe-30 being a larger group can not be completely accommodated in the
+hydrophobic core (Figure~\ref{fig:orban_full}(I)) and therefore, partially exposed to the protein
+surface. There is an interesting difference for residue at position 45 as well. In GB95 sequence and
+$4 \beta + \alpha$ fold there is H-bonding between Tyr-45 and Asp-47
+(Figure~\ref{fig:orban_full}(K)), which is absent in the $3 \alpha$ conformation. On the other hand
+with GA sequence, this H-bond is absent for both the conformation as there is a Leu at position 45
+(Figure~\ref{fig:orban_full}(J)).
 
-
-\Alberto{This is not Reader Friendly at all. we do not have to describe every little detail. I would
-    rather have a table where we have the pairing and the reason for favoring one structure or the
-    other. In the main text I would say that the main reason for preferences of one fold or another
-    has to do with the relative solvent exposure of the residue in one conformation or another, or
-    the possibility of stablishing hydrogen/salt bridges in one conformation. This would be my
-preference, ditching everything below until the next section. What do you think?}
-
-\Arijit{I have rewrite this part.There was a table. I made it better. I want to keep some discussion though if you agree.}
-
- 
-Now, let us discuss the differences of $3 \alpha$ and $4 \beta + \alpha$ fold due to specific difference of mutated amino acid 
-residues in GA and GB sequence. The differences are in positions 20, 30 and 45. While GA95 has Leu-20-Ile-30-Leu-45, GB95 sequence 
-has Ala-20-Phe-30-Tyr-45 at those position. One can find that the peak at position 49 stabilizes the GA sequence more than that of GB
-sequence. In $3 \alpha$ fold, Ile-49 has hydrophobic interactions with Leu-20 and Ile-30 with GA sequence, whereas with GB sequence it 
-has such interactions with smaller Ala-20 (Figure~\ref{fig:orban_full}(I). In $3 \alpha$, with GB sequence, Phe-30 
-being a larger group can not be completely accomodated in the hydrophobic core(Figure~\ref{fig:orban_full}(I)) and therefore, 
-partially exposed to the protein surface. There is a very interesting difference for residue at position 45 as well. In GB95 sequence
-and $4 \beta + \alpha$ fold there is H-bonding between Tyr-45 and Asp-47 (Figure~\ref{fig:orban_full}(K)), which is absent in the
-$3 \alpha$ conformation. On the other hand with GA conformation, this H-bond is absent for both the conformation as there is a Leu at position
-45 (Figure~\ref{fig:orban_full}(J)). Although, one can not find much difference between $4 \beta + \alpha$ and $3 \alpha$ conformation
-for position 20 for both GA95 and GB95 sequence. There are significant difference for the residues at position 30 and 45.  
-These residues have some long term effects as well. As already explained, residue Ile-49 has much more hydrophic interactions with residues
-at position 20 and 30 in GA sequence, which is less in GB sequence. There are difference for Asp-47 as well. With $3 \alpha$ conformation 
-and GA95 sequence, Asp-47 has H-bonding with Lys-50, which is absent in the other conformation.    
-      
 \begin{table}
 \begin{center}
-\caption{Analysis of per residue free energy decomposition of GA95 and GB95 sequence reveal that certain residues prefer
+\caption{Analysis of the per-residue free energy decomposition of GA95 and GB95 sequence reveal that certain residues prefer
 either $3 \alpha$  or $4 \beta + \alpha$ structure. These observations and the reason behind such conformational preferences are listed in this
 table.}
 \label{table:orban_perresidue}
@@ -354,32 +308,9 @@ J. Tyr-45 forms H-bond with Asp-47 with GB95 sequence and $4 \beta + \alpha$ con
 K. No H-bond possible between Leu-45 and Asp-47 with GB95 sequence and $4 \beta + \alpha$ conformation .}  
 \end{figure}
 
-%\begin{table}
-%\caption{Confinement method correctly reproduces the structural preferences of a series of
-%designed peptides. Each sequence adopts either a Protein G-like fold ($4 \beta + \alpha$) or forms a
-%helix bundle ($3 \alpha$).}
-%\label{table:orban}
-%\begin{center}
-%\begin{tabular}{l l l}\hline
-%Changes in & $\Delta G$ (kcal/mol)    & $\Delta G$ (kcal/mol)     \\
- %Sequences & ($3 \alpha$ fold)        & ($4 \beta + \alpha$ fold) \\ \hline
-%GA95       & $0.000$                  & $2.901 \pm 0.475$         \\
-%GB95       & $4.365 \pm 0.460$        & $0.000$                   \\
-%GA88       & $0.000$                  & $ 3.941 \pm 0.517$        \\
-%GB88       & $5.576 \pm 0.464$        & $0.000$                   \\
-%GA98       &  &                           \\ \hline
-%GB98       &                          &                           \\ \hline
-%\end{tabular}
-%\end{center}
-%\end{table}
-
 
 \subsection{The confinement method correctly identifies the most native-like predictions from a
 subset of CASP predictions}
-
-%\Alberto{Arijit: we need a global table of success, rather than individual tables. The simplest form
-%    would have 3 columns: name of the PDB, number of structures tested, percent of success of
-%    picking 1st model}
 
 This method is particularly well suited to pick out the native/native like structure from misfolded or decoys. We have
 tested this using different models from CASP (critical assessment of structure
