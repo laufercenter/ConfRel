@@ -509,7 +509,7 @@ quality assessment by the group MUFOLD\-WQA and based on residues 1-74.}
 \section{Conclusion}
 
 
-\Alberto{The last 50 years represent our effort to understand what the native state of a protein
+The last 50 years represent our effort to understand what the native state of a protein
     looks like by using theoretical methods. Experimental evidence coming from NMR and x-ray
     cristallography remain so far the only real ways to solve the structure of the native state.
     However, this methods are expensive and slow. Theoretical methods on the other hand are cheaper,
@@ -518,7 +518,9 @@ quality assessment by the group MUFOLD\-WQA and based on residues 1-74.}
     problem. Here we have shown how the application of the confinement method can help identify
     native like states. The high success rate balances with the computational expense. However, with
     GPU technology and the rate at which computers improve, this computational expense is becoming
-less of a bottle neck.}
+
+less of a bottle neck.
+
 \Alberto{I don't agree with some of the points here, but I think I covered what you meant in the
 previous paragraph}
 
@@ -559,17 +561,30 @@ by using GPU (Graphical Processing Unit) technology as opposed to the classical 
 a two order of magnitude boost in computational efficiency. For example, we have mostly carried out
 our calculation with Amber program \cite{Case2005} in GPU computer. With a avarage 56 residue we
 found that it take only 4 hour to complete 20 ns of the confinement step. So, with available
-computer power this method will be easy to use for real problems. 
+computer power this method will be easy to use for real problems.
 %There is another issue, which is normal mode analysis calculations are Oh(N**3) and require large
 %amounts of memory, effectively limiting the size of the systems under study. In most cases
-%quasiharmonic analysis.   
- 
+%quasiharmonic analysis.
+
 This method can be further used for calculating free energy due to very large conformational change.
 Another application may be the case of ligand binding. It can also be used to distinguish the most
 stable structure during protein design. Decompition of total free energy into the per residue
 component help identifying residues that give stability to a particular conformation. Another,
 important application may be to study the protein folding kinetics, specially to study the phi value
-analysis.            
+analysis.
+
+less of a bottle neck.
+We foresee great potential for this methodology for two reasons: independence from a reaction
+coordinate (just need start and end state) and avility to decompose the free energies on a per
+residues basis. This last point can be very useful in protein design. Finally, we have presented
+data for structure comparison of proteins, but we are currently exploring the possibility of
+using this methodology for getting free energies of ligand-protein binding.
+
+\Alberto{Do we mention this in the text? too technical for conclusions:
+There is another issue, which is normal mode
+analysis calculations are Oh(N**3) and require large amounts of memory, effectively limiting the
+size of the systems under study. In most cases quasiharmonic analysis.
+}
 
 \section{Method}
 
