@@ -141,10 +141,22 @@ is more stable by 1.7 kcal/mol, consistent with 4 $\mu$s equilibrium simulations
 by 1.8 kcal/mol, and in agreement with previous calculations \cite{Cecchini2009}.
 
 Second, we looked at 6 target proteins from the CASP9 experiment.  For each target, we examined up to 5 submitted models.  We 
-computed the difference free energy between the true native and the best model.  Table~\ref{table:casp_control} shows that, in 5 
+computed the difference free energy between the true native and the best model. Figure~\ref{fig:summary_casp} and 
+Table~\ref{table:casp_control} shows that, in 5 
 out of 6 cases, the confinement method assigns a lower free energy to the experimentally determined structure than to any of the 
 decoys.  Other well-known discriminators  can also successfully make this recognition \cite{Sheffler2009}; 
  it is just an independent useful validation that the confinement calculations make sense. 
+
+
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=3.5 in,height=3.2 in]{casp.pdf}
+\end{center}
+\caption{In 5 out of 6 CASP Target, the confinement method assigns a lower free energy to the experimentally determined native structure.} 
+\label{fig:summary_casp}
+\end{figure}
+
 
 \begin{table}
 \begin{center}
