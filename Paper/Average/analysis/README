@@ -1,0 +1,5 @@
+output_GA95  --> has the combined per residue energies
+
+residue_Alpha_GB95 --> enthalpy per residue 
+
+confinement_Alpha_GB95 --> free energy contribution on confinement/per residue
