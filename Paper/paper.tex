@@ -188,10 +188,12 @@ et al. \cite{Alexander2007,He2008,Alexander2009,Bryan2010,He2012,Shortle2009}; t
 are instances in which two highly similar sequences fold into remarkably different structures. Orban and co-workers have designed a 
 protein-G-like sequence of 56-residues that
 is marginally stable in one of two possible folds. By mutating key residues in this sequence they
-are able to stabilize one fold or the other (see Figure~\ref{fig:orban}). We call sequences ``$\beta$'' that fold into 
-the protein-G-like that fold into a $4 \beta + \alpha$ fold, and we call sequences ``$\alpha$'' that fold into $3 \alpha$ helical folds.  One pair 
+are able to stabilize one fold or the other (see Figure~\ref{fig:orban}). We call conformation ``$\beta$'' that fold into 
+the protein-G-like that fold into a $4 \beta + \alpha$ fold, and we call conformation ``$\alpha$'' that fold into $3 \alpha$ helical folds.  One pair 
 of sequences (GA88/GB88) is 88 percent identical in sequence, differing in seven positions. Another pair (GA95/GB95) is 95 percent identical, 
-differing in three positions. The third pair (GA98/GB98) differs in only a single tyrosine-to-alanine mutation. Accurately predicting the 
+differing in three positions. 
+%The third pair (GA98/GB98) differs in only a single tyrosine-to-alanine mutation. 
+Accurately predicting the 
 structural preferences of these structures presents a serious challenge for computational methods 
 \cite{Alexander2007,He2008,Alexander2009,Bryan2010,He2012,Shortle2009}.
 
@@ -211,7 +213,7 @@ model with the same overall structure as GB88. We then used the confinement meth
 free energy difference between the experimentally determined structure of GA88 and the model (with
 the GA88 sequence and the GB88 structure). The confinement method was able to predict the
 conformational preferences correctly for all four sequences (data not shown). This is, however, not
-surprising. It is well known [CITE]\Arijit{still searching this citation} that it is easy to distinguish 
+surprising. It is well known \cite{Handl2009},\cite{Sheffler2009} that it is easy to distinguish 
 computational models from native structures. To avoid this potential problem, we instead computed relative free energy of two
 different computer generated models for each sequence. One model is based on the $\alpha$ structure and
 the other on the $\beta$ structure (see Supporting Information for details on the modeling procedure).
@@ -529,55 +531,55 @@ for a 56-residue protein is about 4 hours [on 1 gpu] for 20 ns of confinement [I
 %quasiharmonic analysis.  
 
 \Ken{[If this is a relevant limitation, let's say something about it.]}
-\Arijit{I think Ken is pointing towards the normal mode issue and number of residues that we can handle}
-
+\Arijit{I think we need to write the normal mode issue and number of residues that we can handle. If 
+one of you contribute here that will be great.}
 
 \section{Method}
 
 The confinement method has been described in details in ref. by Tyka et al. \cite{Tyka2006} and
 Cecchini et  al. \cite{Cecchini2009}. The basic approach of the confinement approach is the same in
-both these papers. However, there are some technical differences. Here we briefly describe the
-procedure to compute free energy $\Delta G_{AB}$ between two conformations A and B of a protein. The
-basic idea to compute the free energy between conformations A and B is to perform a thermodynamic
-cycle:
+both these papers. A thermodynamic cycle is used to compute the free energy between conformations A
+and B. However, there are some small technical differences between the two approaches. Here we briefly
+describe the procedure that we used.
+
 
 \begin{enumerate}
 
-\item  Minimization of A and B. These minimized conformations (A* and B*)
-       are the reference conformation of that state. During this minimization the backbone is kept
-       restrained to the original position to avoid large conformational changes.
+\item  In the first step, a minimization of A and B conformations are performed. These minimized conformations (A* and B*)
+       are the reference conformation of that state.
 
-   \item  The free energy of confining the ensemble (A or B) to a microstate (A* or B*) is
+\item  The free energy of confining the ensemble (A or B) to a microstate (A* or B*) is
        calculated. This is done by gradually applying larger and larger
-       harmonic restraints on all the atoms of the biomolecule. This is done by running 21 molecular dynamics simulation 
-       (20 ns long each), where the harmonic restraint force constant was scaled from 0.00005
-       Kcal/Mol 
-       (mostly free) to 81.92 iKcal/Mol (frozen in one microstate). In this final restrained state, the
+       harmonic restraints on all the atoms of the biomolecule. This is done by running 21 molecular dynamics simulation
+       (each 20 ns long) for each leg of the thermodynamic cycle, where the harmonic restraint force constant was scaled from 0.00005
+       Kcal/Mol (mostly free) to 81.92 Kcal/Mol (frozen in one microstate). In this final restrained state, the
        rotational contribution to the free energy is frozen out
        and the only remaining contribution is the vibrational part. The free energy for this step is
        estimated from the fluctuations around
        the reference structure using a numerical
        approach developed by Tyka et. al. \cite{Tyka2006}. The confinement free energy calculated in
-       this way is recorded as 
-       $\Delta G_{A,A*}$ and $\Delta G_{B,B*}$ as shown in Figure~\ref{fig:method}.     
+       this way is recorded as
+       $\Delta G_{A,A*}$ and $\Delta G_{B,B*}$ as shown in Figure~\ref{fig:method}.
 
 \item  Finally the thermodynamic cycle is closed by calculating the free energy between the final
-       restrained state A* and B* using normal mode analysis or quasiharmonic analysis. The free energy calculated in 
+       restrained state A* and B* using normal mode analysis or quasiharmonic analysis. The free energy calculated in
        this way is shown as $\Delta G_{A*,B*}$ in Figure~\ref{fig:method}.
 
-\item  The full free energy, $\Delta G_{A,B}$ between the two state A and B is calculated using the equation 
-       $\Delta G_{A,B}$ = $\Delta G_{A,A*}$ - $\Delta G_{B,B*}$ + $\Delta G_{A*,B*}$  
+\item  The full free energy, $\Delta G_{A,B}$ between the two state A and B is calculated using the equation
+       $\Delta G_{A,B}$ = $\Delta G_{A,A*}$ - $\Delta G_{B,B*}$ + $\Delta G_{A*,B*}$
 
 \end{enumerate}
 
-All calculations where performed with the amber 11 suit of programs in combination with ff99SB and
-GB/SA implicit solvent. Interestingly, we extend the method for calculation of per residue free
+All calculations where performed with the amber 11 suit of programs \cite{Case2012},\cite{Goetz2012} in
+combination with ff99SB forcefield\cite{Hornak2006} and generalized born implicit solvent \cite{Mongan2006}.
+Interestingly, we extend the method for calculation of per residue free
 energy in an approximate way. For this purpose, the confinement energy, $\Delta G_{A,A*}$ and
-$\Delta G_{B,B*}$ of each residue is calculated in the usual numerical way as described above. The
-internal energy of each residue is calculated using the decomp module of amber from the final
-restrained trajectory. We call this method approximate as we ignore the contribution from the normal
-mode or quasiharmonic analysis. However, this contrbution to the total free energy is much smaller, 
-which allow us to study the mechanistic details of conformational preference of each residue.      
+$\Delta G_{B,B*}$ of each residue is calculated in the usual numerical way as described in ref. by Tyka 
+et al. \cite{Tyka2006}. The internal energy of each residue is calculated using the decomp module of amber from the final
+restrained trajectory. We call this method approximate as we ignore the entropic contribution from the normal
+mode or quasiharmonic analysis. However, this contrbution to the total free energy is much smaller,
+which allow us to study the mechanistic details of conformational preference of each residue.
+      
 
 %There are two big bottlenecks in this calculation. The first has to do with the amount of
 %simulations that have to be performed to confine the ensemble of conformations close to a
@@ -664,6 +666,10 @@ Jorgensen, W.L. The many roles of computation in drug discovery, Science 2004, 3
 
 \bibitem{Gilson2007}
 Gilson, M.K.; Zhou, H.X. Calculation of protein-ligand binding affinities. Annu Rev Biophys Biomol Struct. (2007) 36, 21-42.
+
+\bibitem{Handl2009}
+Handl, J.; Knowles, J.; Lovel, S.C. Artefacts and biases affecting the evaluation of scoring
+functions on decoy sets for protein structure prediction. Bioinformatics, 2009, 25, 1271-1279.
 
 \bibitem{Dill1997}
 Dill, K.A.; H.S. Chan.  From Levinthal to Pathways to Funnels:  The "New View" of Protein Folding Kinetics.  Nature Structural Biology 4, 10-19 (1997)
@@ -760,6 +766,16 @@ Proteins, 2011, 79: 185-195.
 \bibitem{Case2005}
 Case, D.A.; Cheatham, III, T.E.; Darden, T.; Gohlke, Luo, H.R.; Merz, Jr., K.M.;  Onufriev, A; Simmerling, C.;
 Wang, B.; R. Woods, R. The Amber biomolecular simulation programs. J. Computat. Chem. (20005) 26, 1668-1688.
+
+\bibitem{Hornak2006}
+Hornak, V.; Abel, R.; Okur, A.; Strockbine, B.; Roitberg, A.; Simmerling, C. Comparison of multiple Amber force fields
+and development of improved protein backbone parameters. Proteins., 2006, 65, 712-725.
+
+\bibitem{Mongan2006}
+Mongan, J.; Simmerling, C.; A. McCammon, J.; A. Case, D.; Onufriev, A. Generalized
+Born with a simple, robust molecular volume correction. J. Chem. Theory Comput.,
+2006, 3, 156-169.
+
 
 \end{thebibliography}
 

@@ -1,0 +1,59 @@
+\bibitem{Handl2009}
+Handl, J.; Knowles, J.; Lovel, S.C. Artefacts and biases affecting the evaluation of scoring 
+functions on decoy sets for protein structure prediction. Bioinformatics, 2009, 25, 1271-1279.
+
+\bibitem{Hornak2006}
+Hornak, V.; Abel, R.; Okur, A.; Strockbine, B.; Roitberg, A.; Simmerling, C. Comparison of multiple Amber force fields 
+and development of improved protein backbone parameters. Proteins., 2006, 65, 712-725.
+
+\bibitem{Mongan2006}
+Mongan, J.; Simmerling, C.; A. McCammon, J.; A. Case, D.; Onufriev, A. Generalized
+Born with a simple, robust molecular volume correction. J. Chem. Theory Comput.,
+2006, 3, 156-169.
+
+\section{Method}
+
+The confinement method has been described in details in ref. by Tyka et al. \cite{Tyka2006} and
+Cecchini et  al. \cite{Cecchini2009}. The basic approach of the confinement approach is the same in
+both these papers. A thermodynamic cycle is used to compute the free energy between conformations A 
+and B. However, there are some small technical differences between the two approaches. Here we briefly 
+describe the procedure that we used. 
+
+
+\begin{enumerate}
+
+\item  In the first step, a minimization of A and B conformations are performed. These minimized conformations (A* and B*)
+       are the reference conformation of that state. 
+
+\item  The free energy of confining the ensemble (A or B) to a microstate (A* or B*) is
+       calculated. This is done by gradually applying larger and larger
+       harmonic restraints on all the atoms of the biomolecule. This is done by running 21 molecular dynamics simulation
+       (each 20 ns long) for each leg of the thermodynamic cycle, where the harmonic restraint force constant was scaled from 0.00005
+       Kcal/Mol (mostly free) to 81.92 Kcal/Mol (frozen in one microstate). In this final restrained state, the
+       rotational contribution to the free energy is frozen out
+       and the only remaining contribution is the vibrational part. The free energy for this step is
+       estimated from the fluctuations around
+       the reference structure using a numerical
+       approach developed by Tyka et. al. \cite{Tyka2006}. The confinement free energy calculated in
+       this way is recorded as
+       $\Delta G_{A,A*}$ and $\Delta G_{B,B*}$ as shown in Figure~\ref{fig:method}.
+
+\item  Finally the thermodynamic cycle is closed by calculating the free energy between the final
+       restrained state A* and B* using normal mode analysis or quasiharmonic analysis. The free energy calculated in
+       this way is shown as $\Delta G_{A*,B*}$ in Figure~\ref{fig:method}.
+
+\item  The full free energy, $\Delta G_{A,B}$ between the two state A and B is calculated using the equation
+       $\Delta G_{A,B}$ = $\Delta G_{A,A*}$ - $\Delta G_{B,B*}$ + $\Delta G_{A*,B*}$
+
+\end{enumerate}
+
+All calculations where performed with the amber 11 suit of programs \cite{Case2012},\cite{Goetz2012} in 
+combination with ff99SB forcefield\cite{Hornak2006} and generalized born implicit solvent \cite{Mongan2006}.
+Interestingly, we extend the method for calculation of per residue free
+energy in an approximate way. For this purpose, the confinement energy, $\Delta G_{A,A*}$ and
+$\Delta G_{B,B*}$ of each residue is calculated in the usual numerical way as described in ref. by Tyka 
+et al. \cite{Tyka2006}. The internal energy of each residue is calculated using the decomp module of amber from the final
+restrained trajectory. We call this method approximate as we ignore the entropic contribution from the normal
+mode or quasiharmonic analysis. However, this contrbution to the total free energy is much smaller,
+which allow us to study the mechanistic details of conformational preference of each residue.
+
