@@ -40,37 +40,48 @@ method}
 
 \section{Preparation of input model for chamelon sequences}
 
-We prepared computer generated models in both $\alpha$ and $\beta$ conformation for all five chamelon sequences mentioned 
-in the main text. Crystallographic structure of GA95 and GB95 sequence have $\alpha$ and $\beta$ fold respectively. When,
-we attempt to prepare the $\alpha$ and $\beta$ fold with GA95 sequence we start with the crystallographic 
+We prepared computer generated models in both $\alpha$ and $\beta$ conformations for all five chamelon sequences mentioned 
+in the main text. Crystallographic structure of GA95 and GB95 sequence have $\alpha$ and $\beta$ fold respectively. When
+we attempt to prepare the $\alpha$ and $\beta$ fold with GA95 sequence, we start with the crystallographic 
 structure of GA95 and GB95 with GA95 sequence. However, we remove the sidechains at three mutated positions in both the fold 
 and call the program SCWRL4 \cite{Krivov2009} to generate the sidechain conformation of the mutated residues and its neighbors. Followed by 
 this step, we do long molecular dynamics
 minimization to remove any possible bad contact. This procedure was followed to generate all $\alpha$ and 
 $\beta$ conformations of five sequences that are used for free energy calculation.   
 
-
+\setcounter{figure}{0}
+\makeatletter 
+\renewcommand{\thefigure}{S\@arabic\c@figure}
 \begin{figure}
 \includegraphics[width=5.6 in,height=5.3 in]{orban_perres_SI.pdf}
 \label{fig:orban_full}
 \caption{Per residue free energy calculation indicate significant differences of sidechain orientation of key amino acid residues. These amino acid
 residues control the free energy equilibrium to either $\beta$ or
-$\alpha$ conformation. All figures in the left are in $\beta$ conformation, whereas the right ones are in $\alpha$ conformation except in Figure (F).
-Sidechains of hydrophobic residues Leu-7 in (A) and Ala-26 in (B) are oriented towards the protein interior in $\beta$ 
+$\alpha$ conformation. All figures in the left are in $\beta$ conformation, whereas the right ones are in $\alpha$ conformation except in Figure (F) 
+where both are in $\alpha$ conformation.
+Sidechains of hydrophobic residues L7 in (A) and A26 in (B) are oriented towards the protein interior in $\beta$ 
 conformation. In such conformation they have hydrophobic interactions with other hydrophobic residues colored in white. In $\alpha$ conformation these residues are 
-exposed to the protein surface. 
-(C) Tyr-45 forms H-bond with Asp-47 with GB95 sequence and $\beta$ conformation. (D) Gln-11 and Glu-15 form a H-bond in $\beta$ conformation which is absent
-in the $\alpha$ conformation. (E) Hydrophobic Ile-49 is exposed to the protein surface in $\beta$ conformation, whereas it is inside protein hydrophobic core in
-$\alpha$ conformation. (F) Sidechain of Ile-30 is inside the protein hydrophobic core in as it has a smaller sidechain with GA95 sequence in $\alpha$ conformation. 
-In contrast, Phe-30 with larger sidechain is exposed to the protein surface with GB95 sequence.}
+exposed to the protein surface.  
+(C) Y45 forms H-bond with D47 with GB95 sequence and $\beta$ conformation. (D) Q11 and E15 forms a salt bridge in $\beta$ conformation which is absent
+in the $\alpha$ conformation. (E) Hydrophobic I49 is exposed to the protein surface in $\beta$ conformation, whereas in $\alpha$ conformation it 
+is inside protein hydrophobic core. (F) Sidechain of I30 is inside the protein hydrophobic core as it has a smaller sidechain with GA95 sequence 
+and $\alpha$ conformation. In contrast, Phe-30 with larger sidechain is exposed to the protein surface with GB95 sequence and $\beta$ conformation.}
 \end{figure}
 
 \begin{figure}
+    \begin{center}
+        \includegraphics[width=3.5 in]{T0560.pdf}
+    \end{center}
+    \caption{Native structure and two models (from group ``Splicer'') for target T0560.}
+    \label{fig:T0560}
+\end{figure}
+
+
+\begin{figure}
 \begin{center}
-\includegraphics[width=3.6 in,height=3.4 in]{T0569.pdf}
+\includegraphics[width=3.8 in,height=3.4 in]{T0569.pdf}
 \end{center}
-\caption{Native and best model structure of a domain of adhesion exoprotein from Pediococcus pentosaceus (pdb id: 2KWY and CASP code: T0569).
-The best model was from the group "Mufold".}
+\caption{Native and best computer generated model structure of CASP Target T0569.} 
 \label{fig:T0569}
 \end{figure}
 
@@ -79,34 +90,55 @@ The best model was from the group "Mufold".}
 \begin{center}
 \includegraphics[width=5 in,height=4 in]{T0569_perres2.pdf}
 \end{center}
-\caption{Key differences between native crystal structure and the model as indicated by per residue free energy calculation.
-The sidechain of hydrophobic residues, Val-59 and Ile-61 are oriented towards the protein hydrophobic core in (A) crystal 
+\caption{Key differences between experimental structure and the computer generated model model as indicated by per residue free energy calculation.
+The sidechain of hydrophobic residues, V59 and I61 are oriented towards the protein hydrophobic core in (A)  
 structure, (B) exposed to the surfure in model. The beta sheet containing these residues is disordered in the generated model.
-There is a H-bond between Lys-76 and Asp-11 in (D) model structure, which is absent in the (C) native structure.}
+A salt bridge between K76 and D11 in (D) computer generated structure, which is absent in the (C) native structure.}
 \label{fig:T0569_per_residue}
 \end{figure}
 
 \begin{figure}
 \begin{center}
-\includegraphics[width=4.9 in,height=4.0 in]{Target_538_compare.pdf}
+\includegraphics[width=3.5in]{T0538.pdf}
 \end{center}
-\caption{Differences of the sidechain orientation in model 1 and crystallographic structure of CASP target T0538 as determined 
-by per residue free energy calculation.  
-(A) Two salt bridges between residues Glu-35-Arg-32 and Glu-28-Lys-24 exist in the native crystallographic structure. These are
-absent in the model structure. Instead
-(B) a new salt bridge is formed between residues Arg-32-Glu-28 in model. (C) Another salt bridge between
-residues  Arg-26-Glu-50 in the native structure, (D) This salt bridge is absent in the model structure. In comparison to the crystallographic 
-structure, orientation of Phe-51 differs in model1.}
-\label{fig:T0538compare}
+\caption{The native and three model structure of engineered protein from Asr4154 protein (PDB ID: 2L09 and CASP
+    code:T0538). The model 1,2 and 3 are from the group PconsR, Shell and FOLDIT respectively.}
+\label{fig:T0538}
 \end{figure}
 
-\Ken{[This fig isn't very readable.  We need to focus into the sidechains, keeping only the nearby pieces of chain and leaving the rest out or making it fuzzy or something.  We need to see some point that you are making by looking at the figure.]}
+
+\section{What can we say about low resolution models from CASP experiments?}
+
+In the main text, we discussed how well confinement method predicted preferences when the structures are not very far from the
+native. But the question remains how far from native can we go and still see that the method produces correct result. In
+this section we explored this question with models from  extracellular domain of the jumping translocation breakpoint
+protein (pdb id: 2KJX). Most of the group could only generate low resolution models for this CASP9 target (id: T0531) .
+In our comparison, we choose five models by the group MUFOLD-MD, which was the best performing group for this target
+with their best model had a GDT\_TS value of 44. The result presented in Figure~\ref{fig:T0531} shows: 1.) native is
+correctly identified as expected and 2.) Surprisingly there is a high level of correlation between the GDT ranking and
+the free energy ranking for model 1 and model 3, the rest three structures with GDT\_TS score less than 35  are ordered
+incorrectly. It is worth to note that models 2 and 3 have the same GDT and very different free energies, meaning that
+the actual ordering could change a lot \cite{Perez2012}. It is encouraging that at least the method can pick out the
+best model even though it is got a low GDT score: 44.
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=3.5 in]{T0531.pdf}
+\end{center}
+\caption{The native structure and 5 models of extracellular domain of the jumping translocation breakpoint protein (pdb
+    id: 2KJX and the CASP code: T0531).}
+\label{fig:T0531}
+\end{figure}
+
 
 \begin{thebibliography}{99}
 
 \bibitem{Krivov2009}
 Krivov, G.G.; Shapovalov, M.V.; Dunbrack, RL Jr. Improved prediction of protein side-chain conformations with SCWRL4.
 Proteins. (2009) 77, 778-795.
+
+\bibitem{Perez2012}
+Perez, A.; Yang, Z.; Bahar, I.; Dill, K.A.; MacCallum, J.L.; FlexE: Using Elastic Network Models to Compare Models of Protein Structure. J. Chem. Theory Comput., 2012, 8, 3985-3991.
 
 \end{thebibliography}
 
