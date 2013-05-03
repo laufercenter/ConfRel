@@ -206,7 +206,6 @@ than the $\beta$ conformation by 3.8 kcal/mol. Although this result has not yet 
 consistent with the previously observed effect of Y45L.
 
 \subsection*{Per-residue free energy calculations can identify the mechanistic detail behind conformational preferences}
-\label{sec:orban_per_residue}
 
 To better understand the mechanism behind these chameleon proteins, we decomposed the calculated free energy into
 per-residue contributions in an approximate way~\cite{Tyka2006}. We decompose each confinement step ($\Delta
@@ -322,7 +321,6 @@ by a single group using the same methodology for all predictions. We examined tw
 \end{center}
 \end{table}
 
-\Justin{[Arijit: Let's move the protein names, organisms, pdb ids, etc to a separate table and just use the CASP ids.]}
 
 The first test case is target T0559. The best predictor group for this 69 amino acid target was ``BAKER-ROSETTASERVER''.
 To save computer time, we excluded two models that were very similar to other models that we did include. For this
@@ -341,6 +339,7 @@ models and the native experimental structure (Figure~\ref{fig:T0559}).
 We performed a similar calculation for target T0560 with two models from the group ``Splicer''. The remaining three
 models were discarded as they were too similar to the rest of the models. Again, we can correctly identify the native
 sate and our calculated free energy based ranking matches well with GDT-TS (Figures S2 in the supporting information).
+
 
 
 Next, we tested the ability of the confinement method to rank models for target T0540 that were produced by different
@@ -367,7 +366,7 @@ localized regions. We chose CASP target T0569 and compared the experimental NMR 
 by 20 kcal/mol (Figure S2).
 
 The confinement method clearly identifies two hydrophobic residues V59 and I61, which destabilize the predicted model
-with respect to the crystallographic structure (Figure~\ref{fig:T0569_per_residue} and Figure S3). The sidechains of
+with respect to the experimental structure (Figure~\ref{fig:T0569_per_residue} and Figure S3). The sidechains of
 these hydrophobic residues are oriented towards the protein hydrophobic core in the native NMR structure but oriented
 towards the exterior of the protein and are solvent exposed in the model. These residues are part of a beta-sheet
 in the experimental structure, but because of their sidechain orientation the corresponding beta-sheet become disordered in the predicted model 
@@ -477,7 +476,6 @@ describe the procedure that we used.
 
 \end{enumerate}
 
-
 One advantage of confinement method is that
 none of the simulation during restraining step depends on each other. Therefore, with available computer resources it can be fast 
 to compute. The computational cost for a $56$-residue proteins with chameleon sequence that is reported in this article is only $4$ hours 
@@ -491,17 +489,6 @@ Tyka et al. \cite{Tyka2006}. The internal energy of each residue is calculated u
 final restrained trajectory. We call this method approximate as we ignore the entropic contribution from the normal mode
 or quasiharmonic analysis. However, this contrbution to the total free energy is much smaller, which allow us to study
 the mechanistic details of conformational preference of each residue.  
-
-%There are two big bottlenecks in this calculation. The first has to do with the amount of simulations that have to be
-%performed to confine the ensemble of conformations close to a microstate into a single microstate, the second
-%bottleneck has to do with the size of the system in the normal mode calculation. We have tackled the first issue by
-%using GPU (Graphical Processing Unit) technology as opposed to the classical CPUs, which gives us a two order of
-%magnitude boost in computational efficiency. Normal mode analysis calculations are Oh(N**3) and require large amounts
-%of memory, effectively limiting the size of the systems under study. Where as this can be overcome by larger memory
-%machines, these are often not available, and so we propose an alternative by using quasiharmonic analysis. This is
-%still an Oh(N**3) problem, but we now the motions of atoms are already determined in trajectories, and so we can choose
-%to do quasiharmonic analysis excluding hydrogens, which will reduce the number of atoms N to almost N/2. This means
-%that we can use this method for systems twice as large.
 
 \begin{thebibliography}{99}
 
