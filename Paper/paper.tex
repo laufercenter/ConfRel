@@ -39,12 +39,12 @@ method}
 
 \begin{abstract}
 
-Calculation of free energy differences is of central importance in the simulation of biochemical
+The calculation of free energy differences is of central importance in the simulation of biochemical
 systems. It is particularly difficult to calculate between pairs of macromolecular conformations as
-well as a computationally expensive task with existing methods. In this work, confinement approach
+well as a computationally expensive task with existing methods. In this work, the confinement approach
 is used to calculate absolute free energies of biomolecular systems. This method provides two main
 advantages: it does not require a reaction coordinate or transition path and it is fast to compute.
-Free energy calculated can be decomposed into a per residue contribution in an approximate way. Per
+The calculated free energy can be decomposed into a per residue contribution in an approximate way. Per
 residue free energy allows us to identify the reason behind conformational preferences in
 biomolecules. Through out the article we show its use in different challenging modeling problems. In
 particular, we show its use in predicting the conformational preference of chamaleon sequences
@@ -157,6 +157,8 @@ sense.
 \end{tabular}
 \end{center}
 \end{table}
+\Alberto{Should we comment on T0560? Why is it giving such a high value with such high gdt? It's not
+the point to make here, but it is what jumps at me.}
 
 \subsection*{The confinement method correctly predicts the structures of chameleon sequences}
 
@@ -165,7 +167,9 @@ al.\cite{Alexander2007,He2008,Alexander2009,Bryan2010,He2012}. These are instanc
 similar sequences fold into remarkably different structures. Orban and co-workers have designed a protein-G-like
 sequence of 56-residues that is marginally stable in one of two possible folds. By mutating key residues in this
 sequence they are able to stabilize one fold or the other (see Figure~\ref{fig:orban}). We refer to the $4\beta +
-\alpha$ structure as the $\beta$ conformation, and we refer to the $3\alpha$ structure as the $\alpha$ conformation. One
+\alpha$ structure as the $\beta$ conformation, and we refer to the $3\alpha$ structure as the
+$\alpha$ conformation. We denote sequences that prefer the $\alpha$ fold as GA and sequences that
+prefer $\beta$ as GB. One
 pair of sequences (GA88/GB88) is 88 percent identical in sequence, differing in seven positions. Another pair
 (GA95/GB95) is 95 percent identical, differing in three positions. Accurately predicting the structural preferences of
 these structures presents a serious challenge for computational
@@ -278,8 +282,9 @@ confinement method can correctly identify these accurate models.
 
 As is common in the CASP experiment, we assess our results in terms of Global Distance Test Total Score (GDT-TS)
 \cite{Zemla2003}, which is a C$\alpha$ based measure of structural accuracy. It can be understood roughly as the
-percentage of residues that are correctly positioned in the model (range 0 to 100, higher is better). We did have enough
-computer model to analyze every model, so the initial models for the test were chosen from a selection of different
+percentage of residues that are correctly positioned in the model (range 0 to 100, higher is
+better). We did not have enough
+computer power to analyze every model, so the initial models for the test were chosen from a selection of different
 server groups that have done well in past CASP events.
 
 Overall, the confinement method performs well on our CASP tests. Figure~\ref{fig:summary_casp} shows that in almost
@@ -297,7 +302,8 @@ confinement method appears to be a useful tool for ranking structure predictions
 
 \subsection*{The confinement method can correctly rank-order structure predictions}
 
-First, we examined the ability of the confinement method to rank different models for a target that have been generated
+First, we examined the ability of the confinement method to rank different models for a target that
+has been generated
 by a single group using the same methodology for all predictions. We examined two targets: T0559 and T0560 (see Table~\ref{table:casp_testcase}). 
 
 
@@ -307,7 +313,7 @@ by a single group using the same methodology for all predictions. We examined tw
          organism type are also listed.}
 \label{table:casp_testcase}
 \begin{tabular}{l l l}\hline
-    CASP Target  & PDB Identifier &  organism type  \\ \hline
+    CASP Target  & PDB Identifier &  Organism type  \\ \hline
      T0531       &    2KJX        &  extracellular domain of the jumping  \\
                  &                &  translocation breakpoint protein  \\ \hline
      T0538       &    2L09        &  protein asr4154 from Nostoc sp. PCC7120     \\ \hline
@@ -354,7 +360,8 @@ again, the free energy based ranking correlates well with the GDT-TS based score
         prediction groups.}
 \label{fig:T0540}
 \end{figure}
-
+\Alberto{if the drop down bars/point are a different color it will be easier to see when the crystal
+is on top of the axis}
 \subsection*{The per-residue free energy is sensitive to small changes in protein conformation:}
 
 In a previous section, we discussed how the per-residue free energy can reveal mechanistic
@@ -366,10 +373,11 @@ localized regions. We chose CASP target T0569 and compared the experimental NMR 
 by 20 kcal/mol (Figure S2).
 
 The confinement method clearly identifies two hydrophobic residues V59 and I61, which destabilize the predicted model
-with respect to the experimental structure (Figure~\ref{fig:T0569_per_residue} and Figure S3). The sidechains of
+with respect to the experimental structure (Figure~\ref{fig:T0569_per_residue} and Figure S3). The side chains of
 these hydrophobic residues are oriented towards the protein hydrophobic core in the native NMR structure but oriented
 towards the exterior of the protein and are solvent exposed in the model. These residues are part of a beta-sheet
-in the experimental structure, but because of their sidechain orientation the corresponding beta-sheet become disordered in the predicted model 
+in the experimental structure, but because of their side chain orientation the corresponding
+beta-sheet becomes disordered in the predicted model 
 (Figure~\ref{fig:T0569_per_residue} and Figure S4). There is also a large
 difference around K76, which forms a salt-bridge with D11 in the predicted model, but not in the experimental structure.
 This suggests that salt-bridge interactions are too favorable for the combination of force field and implicit solvent
@@ -392,10 +400,10 @@ compared structures are very close. One example is Target T0538, where we compar
 models (Model 1: ``PconsR''---GDT-TS=96; Model 2: ``Shell''---GDT-TS=90; Model 3: ``FOLDIT''---GDT-TS=86). Contrary to
 our expectation, the confinement method predicts that computer generated Model 1 is more stable than the crystal structure (Figure S5).
 Per-residue free energy calculations (not shown) show that despite only small variations at the backbone level, the
-sidechains are oriented in very different ways (Figure~\ref{fig:T0538compare}), giving rise to large differences in the stabilization of
+side chains are oriented in very different ways (Figure~\ref{fig:T0538compare}), giving rise to large differences in the stabilization of
 certain residues. In particular, some of the differences arise from different salt bridge patterns and certain flexible
 polar residues exposed to the surface. This unexpected result shows that the confinement method is very sensitive to
-local interactions (including sidechain reorientation) and may indicate issues with the forcefield and implicit solvent
+local interactions (including side chain reorientation) and may indicate issues with the forcefield and implicit solvent
 models used in the calculation.
 
 
@@ -403,7 +411,7 @@ models used in the calculation.
 \begin{center}
 \includegraphics[width=4.9 in,height=4.0 in]{Target_538_compare.pdf}
 \end{center}
-\caption{The per residue free energy calculation found some differences of the sidechain orientation in computer generated model 1 and 
+\caption{The per residue free energy calculation found some differences of the side chain orientation in computer generated model 1 and 
 experimental structure of CASP target T0538. 
 (A) Two salt bridges between residues E35-R32 and E28-K24 exist in the native structure. These are
 absent in the computer generated model structure. Instead
@@ -423,7 +431,8 @@ Here, we chose two computer generated models from CASP taget T0538, where the to
 One of the model was from "PconsR" (GDT-TS = 83, qmode 1 = 0.5865) and another from "MULTICOM-NOVEL" ( GDT-TS = 83, qmode 1 = 0.5865). We 
 choose these two models as the model by PconsR was the most accurate
 predicted model for this target, whereas the other model was predicted best by QA test of MUFOLD-WQA. The calculated
-free energy using confinement method indicate that the model by PconsR is more stable by $3.9 Kcal/Mol$ which support
+free energy using confinement method indicate that the model by PconsR is more stable by $3.9
+Kcal/Mol$ which supports
 the GDT\_TS trend.  Although consensus prediction strategies do well specially when dealing with large numbers of structures, they 
 can miss a good answer that is only predicted by a few methods. At least in this case, the confinement
 method is able to capture this structure that was otherwise missed.
@@ -447,7 +456,7 @@ pathway from conformation $A$ to $B$.
 
 \section{Method}
 
-The confinement method has been described in details in ref. by Tyka et al. \cite{Tyka2006} and
+The confinement method has been described in details by Tyka et al. in reference \cite{Tyka2006} and
 Cecchini et  al. \cite{Cecchini2009}. The basic approach of the confinement approach is the same in
 both these papers. A thermodynamic cycle is used to compute the free energy between conformations A
 and B. However, there are some small technical differences between the two approaches. Here we briefly
@@ -455,7 +464,7 @@ describe the procedure that we used.
 
 \begin{enumerate}
 
-\item  In the first step, a minimization of A and B conformations are performed. These minimized conformations
+\item  In the first step, minimizations of A and B conformations are performed. These minimized conformations
     ($A^{\ast}$ and $B^{\ast}$) are the reference conformation of that state.
 
 \item The free energy of confining the ensemble (A or B) to a tighter ensemble ($A^\ast$ or $B^\ast$) is calculated.
@@ -464,7 +473,7 @@ describe the procedure that we used.
     dynamics simulation (each 20 ns long) for each leg of the thermodynamic cycle, where the harmonic restraint force
     constant was scaled from 0.00005 Kcal/Mol (mostly free) to 81.92 kcal/mol (tightly restrained). The free energy for
     this step is estimated using a thermodynamic integration approach developed by Tyka et. al. \cite{Tyka2006}. The
-    confinement free energies calculated this step are denoted as $\Delta G_{A,A^\ast}$ and $\Delta G_{B,B^\ast}$ in
+    confinement free energies calculated in this step are denoted as $\Delta G_{A,A^\ast}$ and $\Delta G_{B,B^\ast}$ in
     Figure~\ref{fig:method}. 
 
 \item The thermodynamic cycle is closed by calculating the free energy between the final restrained states $A^\ast$ and
@@ -477,17 +486,19 @@ describe the procedure that we used.
 \end{enumerate}
 
 One advantage of confinement method is that
-none of the simulation during restraining step depends on each other. Therefore, with available computer resources it can be fast 
-to compute. The computational cost for a $56$-residue proteins with chameleon sequence that is reported in this article is only $4$ hours 
-in a single gpu computer. All calculations were performed with the Amber 11 suit of programs~\cite{Case2012,Goetz2012} in combination with ff99SB
-forcefield~\cite{Hornak2006} and generalized born implicit solvent \cite{Mongan2006}. 
+none of the simulations during the restraining step depends on each other. Therefore, with available computer resources it can be fast 
+to compute. The computational cost for the $56$-residue protein with chameleon sequence that is reported in this article is only $4$ hours 
+in a single gpu computer\Alberto{all the different confinements in one GPU?}. All calculations were
+performed with the Amber 11 suit of programs~\cite{Case2012,Goetz2012} in combination with the ff99SB
+forcefield~\cite{Hornak2006} and the generalized born implicit solvent \cite{Mongan2006}. 
 
 Interestingly, we extend the
 method for calculation of per residue free energy in an approximate way. For this purpose, the confinement energy,
-$\Delta G_{A,A*}$ and $\Delta G_{B,B*}$ of each residue is calculated in the usual numerical way as described in ref. by
-Tyka et al. \cite{Tyka2006}. The internal energy of each residue is calculated using the decomp module of amber from the
+$\Delta G_{A,A*}$ and $\Delta G_{B,B*}$ of each residue is calculated in the usual numerical way as described by
+Tyka et al. in reference \cite{Tyka2006}. The internal energy of each residue is calculated using
+amber's "decomp" module using the
 final restrained trajectory. We call this method approximate as we ignore the entropic contribution from the normal mode
-or quasiharmonic analysis. However, this contrbution to the total free energy is much smaller, which allow us to study
+or quasiharmonic analysis. However, this contribution to the total free energy is much smaller, which allow us to study
 the mechanistic details of conformational preference of each residue.  
 
 \begin{thebibliography}{99}
