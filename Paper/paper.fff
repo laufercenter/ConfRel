@@ -83,7 +83,7 @@
 \begin{center}
 \includegraphics[width=4.9 in,height=4.0 in]{Target_538_compare.pdf}
 \end{center}
-\caption{The per residue free energy calculation found some differences of the sidechain orientation in computer generated model 1 and
+\caption{The per residue free energy calculation found some differences of the side chain orientation in computer generated model 1 and
 experimental structure of CASP target T0538.
 (A) Two salt bridges between residues E35-R32 and E28-K24 exist in the native structure. These are
 absent in the computer generated model structure. Instead

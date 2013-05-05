@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.7.3)  3 MAY 2013 12:03
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.7.3)  5 MAY 2013 14:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -291,7 +291,7 @@ LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <14.4> not available
 \openout4 = `paper.ttt'.
 
  (paper.ttt) [4] [5] [6] [7] [8]
-Overfull \hbox (2.06926pt too wide) in paragraph at lines 360--367
+Overfull \hbox (2.06926pt too wide) in paragraph at lines 367--374
 \OT1/ppl/m/n/12 (-20) veal mech-a-nis-tic de-tail be-hind the con-for-ma-tional
  pref-er-ence of a chameleon
  []
@@ -367,13 +367,13 @@ Overfull \hbox (22.52031pt too wide) in paragraph at lines 29--41
 
 [28]) (./paper.aux) ) 
 Here is how much of TeX's memory you used:
- 4709 strings out of 493633
- 69292 string characters out of 3143378
+ 4707 strings out of 493633
+ 69274 string characters out of 3143378
  157894 words of memory out of 3000000
  7762 multiletter control sequences out of 15000+200000
- 25439 words of font info for 158 fonts, out of 3000000 for 9000
+ 25368 words of font info for 157 fonts, out of 3000000 for 9000
  831 hyphenation exceptions out of 8191
- 38i,9n,35p,669b,405s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 38i,9n,35p,670b,397s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/local/texlive/2011/texmf-dist/fonts/enc/dvips/base/8
 r.enc}</usr/local/texlive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12
 .pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.p
@@ -384,7 +384,7 @@ usr/local/texlive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></us
 r/local/texlive/2011/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local
 /texlive/2011/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texliv
 e/2011/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on paper.pdf (28 pages, 10771876 bytes).
+Output written on paper.pdf (28 pages, 10772355 bytes).
 PDF statistics:
  451 PDF objects out of 1000 (max. 8388607)
  295 compressed objects within 3 object streams

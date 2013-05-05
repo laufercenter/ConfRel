@@ -27,7 +27,7 @@
          organism type are also listed.}
 \label{table:casp_testcase}
 \begin{tabular}{l l l}\hline
-    CASP Target  & PDB Identifier &  organism type  \\ \hline
+    CASP Target  & PDB Identifier &  Organism type  \\ \hline
      T0531       &    2KJX        &  extracellular domain of the jumping  \\
                  &                &  translocation breakpoint protein  \\ \hline
      T0538       &    2L09        &  protein asr4154 from Nostoc sp. PCC7120     \\ \hline
