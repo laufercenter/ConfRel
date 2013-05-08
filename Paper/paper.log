@@ -1,8 +1,8 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.7.3)  5 MAY 2013 14:43
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.7.3)  8 MAY 2013 14:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**paper.tex
+**paper
 (./paper.tex
 LaTeX2e <2009/09/24>
 Babel <v3.8l> and hyphenation patterns for english, dumylang, nohyphenation, ge
@@ -291,7 +291,7 @@ LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <14.4> not available
 \openout4 = `paper.ttt'.
 
  (paper.ttt) [4] [5] [6] [7] [8]
-Overfull \hbox (2.06926pt too wide) in paragraph at lines 367--374
+Overfull \hbox (2.06926pt too wide) in paragraph at lines 374--381
 \OT1/ppl/m/n/12 (-20) veal mech-a-nis-tic de-tail be-hind the con-for-ma-tional
  pref-er-ence of a chameleon
  []
@@ -314,50 +314,49 @@ Missing character: There is no Ã in font pplr7t!
 Missing character: There is no ¡ in font pplr7t!
  [17]
 AED endfloat: Processing end Figures and Tables [18] (./paper.fff
-<method.pdf, id=68, 722.7pt x 542.025pt>
+<method.pdf, id=68, 662.475pt x 542.025pt>
 File: method.pdf Graphic file (type pdf)
  <use method.pdf>
 Package pdftex.def Info: method.pdf used on input line 4.
-(pdftex.def)             Requested size: 252.94499pt x 189.70331pt.
- [19 <./method.pdf>]
-<orban.pdf, id=130, 722.7pt x 542.025pt>
+(pdftex.def)             Requested size: 252.94499pt x 206.95584pt.
+ [19 <./method.pdf>] <orban.pdf, id=470, 722.7pt x 542.025pt>
 File: orban.pdf Graphic file (type pdf)
  <use orban.pdf>
 Package pdftex.def Info: orban.pdf used on input line 14.
 (pdftex.def)             Requested size: 361.34999pt x 271.01183pt.
  [20 <./orban.pdf>]
-<delta_g.pdf, id=187, 263.31676pt x 320.53954pt>
+<delta_g.pdf, id=527, 263.31676pt x 320.53954pt>
 File: delta_g.pdf Graphic file (type pdf)
  <use delta_g.pdf>
 Package pdftex.def Info: delta_g.pdf used on input line 27.
 (pdftex.def)             Requested size: 325.215pt x 395.88998pt.
- [21 <./delta_g.pdf>] <casp.pdf, id=230, 234.8775pt x 171.70549pt>
+ [21 <./delta_g.pdf>] <casp.pdf, id=572, 234.8775pt x 171.70549pt>
 File: casp.pdf Graphic file (type pdf)
  <use casp.pdf>
 Package pdftex.def Info: casp.pdf used on input line 39.
 (pdftex.def)             Requested size: 252.94499pt x 184.91254pt.
- [22 <./casp.pdf>] <T0559.pdf, id=261, 722.7pt x 542.025pt>
+ [22 <./casp.pdf>] <T0559.pdf, id=604, 722.7pt x 542.025pt>
 File: T0559.pdf Graphic file (type pdf)
  <use T0559.pdf>
 Package pdftex.def Info: T0559.pdf used on input line 50.
 (pdftex.def)             Requested size: 274.6262pt x 205.97163pt.
- [23 <./T0559.pdf>] <T0540.pdf, id=305, 722.7pt x 542.025pt>
+ [23 <./T0559.pdf>] <T0540.pdf, id=649, 722.7pt x 542.025pt>
 File: T0540.pdf Graphic file (type pdf)
  <use T0540.pdf>
-Package pdftex.def Info: T0540.pdf used on input line 61.
+Package pdftex.def Info: T0540.pdf used on input line 62.
 (pdftex.def)             Requested size: 252.94499pt x 189.70331pt.
- [24 <./T0540.pdf>] <T0569_perres1.pdf, id=346, 722.7pt x 542.025pt>
+ [24 <./T0540.pdf>] <T0569_perres1.pdf, id=690, 722.7pt x 542.025pt>
 File: T0569_perres1.pdf Graphic file (type pdf)
  <use T0569_perres1.pdf>
-Package pdftex.def Info: T0569_perres1.pdf used on input line 72.
+Package pdftex.def Info: T0569_perres1.pdf used on input line 73.
 (pdftex.def)             Requested size: 252.94499pt x 189.70331pt.
 
 [25 <./T0569_perres1.pdf>]
-<Target_538_compare.pdf, id=381, 722.7pt x 542.025pt>
+<Target_538_compare.pdf, id=727, 722.7pt x 542.025pt>
 File: Target_538_compare.pdf Graphic file (type pdf)
 
 <use Target_538_compare.pdf>
-Package pdftex.def Info: Target_538_compare.pdf used on input line 84.
+Package pdftex.def Info: Target_538_compare.pdf used on input line 85.
 (pdftex.def)             Requested size: 354.1261pt x 289.09142pt.
  [26 <./Target_538_compare.pdf>]) (./paper.ttt
 [27]
@@ -367,13 +366,13 @@ Overfull \hbox (22.52031pt too wide) in paragraph at lines 29--41
 
 [28]) (./paper.aux) ) 
 Here is how much of TeX's memory you used:
- 4707 strings out of 493633
- 69274 string characters out of 3143378
- 157894 words of memory out of 3000000
- 7762 multiletter control sequences out of 15000+200000
+ 4711 strings out of 493633
+ 69342 string characters out of 3143378
+ 157910 words of memory out of 3000000
+ 7766 multiletter control sequences out of 15000+200000
  25368 words of font info for 157 fonts, out of 3000000 for 9000
  831 hyphenation exceptions out of 8191
- 38i,9n,35p,670b,397s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 38i,9n,35p,666b,402s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/local/texlive/2011/texmf-dist/fonts/enc/dvips/base/8
 r.enc}</usr/local/texlive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12
 .pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.p
@@ -384,10 +383,10 @@ usr/local/texlive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></us
 r/local/texlive/2011/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local
 /texlive/2011/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texliv
 e/2011/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on paper.pdf (28 pages, 10772355 bytes).
+Output written on paper.pdf (28 pages, 11999799 bytes).
 PDF statistics:
- 451 PDF objects out of 1000 (max. 8388607)
- 295 compressed objects within 3 object streams
+ 798 PDF objects out of 1000 (max. 8388607)
+ 280 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
  21033 words of extra memory for PDF output out of 24883 (max. 10000000)
 

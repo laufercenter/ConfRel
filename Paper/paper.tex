@@ -84,7 +84,7 @@ so each step requires substantial amounts of sampling.  And third, these methods
 pathway error is a sum of many errors among the many steps.
 
 The calculation of protein conformational free energy has been successfully attempted by a number of groups
-\cite{Shell2010,Ytreberg2006,Zheng2008,Spichty2010,Strajbl2000,Park2008,Tyka2006,Cecchini2009,Ovchinnikov2013}. Some of
+\cite{Ytreber2006a,Shell2010,Ytreberg2006,Zheng2008,Spichty2010,Strajbl2000,Park2008,Tyka2006,Cecchini2009,Ovchinnikov2013}. Some of
 these methods like the reference system method~\cite{Ytreberg2006}, deactivated morphing~\cite{Park2008}, the
 confinement method~\cite{Tyka2006,Cecchini2009,Ovchinnikov2013} take an alternative strategy for computing difference
 free energies that does not require knowing a pathway from $A$ to $B$.  
@@ -159,6 +159,10 @@ sense.
 \end{table}
 \Alberto{Should we comment on T0560? Why is it giving such a high value with such high gdt? It's not
 the point to make here, but it is what jumps at me.}
+\Arijit{I think we have made it clear that crystal structures are often more stable due to salt-bridge effects. Also, we have shown
+in other cases that sidechains orientation may play important roles inspite of close GDT-TS. You will see free energy difference between 
+two computer generated model is not so high. So, I believe sidechain may play some role here.}  
+
 
 \subsection*{The confinement method correctly predicts the structures of chameleon sequences}
 
@@ -338,7 +342,8 @@ models and the native experimental structure (Figure~\ref{fig:T0559}).
         \includegraphics[width=3.8 in]{T0559.pdf}
     \end{center}
     \caption{The confinement method can correctly rank the native structure and three predictions produced by a single
-        method for target T0559.}
+        method for target T0559. The backbone region of the predicted structures which differ substantially compare to the
+        experimental structure upon superposition are colored brown.}
 \label{fig:T0559}
 \end{figure}
 
@@ -362,6 +367,8 @@ again, the free energy based ranking correlates well with the GDT-TS based score
 \end{figure}
 \Alberto{if the drop down bars/point are a different color it will be easier to see when the crystal
 is on top of the axis}
+\Arijit{I will wait for Sarina's figure. I have changed the caption of figure 5 to say why some region are colored brown.}
+
 \subsection*{The per-residue free energy is sensitive to small changes in protein conformation:}
 
 In a previous section, we discussed how the per-residue free energy can reveal mechanistic
@@ -481,14 +488,14 @@ describe the procedure that we used.
     $\Delta G_{A^\ast,B^\ast}$ in Figure~\ref{fig:method}.
 
 \item  The full free energy, $\Delta G_{A,B}$ between the two state A and B is calculated as
-    $\Delta G{A,B} = \Delta G{A,A^\ast} - \Delta G{B,B^\ast} + \Delta G{A^\ast,B^\ast}$.
+    $\Delta G_{A,B} = \Delta G_{A,A^\ast} - \Delta G_{B,B^\ast} + \Delta G_{A^\ast,B^\ast}$.
 
 \end{enumerate}
 
 One advantage of confinement method is that
 none of the simulations during the restraining step depends on each other. Therefore, with available computer resources it can be fast 
-to compute. The computational cost for the $56$-residue protein with chameleon sequence that is reported in this article is only $4$ hours 
-in a single gpu computer\Alberto{all the different confinements in one GPU?}. All calculations were
+to compute. The computational cost of a single 20 ns simulation (along the confinement step) of $56$-residue protein 
+is only $4$ hours in a single gpu computer  \Alberto{all the different confinements in one GPU?}. All calculations were
 performed with the Amber 11 suit of programs~\cite{Case2012,Goetz2012} in combination with the ff99SB
 forcefield~\cite{Hornak2006} and the generalized born implicit solvent \cite{Mongan2006}. 
 
@@ -520,13 +527,13 @@ Haas, K.; Chu, J.W. Decomposition of energy and free energy changes by following
 J. Chem. Phys. 2009, 131, 144105-144111.
 
 \bibitem{Jonsson1998}
-Jonsson, H.; Mills, G.; Jacobsen, K.W. Nudged Elastic Band Method for Finding Minimum Energy Paths of Transitions,
+J\'{on}sson, H.; Mills, G.; Jacobsen, K.W. Nudged Elastic Band Method for Finding Minimum Energy Paths of Transitions,
 in Classical and Quantum Dynamics in Condensed Phase Simulations, Ed. B. J. Berne, G. Ciccotti and D. F.
 Coker, 385 (World Scientific, 1998).
 
 \bibitem{E2007}
 E, W.; Ren, W.; Vanden-Eijnden, E. Simplified and improved string method for computing the minimum energy paths in
-barrier-crossing eventsi. J. Chem. Phys. 2007, 126, 164103.
+barrier-crossing events. J. Chem. Phys. 2007, 126, 164103.
 
 \bibitem{Dellago2002}
 Dellago, C.; Bolhuis, P.G.; Geissler, P.L. Transition Path Sampling, Adv. Chem. Phys. 2002, 123, 1-84.
@@ -553,6 +560,10 @@ Mascarenhas, N. M.; Kastner, J. How maltose influences structural changes to bin
 \bibitem{Kumar1992}
 Kumar, S.; Rosenberg, J.M.; Bouzida, D.; Swendsen, R.H.; Kollman, P.A. The weighted histogram analysis method for free-energy calculations on biomolecules. I. The 
 method. J Comput Chem. 1992, 13, 1011-1021.
+
+
+\bibitem{Ytreber2006a}
+Ytreberg, F.M.; Swendsen, R.H.; Zuckerman, D.M. Comparison of free energy methods for molecular systems. J Chem Phys. 2006, 125, 184114.
 
 \bibitem{Ytreberg2006}
 Ytreberg, F.; Zuckerman, D. Simple estimation of absolute free energies for biomolecules. J. Chem. Phys. 2006, 124, 104105.

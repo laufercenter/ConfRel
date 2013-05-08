@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.7.3)  3 MAY 2013 09:41
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.7.3)  7 MAY 2013 17:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -274,6 +274,10 @@ File: mt-ppl.cfg 2005/11/16 v1.6 microtype config. file: Palatino (RS)
 LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <17.28> not available
 (Font)              Font shape `OT1/ppl/b/n' tried instead on input line 41.
 
+Overfull \hbox (19.41212pt too wide) in paragraph at lines 41--41
+[]\OT1/ppl/b/n/17.28 Preparation of in-put mod-els for chamelon se-quences 
+ []
+
 (/usr/local/texlive/2011/texmf-dist/tex/latex/microtype/mt-cmr.cfg
 File: mt-cmr.cfg 2009/11/09 v2.0 microtype config. file: Computer Modern Roman 
 (RS)
@@ -283,68 +287,72 @@ File: mt-cmr.cfg 2009/11/09 v2.0 microtype config. file: Computer Modern Roman
 
 (supporting_information.fff) [1
 
-{/usr/local/texlive/2011/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] AED
- endfloat: Processing end Figures and Tables
-[3] (./supporting_information.fff
+{/usr/local/texlive/2011/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+Overfull \hbox (5.83022pt too wide) in paragraph at lines 114--114
+[]\OT1/ppl/b/n/17.28 What can we say about low res-o-lu-tion mod-els from
+ []
+
+[2] AED endfloat: Processing end Figures and Tables [3]
+(./supporting_information.fff
 <orban_perres_SI.pdf, id=15, 722.7pt x 542.025pt>
 File: orban_perres_SI.pdf Graphic file (type pdf)
  <use orban_perres_SI.pdf>
 Package pdftex.def Info: orban_perres_SI.pdf used on input line 3.
 (pdftex.def)             Requested size: 404.70923pt x 383.04572pt.
 
-Overfull \hbox (14.70923pt too wide) in paragraph at lines 3--14
+Overfull \hbox (14.70923pt too wide) in paragraph at lines 3--15
 [][]
  []
 
 
-LaTeX Warning: Float too large for page by 94.42964pt on input line 15.
+LaTeX Warning: Float too large for page by 108.92964pt on input line 16.
 
 [4 <./orban_perres_SI.pdf>] <T0560.pdf, id=64, 722.7pt x 542.025pt>
 File: T0560.pdf Graphic file (type pdf)
 
 <use T0560.pdf>
-Package pdftex.def Info: T0560.pdf used on input line 21.
+Package pdftex.def Info: T0560.pdf used on input line 22.
 (pdftex.def)             Requested size: 252.94499pt x 189.70331pt.
  [5 <./T0560.pdf>] <T0569.pdf, id=104, 722.7pt x 542.025pt>
 File: T0569.pdf Graphic file (type pdf)
 
 <use T0569.pdf>
-Package pdftex.def Info: T0569.pdf used on input line 31.
+Package pdftex.def Info: T0569.pdf used on input line 32.
 (pdftex.def)             Requested size: 274.62885pt x 245.72026pt.
  [6 <./T0569.pdf>]
 <T0569_perres2.pdf, id=140, 722.7pt x 542.025pt>
 File: T0569_perres2.pdf Graphic file (type pdf)
  <use T0569_perres2.pdf>
-Package pdftex.def Info: T0569_perres2.pdf used on input line 41.
+Package pdftex.def Info: T0569_perres2.pdf used on input line 42.
 (pdftex.def)             Requested size: 361.3491pt x 289.09142pt.
 
 [7 <./T0569_perres2.pdf>] <T0538.pdf, id=173, 722.7pt x 542.025pt>
 File: T0538.pdf Graphic file (type pdf)
 
 <use T0538.pdf>
-Package pdftex.def Info: T0538.pdf used on input line 54.
+Package pdftex.def Info: T0538.pdf used on input line 57.
 (pdftex.def)             Requested size: 252.94499pt x 189.70331pt.
  [8 <./T0538.pdf>] <T0531.pdf, id=217, 722.7pt x 542.025pt>
 File: T0531.pdf Graphic file (type pdf)
 
 <use T0531.pdf>
-Package pdftex.def Info: T0531.pdf used on input line 65.
+Package pdftex.def Info: T0531.pdf used on input line 68.
 (pdftex.def)             Requested size: 252.94499pt x 189.70331pt.
  [9 <./T0531.pdf>]) (./supporting_information.aux) ) 
 Here is how much of TeX's memory you used:
- 4447 strings out of 493633
- 65751 string characters out of 3143378
- 155161 words of memory out of 3000000
- 7603 multiletter control sequences out of 15000+200000
- 16833 words of font info for 90 fonts, out of 3000000 for 9000
+ 4425 strings out of 493633
+ 65568 string characters out of 3143378
+ 156160 words of memory out of 3000000
+ 7602 multiletter control sequences out of 15000+200000
+ 15790 words of font info for 76 fonts, out of 3000000 for 9000
  831 hyphenation exceptions out of 8191
- 38i,6n,35p,1393b,309s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 38i,6n,35p,1437b,311s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/local/texlive/2011/te
 xmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2011/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2011/texmf-dist/fonts/t
 ype1/urw/palatino/uplb8a.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/ur
 w/palatino/uplr8a.pfb>
-Output written on supporting_information.pdf (9 pages, 9641036 bytes).
+Output written on supporting_information.pdf (9 pages, 9640703 bytes).
 PDF statistics:
  282 PDF objects out of 1000 (max. 8388607)
  181 compressed objects within 2 object streams
