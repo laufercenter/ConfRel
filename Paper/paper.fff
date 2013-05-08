@@ -50,8 +50,8 @@
         \includegraphics[width=3.8 in]{T0559.pdf}
     \end{center}
     \caption{The confinement method can correctly rank the native structure and three predictions produced by a single
-        method for target T0559. The backbone region of the predicted structures which differ substantially than the
-        experimental structure are colored brown.}
+        method for target T0559. The backbone region of the predicted structures which differ substantially compare to the
+        experimental structure upon superposition are colored brown.}
 \label{fig:T0559}
 \end{figure*}
 \efloatseparator
