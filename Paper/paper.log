@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.7.3)  9 MAY 2013 17:26
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.7.3)  9 MAY 2013 17:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -291,7 +291,7 @@ LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <14.4> not available
 \openout4 = `paper.ttt'.
 
  (paper.ttt) [4] [5] [6] [7] [8] [9]
-Overfull \hbox (2.06926pt too wide) in paragraph at lines 374--381
+Overfull \hbox (2.06926pt too wide) in paragraph at lines 376--383
 \OT1/ppl/m/n/12 (-20) veal mech-a-nis-tic de-tail be-hind the con-for-ma-tional
  pref-er-ence of a chameleon
  []
@@ -383,7 +383,7 @@ usr/local/texlive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></us
 r/local/texlive/2011/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local
 /texlive/2011/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texliv
 e/2011/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on paper.pdf (28 pages, 11999741 bytes).
+Output written on paper.pdf (28 pages, 11999887 bytes).
 PDF statistics:
  798 PDF objects out of 1000 (max. 8388607)
  280 compressed objects within 3 object streams
