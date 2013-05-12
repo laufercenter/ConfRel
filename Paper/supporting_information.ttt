@@ -1,0 +1,18 @@
+\begin{table*}
+
+\label{table:560QA}
+\begin{center}
+\begin{tabular}{| l | l | l | l | l |}
+\hline
+Model            &  $\Delta \Delta G$ (1-74)  & $\Delta \Delta G$ (3-66) &    GDT\_TS    & QMODE 1  \\ \hline
+PconsR           &         0.0                &      0.0                 &    94         &  0.5178   \\ \hline
+Bilab\-Enable     &        -3.3                &      1.7                 &    87         &  0.5344   \\ \hline
+Multicom\_Refine &        30.0                &     31.1                 &    74         &  0.4770   \\ \hline
+\end{tabular}
+\end{center}
+\caption{Comparison of quality assessment by the group MUFOLD\-WQA and the confinement method of the CASP9 target 560 (pdb id: 2L02).
+The GDT\_TS score obtained from CASP9 website, was based on the trimmed model containing residue 3-66, whereas, the QMODE 1 values are from
+quality assessment by the group MUFOLD\-WQA and based on residues 1-74.}
+\end{table*}
+\efloatseparator
+ 

@@ -19,5 +19,5 @@ ${PAPER_ROOT}.pdf: ${TEXFILES}
 	${LC} ${PAPER_ROOT}
 
 clean:
-	rm -f *.aux *.log *.bbl *.blg *.dvi *.tbx *.fgx *.fff *.lof *.lot *.ttt
+	rm -f *.log *.blg *.dvi *.tbx *.fgx *.fff *.lof *.lot *.ttt
 

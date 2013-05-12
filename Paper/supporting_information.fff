@@ -1,0 +1,75 @@
+\begin{figure*}
+
+\includegraphics[width=5.6 in,height=5.3 in]{orban_perres_SI.pdf}
+\label{fig:orban_full}
+\caption{Per residue free energy calculations indicate significant differences of side chain orientation of key amino acid residues. These amino acid
+residues displace the free energy equilibrium to either $\beta$ or
+$\alpha$ conformation. All figures in the left are in $\beta$ conformation, whereas the right ones are in $\alpha$ conformation except in Figure (F)
+where both are in $\alpha$ conformation.
+Sidechains of hydrophobic residues L7 in (A) and A26 in (B) are oriented towards the protein interior in $\beta$
+conformation. In such conformation they have hydrophobic interactions with other hydrophobic residues colored in white. In $\alpha$ conformation these residues are
+exposed to the protein surface.
+(C) Y45 forms H-bond with D47 with GB95 sequence and $\beta$ conformation. (D) Q11 and E15 forms a salt bridge in $\beta$ conformation which is absent
+in the $\alpha$ conformation. (E) Hydrophobic I49 is exposed to the protein surface in $\beta$ conformation, whereas in $\alpha$ conformation it
+is inside protein hydrophobic core. (F) Sidechain of I30 is inside the protein hydrophobic core as it has a smaller sidechain with GA95 sequence
+and $\alpha$ conformation. In contrast, Phe-30 with larger sidechain is exposed to the protein surface with GB95 sequence and $\beta$ conformation.}
+\end{figure*}
+\efloatseparator
+ 
+\begin{figure*}
+
+    \begin{center}
+        \includegraphics[width=3.5 in]{T0560.pdf}
+    \end{center}
+    \caption{Native structure and two models (from group ``Splicer'') for target T0560.}
+    \label{fig:T0560}
+\end{figure*}
+\efloatseparator
+ 
+\begin{figure*}
+
+\begin{center}
+\includegraphics[width=3.8 in,height=3.4 in]{T0569.pdf}
+\end{center}
+\caption{Native and best computer generated model structure of CASP Target T0569.}
+\label{fig:T0569}
+\end{figure*}
+\efloatseparator
+ 
+\begin{figure*}
+
+\begin{center}
+\includegraphics[width=5 in,height=4 in]{T0569_perres2.pdf}
+\end{center}
+\caption{Key differences between the experimental structure and the computer generated models as
+    indicated by the per residue free energy calculation.
+The side chains of hydrophobic residues, V59 and I61 are oriented towards the protein hydrophobic core in (A)
+, in (B) they are exposed to the surface. The beta sheet containing these residues is disordered in
+the generated model due to
+a salt bridge between K76 and D11 in (D) the computer generated structure, which is absent in the (C) native structure.}
+\label{fig:T0569_per_residue}
+\end{figure*}
+\efloatseparator
+ 
+\begin{figure*}
+
+\begin{center}
+\includegraphics[width=3.5in]{T0538.pdf}
+\end{center}
+\caption{The native and three model structures for an engineered protein (PDB ID: 2L09 and CASP
+    code:T0538). Models 1,2 and 3 are from the group PconsR, Shell and FOLDIT respectively.}
+\label{fig:T0538}
+\end{figure*}
+\efloatseparator
+ 
+\begin{figure*}
+
+\begin{center}
+\includegraphics[width=3.5 in]{T0531.pdf}
+\end{center}
+\caption{The native structure and 5 models of extracellular domain of the jumping translocation breakpoint protein (pdb
+    id: 2KJX and the CASP code: T0531).}
+\label{fig:T0531}
+\end{figure*}
+\efloatseparator
+ 
