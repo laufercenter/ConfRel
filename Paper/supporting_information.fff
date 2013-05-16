@@ -56,8 +56,9 @@ a salt bridge between K76 and D11 in (D) the computer generated structure, which
 \begin{center}
 \includegraphics[width=3.5in]{T0538.pdf}
 \end{center}
-\caption{The native and three model structures for an engineered protein (PDB ID: 2L09 and CASP
-    code:T0538). Models 1,2 and 3 are from the group PconsR, Shell and FOLDIT respectively.}
+\caption{The free energy based ranking of the experimental and three predicted structures for an engineered protein (PDB ID: 2L09 and CASP
+    code:T0538). Models 1,2 and 3 are from the group PconsR, Shell and FOLDIT respectively. In this case, one of the predicted structure
+    was found to be more stable than the experimental strucre.}
 \label{fig:T0538}
 \end{figure*}
 \efloatseparator
@@ -70,6 +71,17 @@ a salt bridge between K76 and D11 in (D) the computer generated structure, which
 \caption{The native structure and 5 models of extracellular domain of the jumping translocation breakpoint protein (pdb
     id: 2KJX and the CASP code: T0531).}
 \label{fig:T0531}
+\end{figure*}
+\efloatseparator
+ 
+\begin{figure*}
+
+\begin{center}
+\includegraphics[width=4.3 in]{dg.eps}
+\end{center}
+\caption{Per-residue difference free energies for the $\alpha$ and $\beta$ conformations of the GA95 and GB95
+        sequences.}
+\label{fig:DeltaG}
 \end{figure*}
 \efloatseparator
  

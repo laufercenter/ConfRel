@@ -1,0 +1,44 @@
+\begin{table*}
+
+\begin{center}
+\caption{The confinement method assigns a more favorable free energy to the experimentally determined structure than to
+    computer-generated predictions. For each target, we examined as many as five predictions submitted by CASP
+    participants. We report the free energy difference between the most favorable decoy and the experimentally
+    determined structure. Positive $\Delta\Delta G (=\Delta G_{best~decoy} - \Delta G_{native})$ values indicate that
+    the experimental structure is predicted to be more favorable than any of the decoys.}
+\label{table:casp_control}
+\begin{tabular}{l l l l}\hline
+    CASP Target  & PDB Identifier & $\Delta \Delta G$ (kcal/mol) & GDT-TS \\ \hline
+     T0531       &    2KJX        &          $11.15 \pm 0.70$    &  $44$ \\ \hline
+     T0538       &    2L09        &          $-3.00 \pm 0.47$    &  $96$ \\ \hline
+     T0540       &    3MX7        &          $16.94 \pm 0.49$    &  $70$ \\ \hline
+     T0559       &    2L01        &          $2.10 \pm 0.24$     &  $94$ \\ \hline
+     T0560       &    2L02        &          $18.00 \pm 0.49$    &  $94$ \\ \hline
+     T0569       &    2KYW        &          $20.01 \pm 0.69$    &  $78$ \\ \hline
+\end{tabular}
+\end{center}
+\end{table*}
+\efloatseparator
+ 
+\begin{table*}
+
+\begin{center}
+\caption{The six different CASP targets that are used in this study. The corresponding PDB Identifier and description
+    are also listed.}
+\label{table:casp_testcase}
+\begin{tabular}{l l l}\hline
+    CASP Target  & PDB Identifier &  Description \\ \hline
+     T0531       &    2KJX        &  extracellular domain of the jumping  \\
+                 &                &  translocation breakpoint protein  \\ \hline
+     T0538       &    2L09        &  protein asr4154 from Nostoc sp. PCC7120     \\ \hline
+     T0540       &    3MX7        &  human Fas apoptotic inhibitory molecule     \\ \hline
+     T0559       &    2L01        &  protein BVU3908 from Bacteroides vulgatus   \\ \hline
+     T0560       &    2L02        &  protein BT2368 from Bacteroides  \\
+                 &                &  thetaiotaomicron         \\ \hline
+     T0569       &    2KYW        &  domain of adhesion exoprotein from \\
+                 &                &   Pediococcus pentosaceus \\ \hline
+\end{tabular}
+\end{center}
+\end{table*}
+\efloatseparator
+ 

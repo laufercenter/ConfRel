@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.7.3)  7 MAY 2013 17:10
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.7.3)  16 MAY 2013 16:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -288,7 +288,7 @@ File: mt-cmr.cfg 2009/11/09 v2.0 microtype config. file: Computer Modern Roman
 (supporting_information.fff) [1
 
 {/usr/local/texlive/2011/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Overfull \hbox (5.83022pt too wide) in paragraph at lines 114--114
+Overfull \hbox (5.83022pt too wide) in paragraph at lines 115--115
 []\OT1/ppl/b/n/17.28 What can we say about low res-o-lu-tion mod-els from
  []
 
@@ -307,55 +307,81 @@ Overfull \hbox (14.70923pt too wide) in paragraph at lines 3--15
 
 LaTeX Warning: Float too large for page by 108.92964pt on input line 16.
 
-[4 <./orban_perres_SI.pdf>] <T0560.pdf, id=64, 722.7pt x 542.025pt>
+[4 <./orban_perres_SI.pdf>]
+
+pdfTeX warning: pdflatex (file ./T0560.pdf): PDF inclusion: found PDF version <
+1.7>, but at most version <1.5> allowed
+<T0560.pdf, id=64, 368.04199pt x 333.74687pt>
 File: T0560.pdf Graphic file (type pdf)
-
-<use T0560.pdf>
+ <use T0560.pdf>
 Package pdftex.def Info: T0560.pdf used on input line 22.
-(pdftex.def)             Requested size: 252.94499pt x 189.70331pt.
- [5 <./T0560.pdf>] <T0569.pdf, id=104, 722.7pt x 542.025pt>
+(pdftex.def)             Requested size: 252.94499pt x 229.37912pt.
+ [5 <./T0560.pdf>] <T0569.pdf, id=314, 722.7pt x 542.025pt>
 File: T0569.pdf Graphic file (type pdf)
-
-<use T0569.pdf>
+ <use T0569.pdf>
 Package pdftex.def Info: T0569.pdf used on input line 32.
 (pdftex.def)             Requested size: 274.62885pt x 245.72026pt.
  [6 <./T0569.pdf>]
-<T0569_perres2.pdf, id=140, 722.7pt x 542.025pt>
+<T0569_perres2.pdf, id=351, 722.7pt x 542.025pt>
 File: T0569_perres2.pdf Graphic file (type pdf)
  <use T0569_perres2.pdf>
 Package pdftex.def Info: T0569_perres2.pdf used on input line 42.
 (pdftex.def)             Requested size: 361.3491pt x 289.09142pt.
 
-[7 <./T0569_perres2.pdf>] <T0538.pdf, id=173, 722.7pt x 542.025pt>
+[7 <./T0569_perres2.pdf>]
+
+pdfTeX warning: pdflatex (file ./T0538.pdf): PDF inclusion: found PDF version <
+1.7>, but at most version <1.5> allowed
+<T0538.pdf, id=384, 368.04199pt x 377.24239pt>
 File: T0538.pdf Graphic file (type pdf)
-
-<use T0538.pdf>
+ <use T0538.pdf>
 Package pdftex.def Info: T0538.pdf used on input line 57.
-(pdftex.def)             Requested size: 252.94499pt x 189.70331pt.
- [8 <./T0538.pdf>] <T0531.pdf, id=217, 722.7pt x 542.025pt>
-File: T0531.pdf Graphic file (type pdf)
+(pdftex.def)             Requested size: 252.94499pt x 259.2729pt.
+ [8 <./T0538.pdf>]
 
-<use T0531.pdf>
-Package pdftex.def Info: T0531.pdf used on input line 68.
-(pdftex.def)             Requested size: 252.94499pt x 189.70331pt.
- [9 <./T0531.pdf>]) (./supporting_information.aux) ) 
+pdfTeX warning: pdflatex (file ./T0531.pdf): PDF inclusion: found PDF version <
+1.7>, but at most version <1.5> allowed
+<T0531.pdf, id=860, 364.69551pt x 321.70187pt>
+File: T0531.pdf Graphic file (type pdf)
+ <use T0531.pdf>
+Package pdftex.def Info: T0531.pdf used on input line 69.
+(pdftex.def)             Requested size: 252.94499pt x 223.12808pt.
+ [9 <./T0531.pdf>]
+Package epstopdf Info: Source file: <dg.eps>
+(epstopdf)                    date: 2013-05-16 16:41:38
+(epstopdf)                    size: 21322 bytes
+(epstopdf)             Output file: <dg-eps-converted-to.pdf>
+(epstopdf)                    date: 2013-05-16 16:45:43
+(epstopdf)                    size: 6013 bytes
+(epstopdf)             Command: <repstopdf --outfile=dg-eps-converted-to.pdf dg
+.eps>
+(epstopdf)             \includegraphics on input line 80.
+Package epstopdf Info: Output file is already uptodate.
+ <dg-eps-converted-to.pdf, id=1411, 361.35pt x 252.945pt>
+File: dg-eps-converted-to.pdf Graphic file (type pdf)
+
+<use dg-eps-converted-to.pdf>
+Package pdftex.def Info: dg-eps-converted-to.pdf used on input line 80.
+(pdftex.def)             Requested size: 310.76122pt x 217.53232pt.
+ [10 <./dg-eps-converted-to.pdf>])
+(./supporting_information.aux) ) 
 Here is how much of TeX's memory you used:
- 4425 strings out of 493633
- 65568 string characters out of 3143378
- 156160 words of memory out of 3000000
- 7602 multiletter control sequences out of 15000+200000
+ 4432 strings out of 493633
+ 65701 string characters out of 3143378
+ 155170 words of memory out of 3000000
+ 7607 multiletter control sequences out of 15000+200000
  15790 words of font info for 76 fonts, out of 3000000 for 9000
  831 hyphenation exceptions out of 8191
  38i,6n,35p,1437b,311s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/local/texlive/2011/te
-xmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2011/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2011/texmf-dist/fonts/t
-ype1/urw/palatino/uplb8a.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/ur
-w/palatino/uplr8a.pfb>
-Output written on supporting_information.pdf (9 pages, 9640703 bytes).
+{/usr/local/texlive/2011/texmf-dist/fonts/enc/d
+vips/base/8r.enc}</usr/local/texlive/2011/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmmi12.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/urw/palatino/up
+lb8a.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/urw/palatino/uplr8a.pf
+b>
+Output written on supporting_information.pdf (10 pages, 14936942 bytes).
 PDF statistics:
- 282 PDF objects out of 1000 (max. 8388607)
- 181 compressed objects within 2 object streams
+ 1434 PDF objects out of 1440 (max. 8388607)
+ 340 compressed objects within 4 object streams
  0 named destinations out of 1000 (max. 500000)
- 11807 words of extra memory for PDF output out of 12000 (max. 10000000)
+ 11812 words of extra memory for PDF output out of 12000 (max. 10000000)
 
