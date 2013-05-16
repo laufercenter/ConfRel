@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.7.3)  16 MAY 2013 16:46
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.7.3)  16 MAY 2013 16:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -351,7 +351,7 @@ Package epstopdf Info: Source file: <dg.eps>
 (epstopdf)                    date: 2013-05-16 16:41:38
 (epstopdf)                    size: 21322 bytes
 (epstopdf)             Output file: <dg-eps-converted-to.pdf>
-(epstopdf)                    date: 2013-05-16 16:45:43
+(epstopdf)                    date: 2013-05-16 16:55:36
 (epstopdf)                    size: 6013 bytes
 (epstopdf)             Command: <repstopdf --outfile=dg-eps-converted-to.pdf dg
 .eps>
