@@ -253,7 +253,7 @@ fold. Most of the amino acid residues in the
 %\Arijit {yes}
 region 1--8 have negative per-residue free energies, which means that these
 residues favor the $\beta$ structure. Roles of some other important residues in stabilizing either the $\alpha$ or
-$\beta$ conformation are summarized in Figure S1.
+$\beta$ conformation are summarized in Figure S1 and S2-S7.
 
 In addition to the direct effects of the mutation, there are also indirect effects due to small perturbations in the
 environment around the mutations. For example, the L20A mutation causes a slight repacking around residue 20. This
@@ -347,7 +347,7 @@ models and the native experimental structure (Figure~\ref{fig:T0559}).
 
 We performed a similar calculation for target T0560 with two models from the group "Splicer''. The remaining three
 models were discarded as they were too similar to the rest of the models. Again, we can correctly identify the native
-state, and our calculated free energy based ranking matches well with GDT-TS (Figure S2 in the supporting information).
+state, and our calculated free energy based ranking matches well with GDT-TS (Figure S8 in the supporting information).
 
 Next, we tested the ability of the confinement method to rank the models for target T0540 that were produced by different
 prediction groups. The top models from groups "LTB'' (Model 1) and "Mufold'' (Model 2) were chosen for analysis. Once
@@ -372,11 +372,11 @@ CASP target T0569 and compared the experimental NMR structure with the best pred
 S2).
 %The annoying rule is that "side chain" is correct for the noun usage, and side-chain for the adjective.
 The confinement method clearly identified the two hydrophobic residues V59 and I61 as destabilizing the predicted model
-relative to the experimental structure (Figure~\ref{fig:T0569_per_residue} and Figure S3). The side chains of these
+relative to the experimental structure (Figure~\ref{fig:T0569_per_residue} and Figure S9). The side chains of these
 hydrophobic residues are oriented towards the protein hydrophobic core in the native NMR structure but are oriented towards
 the exterior of the protein, exposing them to solvent, in the model. These residues are part of a beta-sheet in the
 experimental structure, but because of their side-chain orientation, the corresponding beta-sheet becomes disordered in
-the predicted model (Figure~\ref{fig:T0569_per_residue} and Figure S4). There is also a large difference around K76,
+the predicted model (Figure~\ref{fig:T0569_per_residue} and Figure S10). There is also a large difference around K76,
 which forms a salt-bridge with D11 in the predicted model, but not in the experimental structure. This suggests that
 salt-bridge interactions are too favorable for the combination of forcefield and implicit solvent model we use, which
 has been a problem noted in the past \cite{Roe2007}.
@@ -397,7 +397,7 @@ Despite success for most of the systems we studied, there were few failures, esp
 compared structures were very close. One example is Target T0538, where we compared the experimental structure with three
 models (Model 1: "PconsR''---GDT-TS=96; Model 2: "Shell''---GDT-TS=90; Model 3: "FOLDIT''---GDT-TS=86). Contrary to
 our expectation, the confinement method predicts that computer generated Model 1 is more stable than the crystal
-structure (Figure S5). Per-residue free energy calculations (not shown) show that despite only small variations at the
+structure (Figure S11). Per-residue free energy calculations (not shown) show that despite only small variations at the
 backbone level, the side chains are oriented in very different ways (Figure~\ref{fig:T0538compare}), giving rise to
 large differences in the stabilization of certain residues. In particular, some of the differences arise from different
 salt bridge patterns and certain flexible polar residues exposed to the surface. This unexpected result shows that the
@@ -407,14 +407,12 @@ with the forcefield and implicit solvent models used in the calculation.
 
 \begin{figure}
 \begin{center}
-\includegraphics[width=4.9 in,height=4.0 in]{Target_538_compare.pdf}
+\includegraphics[width=4.8in]{Target_538_compare.pdf}
 \end{center}
 \caption{Small differences in side-chain orientation can cause large differences in free energy. We compare the
-    experimental structure and a computer generated model for CASP target T0538. (A) Two salt bridges between residues
+    experimental structure and a computer generated model for CASP target T0538. Two salt bridges between residues
     E35-R32 and E28-K24 exist in the native structure. These are absent in the computer generated model structure.
-    Instead, (B) a new salt bridge is formed between residues R32-E28 in model. (C) Another salt bridge between residues
-    R26-E50 in the experimental structure. (D) In comparison to the native structure, orientation of F51 differs in the
-    model.}
+    Instead, a new salt bridge is formed between residues R32-E28 in model. } 
 \label{fig:T0538compare}
 \end{figure}
 
